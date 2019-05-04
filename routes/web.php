@@ -17,3 +17,8 @@ Route::get('/', function () {
 
 Route::get('/welcome','JammController@welcome');
 Route::get('/pim','PimController@welcome');
+
+
+Route::get('recorder', function () {
+    return view('recorder.index');
+});

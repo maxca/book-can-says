@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4731429c7f25ab92eaa813447a972209",
+    "content-hash": "26996f237a3ff91e2747be7212b1d78d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1397,6 +1397,50 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "samarkchaisanguan/customroute",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxca/custom-route.git",
+                "reference": "a2464bd4c9a100915a67c9c1df8cf4fc02f3a8ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxca/custom-route/zipball/a2464bd4c9a100915a67c9c1df8cf4fc02f3a8ad",
+                "reference": "a2464bd4c9a100915a67c9c1df8cf4fc02f3a8ad",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.3.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "package",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "psr-0": {
+                    "Samark\\LumenApiGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "maxca789",
+                    "email": "Samark.Cha@ascendcorp.com"
+                }
+            ],
+            "description": "customer route laravel , autoload file in path custom route",
+            "time": "2019-03-20T16:47:12+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

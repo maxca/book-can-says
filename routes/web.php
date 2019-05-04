@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/welcome','JammController@welcome');
+Route::get('/pim','PimController@welcome');

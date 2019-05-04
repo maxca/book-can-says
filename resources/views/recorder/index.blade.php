@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <title>Simple Recorder.js demo with record, stop and pause</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css') }}">
 
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="8db2a8df-270b-47e9-bd71-bb52304a8a9b" type="text/javascript" async></script>
-    <script id="CookieDeclaration" src="https://consent.cookiebot.com/8db2a8df-270b-47e9-bd71-bb52304a8a9b/cd.js" type="text/javascript" async></script>
+
 </head>
 <body>
 <h1>Simple Recorder.js demo</h1>
@@ -27,8 +26,8 @@
 <ol id="recordingsList"></ol>
 
 <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-<script src="js/app.js"></script>
+<script src="{{asset('js/base.js')}}"></script>
+<script src="{{asset('js/recorder.js')}}"></script>
 
 </body>
 </html>

@@ -22,3 +22,6 @@ Route::get('/pim','PimController@welcome');
 Route::get('recorder', function () {
     return view('recorder.index');
 });
+
+Route::get('facebook','facebookController@facebookLogin');
+Route::get('callback-url','facebookController@callBack');

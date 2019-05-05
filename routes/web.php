@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Route::get('/welcome','JammController@welcome');
 Route::get('/pim','PimController@welcome');
+Route::get('/index','PimController@viewIndex');
+Route::get('/view-recorder','PimController@viewRecorder');
+Route::get('/view-book','PimController@viewBook');
 
 
 Route::get('recorder', function () {

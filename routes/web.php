@@ -28,3 +28,5 @@ Route::get('recorder', function () {
 
 Route::get('facebook','facebookController@facebookLogin');
 Route::get('callback-url','facebookController@callBack');
+
+

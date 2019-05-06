@@ -26,7 +26,8 @@
                 <td>{{$item->author->name}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>
-                    <button class="btn-sm btn btn-success" href="{{url('view-edit-form').'?id='.$item->id}}"> edit </button>
+                    <button class="btn-sm btn btn-success" href="{{url('view-edit-form').'?id='.$item->id}}"> edit
+                    </button>
                     {{--                <button class="btn-sm btn btn-success" onclick="{{url('view-edit-form').'?id='.$item->id}}"> edit </button>--}}
                     <button class="btn-sm btn btn-danger" onclick="confirmDelete({{$item->id}})">delete</button>
 
@@ -48,9 +49,5 @@
         } else {
             return false;
         }
-
-    }
-
-
     }
 </script>

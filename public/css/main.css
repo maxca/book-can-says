@@ -28,6 +28,5 @@
 }
 
 .jumbotron {
-
-    background-image: url("css/img/2.jpg");
+    background-image: url("/img/.jpg");
 }

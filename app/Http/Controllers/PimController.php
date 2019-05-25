@@ -21,4 +21,12 @@ class PimController extends Controller
    public function viewBook(){
        return view('home.view-book');
    }
+
+    public function viewBookForm(){
+        return view('blog.form');
+    }
+
+   public function viewRecordListener(){
+       return view('listener.audio-book-list');
+   }
 }

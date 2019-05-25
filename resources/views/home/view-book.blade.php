@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="image/2.jpg" class="card-img-top" alt="2">
+                        <img src="img/2.jpg" class="card-img-top" alt="2">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -29,7 +29,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/2.jpg" class="card-img-top" alt="2">
+                        <img src="img/2.jpg" class="card-img-top" alt="2">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -39,7 +39,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/2.jpg" class="card-img-top" alt="2">
+                        <img src="img/2.jpg" class="card-img-top" alt="2">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="image/4.jpg" class="card-img-top" alt="4">
+                        <img src="img/4.jpg" class="card-img-top" alt="4">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -60,7 +60,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/4.jpg" class="card-img-top" alt="4">
+                        <img src="img/4.jpg" class="card-img-top" alt="4">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -70,7 +70,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/4.jpg" class="card-img-top" alt="4">
+                        <img src="img/4.jpg" class="card-img-top" alt="4">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -82,7 +82,7 @@
 
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="image/3.jpg" class="card-img-top" alt="3">
+                        <img src="img/3.jpg" class="card-img-top" alt="3">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -92,7 +92,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/3.jpg" class="card-img-top" alt="3">
+                        <img src="img/3.jpg" class="card-img-top" alt="3">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -102,7 +102,7 @@
                     </div>
                     <br>
                     <div class="card" style="width: 18rem;">
-                        <img src="image/3.jpg" class="card-img-top" alt="3">
+                        <img src="img/3.jpg" class="card-img-top" alt="3">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk

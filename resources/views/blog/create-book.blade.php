@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.body')
 
 @section('contents')
     <table class="table table-striped">
@@ -29,7 +29,7 @@
                     <button class="btn-sm btn btn-success" href="{{url('view-edit-form').'?id='.$item->id}}"> edit
                     </button>
                     {{--                <button class="btn-sm btn btn-success" onclick="{{url('view-edit-form').'?id='.$item->id}}"> edit </button>--}}
-                    <button class="btn-sm btn btn-danger" onclick="confirmDelete({{$item->id}})">delete</button>
+{{--                    <button class="btn-sm btn btn-danger" onclick="confirmDelete({{$item->id}})">delete</button>--}}
 
                 </td>
             </tr>
@@ -42,12 +42,12 @@
 
     </div>
 @endsection
-<script>
-    function confirmDelete(id) {
-        if (confirm('do you want to delete ?')) {
-            window.location.href = "{{route('delete.book')}}" + '?id=' + id
-        } else {
-            return false;
-        }
-    }
-</script>
+{{--<script>--}}
+{{--    function confirmDelete(id) {--}}
+{{--        if (confirm('do you want to delete ?')) {--}}
+{{--            window.location.href = "{{route('delete.book')}}" + '?id=' + id--}}
+{{--        } else {--}}
+{{--            return false;--}}
+{{--        }--}}
+{{--    }--}}
+{{--</script>--}}

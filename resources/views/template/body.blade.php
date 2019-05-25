@@ -2,7 +2,7 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home.html">
+    <a class="navbar-brand" href="/index">
         <img src="<?php echo asset('img/logo.svg'); ?>" width="40" height="40" alt="Book can says">
 
     </a>
@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">หนังสือน่าอ่าน <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/view-book">หนังสือน่าอ่าน <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="record.html">สร้างหนังสือ</a>
+                <a class="nav-link" href="/view-form-create-book">สร้างหนังสือ</a>
             </li>
 
             <li class="nav-item">

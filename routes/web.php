@@ -16,11 +16,16 @@ Route::get('/', function () {
 });
 
 
+Route::get('/index', 'BookController@viewWelcome');
+Route::get('/view-book', 'BookController@viewBook');
 
 
-Route::get('/view-book-form', 'BookController@viewFormCreateBook');
-Route::get('/create-book','BookController@ViewCreateBook');
+Route::get('/view-create-book', 'BookController@viewCreateBook');
+Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 Route::post('/create-book','BookController@submitFormCreateBook');
+Route::get('/book-created','BookController@viewCreateBook');
+Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
+Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 
 
 

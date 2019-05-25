@@ -14,54 +14,27 @@ use App\Http\Requests\SubmitFormCreateBookRequest;
 
 class BookController extends Controller
 {
-    public function createCategory(){
 
-        return BookCategory::create(['name'=>'general']);
 
+    public function viewWelcome(){
+        return view("home.index");
     }
 
-    public function createPublisher(){
-
-        return BookPublisher::create(['name'=>'salmon']);
-
+    public function viewBook(){
+        return view("home.view-book");
     }
 
-    public function createAuthor(){
-
-        return BookAuthor::create(['name'=>'Thanachart']);
-
-    }
-
-    public function createBook(){
-        $category  = BookCategory::find(1);
-        $publisher = BookPublisher::create(['name' => 'samark.ltd']);
-        $author    = BookAuthor::create(['name' => 'samark']);
-
-        $data = array(
-            'name'          => 'New York 1st Time',
-            'book_categories_id' => $category->id,
-            'book_author_id'    => $publisher->id,
-            'book_publisher_id' => $author->id,
-            'total_chapter'      => 10,
-            'total_page'         => 50,
-            'cover_path'         => '/path/mock',
-            'description'        => 'ok',
-            'status'             => 'active'
-        );
-
-        return Books::create($data);
-    }
 
     public function viewCreateBook(){
 
         $data = Books::paginate(3);
-        return view('blog.create-book', ['data' => $data]);
+        return view('home.view-create-book', ['data' => $data]);
 
     }
 
     public function viewFormCreateBook()
     {
-        return view('blog.form');
+        return view('home.form');
     }
 
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
@@ -77,12 +50,12 @@ class BookController extends Controller
 
         $data = array(
             'name'          => $request->get('name'),
-            'book_categories_id' => $category->id,
-            'book_author_id'    => $publisher->id,
-            'book_publisher_id' => $author->id,
+            'book_category_id' => $category->id,
+            'book_publisher_id'    => $publisher->id,
+            'book_author_id' => $author->id,
             'total_chapter'      => $request->get('total_chapter'),
             'total_page'         => $request->get('total_page'),
-            'cover_path'         => $path,
+            'cover_page'         => $path,
             'description'        => $request->get('description'),
             'status'             => $request->get('status')
         );

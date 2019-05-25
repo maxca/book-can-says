@@ -20,4 +20,18 @@ class Books extends Model
         'status'
 
     ];
+    public function author()
+    {
+        return $this->hasOne(BookAuthor::class,'id','book_author_id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne(BookCategory::class, 'id','book_category_id');
+    }
+
+    public function publisher()
+    {
+        return $this->hasOne(BookPublisher::class,'id','book_publisher_id');
+    }
 }

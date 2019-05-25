@@ -4,7 +4,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">#</th>
+
             <th scope="col">cover</th>
             <th scope="col">name</th>
             <th scope="col">category</th>
@@ -12,6 +12,7 @@
             <th scope="col">author</th>
             <th scope="col">created</th>
             <th scope="col">action</th>
+
         </tr>
         </thead>
         <tbody>

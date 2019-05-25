@@ -15,5 +15,8 @@ class BookAudio extends Model
         'sub_book_chap',
         'amoung_listening'
     ];
-
+    public function chapther()
+    {
+        return $this->hasOne(BookChapter::class,'id','book_chap_id');
+    }
 }

@@ -27,10 +27,10 @@
                     <a href="ผู้ฟัง">ผู้ฟัง</a>
                 </button>
 
+                    <a href="/view-book">
+                        <button type="button" class="button">สำหรับจิตอาสา</button></button>
+                    </a>
 
-                <button type="button" class="button">
-                    <a href="index.html">ผู้อ่าน</a>
-                </button>
 
 
             </p>

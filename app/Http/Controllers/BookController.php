@@ -102,6 +102,9 @@ class BookController extends Controller
         return redirect()->route('book.list');
     }
 
+    public function recordAudio(){
+        return view('home.view-new-recorder');
+    }
 
 
 }

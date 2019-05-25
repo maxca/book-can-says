@@ -6,7 +6,7 @@ services:
     container_name: book-can-says
     restart: always
     ports:
-      - "8821:80"
+      - "8900:80"
     volumes:
       - .:/var/www/html
     mem_limit: 2048m

@@ -23,7 +23,9 @@ Route::get('/create-book','BookController@ViewCreateBook');
 Route::post('/create-book','BookController@submitFormCreateBook');
 
 
-Route::get('/view-listener-rec','PimController@viewRecordListener');
+
+
+Route::get('/view-listener-rec','UploadSoundController@viewRecordListener');
 
 
 Route::get('recorder', function () {
@@ -51,8 +53,4 @@ Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProvid
 
 Route::get('login/google', 'Auth\GoogleLoginController@redirectToProvider');
 Route::get('login/google/callback', 'Auth\GoogleLoginController@handleProviderCallback');
-<<<<<<< HEAD
-//>>>>>>> 33058088df6f9f6342d1e81b22d643cfa45b0481
-=======
-//>>>>>>> 33058088df6f9f6342d1e81b22d643cfa45b0481
->>>>>>> dba1f46ffa85ef309e2e547efd306d0d216ced9b
+

@@ -27,6 +27,6 @@ class PimController extends Controller
     }
 
    public function viewRecordListener(){
-       return view('listener.audio-book-list');
+       return view('recorder.testRec');
    }
 }

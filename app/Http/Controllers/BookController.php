@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\BookCategory;
 use App\Books;
 use App\Http\Requests\SubmitFormCreateBookRequest;
-4
+
 
 class BookController extends Controller
 {
@@ -129,6 +129,9 @@ class BookController extends Controller
         return redirect()->route('book.list');
     }
 
+    public function recordAudio(){
+        return view('home.view-new-recorder');
+    }
 
 
 }

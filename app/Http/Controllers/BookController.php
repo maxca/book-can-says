@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BookAudio;
 use App\BookAuthor;
 use App\BookPublisher;
 use App\Http\Requests\DeleteBookRequest;
@@ -115,7 +116,19 @@ class BookController extends Controller
         dd($request->all());
         $path    = str_replace("public/","",$this->$request->file('path')->store('public/sounds'));
 
-        return $path;
+
+
+        $data = array(
+            'book_categories_id' => $category =1,
+            'book_chap_id'      => $request =1,
+            'path'         => $path,
+            'total_page'         => $request =1,
+            'sub_book_chap'         => $request = "test",
+            'amoung_listening'        => $request = 1,
+        );
+
+        BookAudio::find($request->id)->update($data);
+        return redirect()->route('book.list');;
     }
 
 }

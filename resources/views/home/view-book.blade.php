@@ -15,15 +15,21 @@
     </div>
 
     <section>
+
+        @foreach($data as $key => $item)
+            {{++$key}}
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/2.jpg" class="card-img-top" alt="2">
+                        <img src="{{asset('storage/'.$item->cover_page)}}" alt="pic cover" >
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">{{$item->name}}</h5>
+                            <p class="card-text">
+                                category : {{$item->category->name}}
+                                auther : {{$item->author->name}}
+                            </p>
+
                             <a href="#" class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
@@ -113,5 +119,9 @@
                 </div>
             </div>
         </div>
+            <div class="row">
+                {{$data->render()}}
+            </div>
+        @endforeach
     </section>
     @endsection

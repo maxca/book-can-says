@@ -54,4 +54,4 @@
 
 
 </body>
-@extends('template.footer')
+@include('template.footer')

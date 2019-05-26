@@ -1,32 +1,62 @@
 @extends('template.body')
+
+@push('styles-head')
+    {{-- include file counter css --}}
+    @component('template.counter-style') @endcomponent
+@endpush
+
 @section('contents')
-{{--    <link rel="stylesheet" href="{{asset('css/style.css') }}">--}}
-    <script src="{{asset('js/base.js')}}"></script>
-    <script src="{{asset('js/recorder.js')}}"></script>
-
-
     <div class="container">
-        <div class="item">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
+                    <div class="card-body">
+                        <button id="recordButton" class="btn btn-danger">Record</button>
+                        <button id="pauseButton" class="btn btn-secondary" disabled>Pause</button>
+                        <button id="stopButton" class="btn btn-secondary" disabled>Stop</button>
+                        <div id="formats">Format: start recording to see sample rate</div>
 
-            <div id="controls">
-{{--                <button type="button" class="btn btn-default btn-circle btn-lg" id="recordButton">Record--}}
-{{--                </button>--}}
-
-                <button id="recordButton" class="btn btn-danger">Record</button>
-                <button id="pauseButton" class="btn" disabled>Pause</button>
-                <button id="stopButton" class="btn" disabled>Stop</button>
-                <h5>บันทึกเสียงของคุณแบบออนไลน์</h5>
-                <hr class="my-4">
-
-                <div>
-                    <br><br>
-                    <h5>หรือ</h5><br>
-                    <h3>อัพโหลดไฟล์จากเครื่องของคุณ</h3>
-                    <table class="table">
+                        <ol id="recordingsList"></ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">คุณมีเวลาในการอัดเสียง 30 นาที</div>
+                    <div class="card-body">
+                        <div class="clockdiv">
+                            <div>
+                                <span class="minutes" id="minute"></span>
+                                <div class="smalltext">นาที</div>
+                            </div>
+                            <div>
+                                <span class="seconds" id="second"></span>
+                                <div class="smalltext">วินาที</div>
+                            </div>
+                        </div>
+                        <div class="timeup"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 block">
+                <div class="circle">
+                    <p>หรือ</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">อัพโหลดไฟล์จากเครื่องของคุณ</div>
+            <div class="card-body">
+                <table class="table">
                     <tr>
                         <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>
-                        <td width="30"><input type="file" name="select_image" /></td>
-                        <td width="30%" align="left"><input type="submit" name="upload" class="btn btn-primary" value="อัพโหลด"></td>
+                        <td width="30"><input type="file" name="select_image"/></td>
+                        <td width="30%" align="left">
+                            <input type="submit" name="upload" class="btn btn-primary"
+                                   value="อัพโหลด"></td>
                     </tr>
                     <tr>
                         <td width="40%" align="right"></td>
@@ -34,13 +64,15 @@
                         <td width="30%" align="left"></td>
                     </tr>
                 </table>
-                </div>
-
             </div>
-
         </div>
-
-        <ol id="recordingsList"></ol>
-
+    </div>
 
 @endsection
+
+@push('scripts-after')
+    {{--include file counter javascript--}}
+    @component('template.counter-js') @endcomponent
+    <script src="{{asset('js/base.js')}}"></script>
+    <script src="{{asset('js/recorder.js')}}"></script>
+@endpush

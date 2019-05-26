@@ -47,3 +47,4 @@
 </body>
 
 @include('template.footer')
+

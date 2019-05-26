@@ -6,11 +6,12 @@ use App\BookAuthor;
 use App\BookPublisher;
 use App\Http\Requests\DeleteBookRequest;
 use App\Http\Requests\EditBookFormRequest;
+use App\Http\Requests\UploadSoundRequest;
 use Illuminate\Http\Request;
 use App\BookCategory;
 use App\Books;
 use App\Http\Requests\SubmitFormCreateBookRequest;
-
+use App\Http\Controllers\UploadSoundController;
 
 class BookController extends Controller
 {
@@ -106,5 +107,15 @@ class BookController extends Controller
         return view('home.view-new-recorder');
     }
 
+    public function viewListening(){
+        return view('home.listening');
+    }
+
+    public function uploadAudioPath(UploadSoundRequest $request){
+        dd($request->all());
+        $path    = str_replace("public/","",$this->$request->file('path')->store('public/sounds'));
+
+        return $path;
+    }
 
 }

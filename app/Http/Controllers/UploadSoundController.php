@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Uploads\UploadSound;
 use App\Http\Requests\UploadSoundRequest;
+use App\Http\Controllers\BookController;
 
 /**
  * Class UploadSoundController
@@ -42,4 +43,6 @@ class UploadSoundController extends Controller
     {
         return $this->uploadFile->upload();
     }
+
+
 }

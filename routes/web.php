@@ -25,10 +25,9 @@ Route::get('/view-create-book', 'BookController@viewCreateBook');
 Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 
 Route::get('/view-book-form','BookController@viewFormCreateBook');
-Route::get('/create-book','BookController@ViewCreateBook');
-
 Route::post('/create-book','BookController@submitFormCreateBook');
 Route::get('/book-created','BookController@viewCreateBook');
+Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 

@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.body')
 
 @section('contents')
     <table class="table table-striped">
@@ -33,11 +33,12 @@
             </tr>
         @endforeach
         </tbody>
-
-        <div class="row">
-            {{$data->render()}}
-        </div>
     </table>
+
+    <div class="row">
+        {{$data->render()}}
+
+    </div>
 @endsection
 <script>
     function confirmDelete(id) {

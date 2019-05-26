@@ -32,8 +32,7 @@ Route::get('/book-created','BookController@viewCreateBook');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 
-Route::get('/view-book','PimController@viewBook');
-Route::get('/welcome','JammController@welcome');
+
 
 Route::get('view-new-record','BookController@recordAudio');
 

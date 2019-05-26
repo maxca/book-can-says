@@ -90,14 +90,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="imageCoverPage">Input your cover</label>
-                    <input name="cover_image" type="file" class="form-control-file" id="exampleFormControlFile1" value="{{old('cover_image')}}">
+                    <label for="exampleFormControlFile1">ใส่รูปภาพ</label>
+                    <input type="file" name="cover_image" class="form-control-file" id="exampleFormControlFile1" value="{{old('cover_image')}}">
                     @if($errors->has('cover_image'))
                         <div class="alert alert-danger">{{$errors->first('cover_image')}}</div>
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">สร้างหนังสือ</button>
+                <a href ="/view-new-record">
+                <button type="submit" class="btn btn-primary">อัดเสียง</button>
+                </a>
             </form>
         </div>
     </div>

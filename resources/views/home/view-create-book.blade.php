@@ -1,4 +1,4 @@
-@extends('template.master')
+@extends('template.body')
 
 @section('contents')
     <table class="table table-striped">
@@ -21,7 +21,8 @@
             <tr>
                 <th scope="row">{{++$key}}</th>
                 <td>{{$item->name}}</td>
-                <td><img src="{{asset('storage/'.$item->cover_path)}}" alt="" width="80" height="80"></td>            <td>{{$item->category->name}}</td>
+                <td><img src="{{asset('storage/'.$item->cover_page)}}" alt="" width="80" height="80"></td>
+                <td>{{$item->category->name}}</td>
                 <td>{{$item->publisher->name}}</td>
                 <td>{{$item->author->name}}</td>
                 <td>{{$item->created_at}}</td>
@@ -32,11 +33,12 @@
             </tr>
         @endforeach
         </tbody>
-
-        <div class="row">
-            {{$data->render()}}
-        </div>
     </table>
+
+    <div class="row">
+        {{$data->render()}}
+
+    </div>
 @endsection
 <script>
     function confirmDelete(id) {

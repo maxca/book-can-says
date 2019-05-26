@@ -26,7 +26,6 @@ class BookController extends Controller
 
 
     public function viewCreateBook(){
-
         $data = Books::paginate(3);
         return view('home.view-create-book', ['data' => $data]);
 

@@ -41,13 +41,13 @@ class SubmitFormCreateBookRequest extends FormRequest
         return [
             // .required ไปเรียกมาจากข้างบน
             'category.required' => 'กรุณาใส่หมวดหมู่',
-            'name.required' => 'กรุราใส่ชื่อหนังสือ',
+            'name.required' => 'กรุณาใส่ชื่อหนังสือ',
             'author_name.required' => 'กรุณาใส่ชื่อนักเขียน',
-            'publisher_name.required' => 'กรุราใส่ชื่อสำนักพิมพ์',
+            'publisher_name.required' => 'กรุณาใส่ชื่อสำนักพิมพ์',
             'total_page.required' => 'กรุณาใส่เลขหน้า',
             'total_chapter.required' => 'กรุณาใส่จำนวนบท',
             'cover_image.required' => 'กรุณาใส่ภาพหน้าปก',
-            'description.required' => 'กรุราใส่คำบรรยาย',
+            'description.required' => 'กรุณาใส่คำบรรยาย',
         ];
     }
 }

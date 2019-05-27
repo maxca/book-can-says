@@ -64,6 +64,7 @@ class BookController extends Controller
         return Books::create($data);
     }
 
+    
     private function uploadImage($request)
     {
         return $request->file('cover_image')->store('public/images');

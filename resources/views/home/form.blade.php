@@ -98,12 +98,15 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">สร้างหนังสือ</button>
-                <a href ="/view-new-record">
-                <button type="submit" class="btn btn-primary">อัดเสียง</button>
-                </a>
+
+
             </form>
+            <a href ="/view-new-record">
+                <button type="button" class="btn btn-primary">อัดเสียง</button>
+            </a>
         </div>
     </div>
+
 
     </div>
 

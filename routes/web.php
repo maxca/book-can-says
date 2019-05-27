@@ -16,17 +16,20 @@ Route::get('/', function () {
 });
 
 
+/*หน้าแรก*/
 
 Route::get('/index', 'BookController@viewWelcome');
+/*โชว์หน้าหนังสือแนะนำ*/
 Route::get('/view-book', 'BookController@viewBook');
 
-
+/*หน้าหนังสือที่ถูกสร้าง*/
 Route::get('/view-create-book', 'BookController@viewCreateBook');
+/*หน้าformสร้างหนังสือ*/
 Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 
 Route::get('/view-book-form','BookController@viewFormCreateBook');
 Route::post('/create-book','BookController@submitFormCreateBook');
-Route::get('/book-created','BookController@viewCreateBook');
+
 Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');

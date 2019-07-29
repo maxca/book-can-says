@@ -12,4 +12,12 @@ class BookCategory extends Model
     protected $fillable  =[
         'id', 'name'
     ];
+
+
+
+    public function books()
+    {
+        return $this->belongsTo('id','books_id');
+    }
+
 }

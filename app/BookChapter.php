@@ -17,14 +17,22 @@ class BookChapter extends Model
         'admin_id',
     ];
 
+
+    public function audio()
+    {
+        return $this->belongsTo('id','book_audio_id');
+    }
+
     public function books()
     {
-        return $this->hasOne(Books::class, 'id', 'book_id');
-
+        return $this->belongsTo('id','books_id');
     }
 
     public function admin()
     {
-        return $this->hasOne(Admin::class, 'id', 'admin_id');
+        return $this->belongsTo('id','admin_id');
     }
+
+
+
 }

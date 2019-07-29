@@ -17,4 +17,8 @@ class Admin extends Model
         'email',
         'picture'
     ];
+    public function admin()
+    {
+        return $this->hasMany(BookChapter::class, 'id', 'book_chap_id');
+    }
 }

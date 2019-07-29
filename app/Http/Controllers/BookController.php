@@ -23,7 +23,10 @@ class BookController extends Controller
     }
 
     public function viewBook(){
-        return view("home.view-book");
+        $books = Books::all()
+            ->sortByDesc('created_at')
+            ->toArray();
+        return view("home.view-book",compact('books'));
     }
 
 
@@ -64,7 +67,7 @@ class BookController extends Controller
         return Books::create($data);
     }
 
-    
+
     private function uploadImage($request)
     {
         return $request->file('cover_image')->store('public/images');
@@ -112,23 +115,6 @@ class BookController extends Controller
         return view('home.listening');
     }
 
-    public function uploadAudioPath(UploadSoundRequest $request){
-        dd($request->all());
-        $path    = str_replace("public/","",$this->$request->file('path')->store('public/sounds'));
 
-
-
-        $data = array(
-            'book_categories_id' => $category =1,
-            'book_chap_id'      => $request =1,
-            'path'         => $path,
-            'total_page'         => $request =1,
-            'sub_book_chap'         => $request = "test",
-            'amoung_listening'        => $request = 1,
-        );
-
-        BookAudio::find($request->id)->update($data);
-        return redirect()->route('book.list');;
-    }
 
 }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\BookAudio;
+use App\BookAuthor;
+use App\BookCategory;
+use App\BookPublisher;
 use App\Services\Uploads\UploadSound;
 use App\Http\Requests\UploadSoundRequest;
 use App\Http\Controllers\BookController;
@@ -42,6 +46,24 @@ class UploadSoundController extends Controller
     public function upload(UploadSoundRequest $request)
     {
         return $this->uploadFile->upload();
+    }
+
+    public function uploadAudioPath($request){
+
+        $path      = $this->upload($request);
+
+        $data = array(
+            'book_categories_id' => $request =1,
+            'book_chap_id'      => $request =1,
+            'path'         => $path,
+            'total_page'         => $request =1,
+            'sub_book_chap'         => $request = "test",
+            'amoung_listening'        => $request = 1,
+        );
+
+        BookAudio::creat($data);
+
+        return "ssssssssssssssssssss";
     }
 
 

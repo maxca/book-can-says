@@ -12,4 +12,9 @@ class BookAuthor extends Model
         'id',
         'name',
     ];
+
+    public function books()
+    {
+        return $this->belongsTo('id','books_id');
+    }
 }

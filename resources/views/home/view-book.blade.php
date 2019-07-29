@@ -16,101 +16,26 @@
 
     <section>
         <div class="container">
+
+            @foreach($books as $key => $cards)
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="img/2.jpg" class="card-img-top" alt="2">
+                        <img src="book-can-says\storage\app\public\images" class="card-img-top" alt="bookscover">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
+                            <h5 class="card-title">{{$cards['name']}}}</h5>
+                            <p class="card-text">{{$cards['description']}}</p>
                             <a href="#" class="btn btn-primary">DOWNLOAD</a>
                         </div>
                     </div>
                     <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/2.jpg" class="card-img-top" alt="2">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/2.jpg" class="card-img-top" alt="2">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/4.jpg" class="card-img-top" alt="4">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/4.jpg" class="card-img-top" alt="4">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/4.jpg" class="card-img-top" alt="4">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
+
+
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/3.jpg" class="card-img-top" alt="3">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/3.jpg" class="card-img-top" alt="3">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card" style="width: 18rem;">
-                        <img src="img/3.jpg" class="card-img-top" alt="3">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
                 </div>
+                 @endforeach
             </div>
         </div>
     </section>

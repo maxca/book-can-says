@@ -20,18 +20,31 @@ class Books extends Model
         'status'
 
     ];
-    public function author()
+
+
+    public function favorite()
     {
-        return $this->hasOne(BookAuthor::class,'id','book_author_id');
+        return $this->belongsTo('id','favorite_id');
     }
+
 
     public function category()
     {
-        return $this->hasOne(BookCategory::class, 'id','book_category_id');
+        return $this->hasMany(BookCategory::class, 'id','book_category_id');
     }
-
     public function publisher()
     {
-        return $this->hasOne(BookPublisher::class,'id','book_publisher_id');
+        return $this->hasMany(BookPublisher::class, 'id','book_publisher_id');
     }
+    public function author()
+    {
+        return $this->hasMany(BookAuthor::class, 'id','book_author_id');
+    }
+
+    public function chapter()
+    {
+        return $this->hasMany(BookChapter::class, 'id','book_chap_id');
+    }
+
+
 }

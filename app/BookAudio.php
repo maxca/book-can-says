@@ -17,6 +17,6 @@ class BookAudio extends Model
     ];
     public function chapther()
     {
-        return $this->hasOne(BookChapter::class,'id','book_chap_id');
+        return $this->hasMany(BookChapter::class,'id','book_chap_id');
     }
 }

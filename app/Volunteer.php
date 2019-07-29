@@ -17,4 +17,9 @@ class Volunteer extends Model
         'create_date',
     ];
 
+
+    public function favorite()
+    {
+        return $this->belongsTo('id','favorite_id');
+    }
 }

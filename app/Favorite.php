@@ -16,11 +16,11 @@ class Favorite extends Model
 
     public function books()
     {
-        return $this->hasOne(Books::class,'id','books_id');
+        return $this->hasMany(Books::class,'id','books_id');
     }
 
-    public function admin()
+    public function volunteer()
     {
-        return $this->hasOne(Volunteer::class,'id','volunteer_id');
+        return $this->hasMany(Volunteer::class,'id','volunteer_id');
     }
 }

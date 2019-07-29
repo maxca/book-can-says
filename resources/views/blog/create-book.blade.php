@@ -20,7 +20,7 @@
             <tr>
                 <th scope="row">{{++$key}}</th>
                 <td>{{$item->name}}</td>
-                <td><img src="{{asset('storage/'.$item->cover_path)}}" alt="" width="80" height="80"></td>
+                <td><img src="{{asset('storage/'.$item->cover_page)}}" alt="" width="80" height="80"></td>
                 <td>{{$item->category->name}}</td>
                 <td>{{$item->publisher->name}}</td>
                 <td>{{$item->author->name}}</td>

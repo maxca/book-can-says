@@ -70,7 +70,9 @@ class BookController extends Controller
 
     private function uploadImage($request)
     {
-        return $request->file('cover_image')->store('public/images');
+       return \Storage::disk('public')->put('images/',$request->file('cover_image'));
+        return $request->file('cover_image')
+            ->store('public/images');
     }
 
     public function viewFormEditBook(EditBookFormRequest $request){

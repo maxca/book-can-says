@@ -1,6 +1,7 @@
 @extends('template.body')
 
 @section('contents')
+    {{ $book }}
 
     <section>
 

@@ -23,7 +23,13 @@ Route::get('/index', 'BookController@viewWelcome');
 Route::get('/view-book', 'BookController@viewBook');
 
 /*หน้าหนังสือที่ถูกสร้าง*/
-Route::post('/view-create-book', 'BookController@submitFormCreateBook')->name('view-create-book');
+// name == alis name
+// view route('alis name')
+// view url ('vie-create-book-url')
+// view rout route('view-create-book-name')
+// redirect()->route('')
+// redirect()->url();
+Route::post('/view-create-book-url', 'BookController@submitFormCreateBook')->name('view-create-book-name');
 /*หน้าformสร้างหนังสือ*/
 Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 
@@ -34,22 +40,24 @@ Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 
-Route::get('storage/images', function ($filename)
-{
-    $path = storage_path('public/' . $filename);
+Route::get('/images', 'ImageController@index')->name('render.img');
 
-    if (!File::exists($path)) {
-        abort(404);
-    }
-
-    $file = File::get($path);
-    $type = File::mimeType($path);
-
-    $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
-
-    return $response;
-});
+//Route::get('storage/images', function ($filename)
+//{
+//    $path = storage_path('public/' . $filename);
+//
+//    if (!File::exists($path)) {
+//        abort(404);
+//    }
+//
+//    $file = File::get($path);
+//    $type = File::mimeType($path);
+//
+//    $response = Response::make($file, 200);
+//    $response->header("Content-Type", $type);
+//
+//    return $response;
+//});
 
 Route::get('view-new-record','BookController@recordAudio');
 

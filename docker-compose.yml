@@ -11,9 +11,9 @@ services:
       - .:/var/www/html
     mem_limit: 2048m
     networks:
-      - bb-intranet-network
+      - bookcansays-network
     cap_add:
       - SYS_PTRACE
 networks:
-  bb-intranet-network:
+  bookcansays-network:
     external: true

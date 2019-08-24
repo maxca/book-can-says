@@ -67,9 +67,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">
-                {{old('description')}}
-            </textarea>
+                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{old('description')}}</textarea>
                     @if($errors->has('description'))
                         <div class="alert alert-danger">{{$errors->first('description')}}</div>
                     @endif

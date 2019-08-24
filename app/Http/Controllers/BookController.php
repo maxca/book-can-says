@@ -61,7 +61,7 @@ class BookController extends Controller
         $category  = BookCategory::create(['name'=>$request->get('category')]);
         $publisher = BookPublisher::create(['name' =>$request->get('publisher_name')]);
         $author    = BookAuthor::create(['name' =>$request->get('author_name')]);
-
+        $response = array();
         $data = array(
             'name'          => $request->get('name'),
             'book_category_id' => $category->id,
@@ -74,14 +74,16 @@ class BookController extends Controller
             'status'             => $request->get('status')
         );
 
-            Books::create($data);
+           $response['book'] = Books::create($data);
 
-            return redirect()->route('view-create-book',compact('data'));
+            return redirect()->route('view-create-book');
+
 
 
     }
 
     public function viewCreateBook(){
+        dd('xx');
         $data = Books::all()
             ->toArray();
         return view("home.view-create-book",compact('data'));

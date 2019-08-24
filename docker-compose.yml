@@ -15,10 +15,5 @@ services:
     cap_add:
       - SYS_PTRACE
 networks:
-
   bb-intranet-network:
     external: true
-
-
-
-

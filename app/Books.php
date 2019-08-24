@@ -22,6 +22,9 @@ class Books extends Model
     ];
 
 
+
+
+
     public function favorite()
     {
         return $this->belongsTo('id','favorite_id');
@@ -30,7 +33,7 @@ class Books extends Model
 
     public function category()
     {
-        return $this->hasMany(BookCategory::class, 'id','book_category_id');
+        return $this->hasOne(BookCategory::class, 'id','book_category_id');
     }
     public function publisher()
     {

@@ -40,7 +40,7 @@ Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 
-Route::get('/images', 'ImageController@index')->name('render.img');
+#Route::get('/images', 'ImageController@index')->name('render.img');
 
 //Route::get('storage/images', function ($filename)
 //{

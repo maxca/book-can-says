@@ -51,6 +51,14 @@ class BookController extends Controller
         return view('home.form')->with($data);
     }
 
+    private function uploadImage($request)
+    {
+
+         \Storage::disk('public')->put('images/',$request->file('cover_image'));
+                return $request->file('cover_image')
+                  ->store('public');
+    }
+
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
     {
         //dd หยุดการcompile code
@@ -74,30 +82,24 @@ class BookController extends Controller
             'status'             => $request->get('status')
         );
 
-           $response['book'] = Books::create($data);
 
-            return redirect()->route('view-create-book');
-
-
+              return  $response['book'] = Books::create($data);
+//            return redirect()->route('view-create-book-d');
 
     }
 
     public function viewCreateBook(){
-        dd('xx');
-        $data = Books::all()
+        $books = Books::all()
+            ->sortByDesc('created_at')
             ->toArray();
         return view("home.view-create-book",compact('data'));
     }
 
-    private function uploadImage($request)
-    {
-       return \Storage::disk('public')->put('images/',$request->file('cover_image'));
-        return $request->file('cover_image')
-            ->store('public/images');
-    }
+
 
     public function viewFormEditBook(EditBookFormRequest $request){
         $data = Books::find($request->id);
+
         return view('blog.form-edit',['data'=>$data]);
     }
 

@@ -13,6 +13,7 @@ use App\BookCategory;
 use App\Books;
 use App\Http\Requests\SubmitFormCreateBookRequest;
 use App\Http\Controllers\UploadSoundController;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -23,10 +24,12 @@ class BookController extends Controller
     }
 
     public function viewBook(){
-        $books = Books::all()
-            ->sortByDesc('created_at')
-            ->toArray();
-        return view("home.view-book",compact('books'));
+        $books = Books::orderBy('created_at','DESC')->paginate(3);
+//        $books = Books::all()
+//            ->sortByDesc('created_at')
+//            ->paginate(12);
+////            ->toArray();
+        return view("home.view-book",['books' => $books]);
     }
 
 
@@ -81,7 +84,6 @@ class BookController extends Controller
             'description'        => $request->get('description'),
             'status'             => $request->get('status')
         );
-
 
               return  $response['book'] = Books::create($data);
 //            return redirect()->route('view-create-book-d');

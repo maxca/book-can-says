@@ -5,7 +5,7 @@
     <section>
 
         <div class="container">
-            @foreach($book as $key =>  $cards)
+            @foreach($books as $key =>  $cards)
             <div class="card mb-3">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">

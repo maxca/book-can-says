@@ -17,9 +17,12 @@
     <section>
         <div class="container">
 
+
             @foreach($books as $key => $cards)
 
-                <div class="row">
+            @foreach($books->authors as $keyCate =>$cate )
+
+                    <div class="row">
                 <div class="col-md-4">
                     <div class="card" style="width: 18rem;">
                        <img src="{{route('render.img',['file_name' => 'public/images/'.$cards['cover_page']])}}"
@@ -27,6 +30,8 @@
 
                         <div class="card-body">
                             <h5 class="card-title">{{$cards['name']}}</h5>
+                            ชื่อผู้แต่ง : <h5 class="card-title">{{$cate->authors->name}}</h5>
+
                             <p class="card-text">{{$cards['description']}}</p>
                             <a href="#" class="btn btn-primary">DOWNLOAD</a>
                         </div>
@@ -63,7 +68,9 @@
                     </div>
 
                 </div>
-                 @endforeach
+
+                @endforeach
+            @endforeach
                <div class="align-bottom" style=" align-items: center">
                 {{$books->render()}}
             </div>

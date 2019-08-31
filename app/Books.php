@@ -39,7 +39,7 @@ class Books extends Model
     {
         return $this->hasMany(BookPublisher::class, 'id','book_publisher_id');
     }
-    public function author()
+    public function authors()
     {
         return $this->hasMany(BookAuthor::class, 'id','book_author_id');
     }

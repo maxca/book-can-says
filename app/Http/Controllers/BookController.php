@@ -24,7 +24,12 @@ class BookController extends Controller
     }
 
     public function viewBook(){
-        $books = Books::orderBy('created_at','DESC')->paginate(3);
+
+        $books['books'] = Books::with('authors')
+            ->orderBy('created_at','DESC')
+            ->paginate(12);
+//        $books = Books::orderBy('created_at','DESC')->with('category')->paginate(3);
+
 //        $books = Books::all()
 //            ->sortByDesc('created_at')
 //            ->paginate(12);

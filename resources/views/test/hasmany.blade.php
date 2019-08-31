@@ -79,9 +79,25 @@
                     @endforeach
                 </div>
             @endforeach
+            <div class="row m-2">
+                <!-- Modal structure -->
+                <div id="modal">
+                    <data-iziModal-fullscreen="true"  data-iziModal-title="Welcome"  data-iziModal-subtitle="Subtitle"  data-iziModal-icon="icon-home"></data-iziModal-fullscreen>
+                    <!-- Modal content -->
+                </div>
+
+                <!-- Trigger to open Modal -->
+                <a href="https://github.com/marcelodolza/iziModal" class="trigger">Modal</a>
+            </div>
             <div class="align-bottom">
                 {{$books->links()}}
             </div>
         </div>
     </section>
 @endsection
+
+@push('scripts-after')
+    <script>
+        $("#modal").iziModal();
+    </script>
+@endpush

@@ -7,7 +7,12 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
+
+// import js of izimodal
+import iziModal from 'izimodal/js/iziModal.min'
+$.fn.iziModal = iziModal
 
 /**
  * The following block of code may be used to automatically register your

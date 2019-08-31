@@ -9,11 +9,11 @@ services:
       - "8900:80"
     volumes:
       - .:/var/www/html
-    mem_limit: 2048m
+    mem_limit: 1024m
     networks:
-      - bookcansays-network
+      - mongodb-network
     cap_add:
       - SYS_PTRACE
 networks:
-  bookcansays-network:
+  mongodb-network:
     external: true

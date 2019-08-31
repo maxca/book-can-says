@@ -27,7 +27,7 @@ class Books extends Model
 
     public function favorite()
     {
-        return $this->belongsTo('id','favorite_id');
+        return $this->belongsTo(Favai,'favorite_id');
     }
 
 

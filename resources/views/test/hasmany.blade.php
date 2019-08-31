@@ -1,5 +1,15 @@
 @extends('template.body')
 
+@push('styles-head')
+    <style>
+        .book-cover {
+            height: 200px !important;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+@endpush
+
 @section('contents')
 
     <div class="jumbotron">
@@ -24,7 +34,7 @@
 
                         <div class="col-md-3 mb-4">
                             <div class="card">
-                                <img class="card-img img-thumbnail"
+                                <img class="card-img img-thumbnail book-cover"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
                                      alt="book cover">
                                 <ul class="list-group list-group-flush">
@@ -69,7 +79,7 @@
                                     <p class="card-text">{{$book->description}}</p>
                                     <div class="text-right">
                                         <a href="#" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-download" aria-hidden="true"></i>ดาวโหลด
+                                            <i class="fa fa-download" aria-hidden="true"></i> ดาวโหลด
                                         </a>
                                     </div>
 
@@ -80,24 +90,19 @@
                 </div>
             @endforeach
             <div class="row m-2">
-                <!-- Modal structure -->
-                <div id="modal">
-                    <data-iziModal-fullscreen="true"  data-iziModal-title="Welcome"  data-iziModal-subtitle="Subtitle"  data-iziModal-icon="icon-home"></data-iziModal-fullscreen>
-                    <!-- Modal content -->
-                </div>
 
-                <!-- Trigger to open Modal -->
-                <a href="https://github.com/marcelodolza/iziModal" class="trigger">Modal</a>
             </div>
             <div class="align-bottom">
                 {{$books->links()}}
             </div>
         </div>
     </section>
+
 @endsection
 
 @push('scripts-after')
     <script>
-        $("#modal").iziModal();
+
+
     </script>
 @endpush

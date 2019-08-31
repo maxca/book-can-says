@@ -1,6 +1,6 @@
 @include('template.header')
 
-<body>
+<body id="app">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/index">
         <img src="<?php echo asset('img/logo.svg'); ?>" width="40" height="40" alt="Book can says">

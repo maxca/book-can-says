@@ -25,10 +25,10 @@
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <img class="card-img img-thumbnail"
-                                     src="{{route('render.img',['file_name' => 'public/images/'. $book['cover_page']])}}"
+                                     src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
                                      alt="book cover">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item list-group-item-success font-weight-bold">{{$book['name']}}</li>
+                                    <li class="list-group-item list-group-item-success font-weight-bold">{{$book->name}}</li>
                                 </ul>
                                 <div class="card-body">
                                     <div class="book-author">
@@ -50,7 +50,9 @@
                                         <span class="font-weight-bold">
                                             <i class="fa fa-book"></i> สำนักพิมพ์:
                                         </span>
-                                        <span class="font-italic">{{$book->category->name}}</span>
+                                        @foreach($book->publisher as $publisher)
+                                            <span class="font-italic">{{$publisher->name}}</span>
+                                        @endforeach
                                     </div>
                                     <div class="book-chapter">
                                         <span class="font-weight-bold">
@@ -64,7 +66,7 @@
                                         </span>
                                         <span class="font-italic">{{$book->total_page}}</span>
                                     </div>
-                                    <p class="card-text">{{$book['description']}}</p>
+                                    <p class="card-text">{{$book->description}}</p>
                                     <div class="text-right">
                                         <a href="#" class="btn btn-primary btn-sm">
                                             <i class="fa fa-download" aria-hidden="true"></i>ดาวโหลด

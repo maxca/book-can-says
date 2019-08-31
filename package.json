@@ -28,6 +28,7 @@
         "font-awesome": "^4.7.0",
         "ioredis": "^1.15.1",
         "izimodal": "^1.5.1",
+        "jquery-validation": "^1.19.1",
         "pusher-js": "^5.0.0",
         "redis": "^0.12.1",
         "socket.io": "^1.7.4"

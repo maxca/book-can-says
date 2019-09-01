@@ -31,7 +31,6 @@
 
                 <div class="row">
                     @foreach($cards as $key => $book)
-
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <img class="card-img img-thumbnail book-cover"

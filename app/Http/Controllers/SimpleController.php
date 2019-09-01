@@ -11,7 +11,7 @@ class SimpleController extends Controller
     {
         $data['books'] = SimpleBooks::with(['category', 'publisher', 'author', 'chapter'])
             ->orderBy('updated_at', 'desc')
-            ->paginate(4);
+            ->paginate(12);
         return view('test.hasmany', $data);
     }
 

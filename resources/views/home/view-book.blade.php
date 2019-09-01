@@ -1,5 +1,6 @@
 @extends('template.body')
 
+
 @section('contents')
 
     <div class="jumbotron">
@@ -18,62 +19,84 @@
         <div class="container">
 
 
-            @foreach($books as $key => $cards)
+            @foreach($books->chunk(4) as  $cards)
+                <div class="row">
 
-            @foreach($books->authors as $keyCate =>$cate )
+                    @foreach($cards as $key => $book)
 
-                    <div class="row">
-                <div class="col-md-4">
-                    <div class="card" style="width: 18rem;">
-                       <img src="{{route('render.img',['file_name' => 'public/images/'.$cards['cover_page']])}}"
-                             style="width: 18rem" alt="book cover">
+                <div class="col-md-3 mb-4" >
+                    <div class="card" style="width: 18rem; margin-outside: 4rem;">
+
+                       <img src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
+
+                            style="height: 18rem !important;
+                                   object-fit: cover;"
+                                alt="หน้าปกหนังสือ" >
 
                         <div class="card-body">
-                            <h5 class="card-title">{{$cards['name']}}</h5>
-                            ชื่อผู้แต่ง : <h5 class="card-title">{{$cate->authors->name}}</h5>
+                            <div class="book-name">
 
-                            <p class="card-text">{{$cards['description']}}</p>
-                            <a href="#" class="btn btn-primary">DOWNLOAD</a>
-                        </div>
-                    </div>
-                    <br>
-                </div>
+                                <span class="font-weight-bolder">
+                                    <h5 class="card-title">{{$book->name}}</h5>
+                                </span>
 
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{route('render.img',['file_name' => 'public/images/'.$cards['cover_page']])}}"
-                                 style="width: 18rem" alt="book cover">
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{$cards['name']}}</h5>
-                                <p class="card-text">{{$cards['description']}}</p>
-                                <a href="#" class="btn btn-primary">DOWNLOAD</a>
                             </div>
-                        </div>
-                        <br>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{route('render.img',['file_name' => 'public/images/'.$cards['cover_page']])}}"
-                                 style="width: 18rem" alt="book cover">
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{$cards['name']}}</h5>
-                                <p class="card-text">{{$cards['description']}}</p>
-                                <a href="#" class="btn btn-primary">DOWNLOAD</a>
+                            <div class="book-author">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-user-o"></i> ชื่อผู้แต่ง:
+                                        </span>
+                                @foreach($book->authors as $authors)
+                                    <span class="font-italic">{{$authors->name}}</span>
+                                @endforeach
                             </div>
-                        </div>
-                        <br>
-                    </div>
+                            <div class="book-category">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-address-book-o"></i> หมวดหมู่:
+                                        </span>
+                                <span class="font-italic">{{$book->category->name}}</span>
+                            </div>
 
+                            <div class="book-publisher">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-book"></i> สำนักพิมพ์:
+                                        </span>
+                                @foreach($book->publisher as $publisher)
+                                    <span class="font-italic">{{$publisher->name}}</span>
+                                @endforeach
+                            </div>
+                            <div class="book-chapter">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-bookmark-o"></i> จำนวนบท:
+                                        </span>
+                                <span class="font-italic">{{$book->total_chapter}}</span>
+                            </div>
+                            <div class="book-chapter">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-bookmark-o"></i> จำนวนหน้า:
+                                        </span>
+                                <span class="font-italic">{{$book->total_page}}</span>
+                            </div>
+                            <p class="card-text">{{$book->description}}</p>
+                            <div class="text-left">
+                                <a href="#" class="btn btn-primary">ดาวน์โหลดหนังสือ</a>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 @endforeach
+
+                </div>
             @endforeach
-               <div class="align-bottom" style=" align-items: center">
-                {{$books->render()}}
-            </div>
+            <br>
+                <br>
+
+                <div class="align-bottom">
+                    {{$books->links()}}
+                </div>
         </div>
     </section>
-    @endsection
+@endsection
+

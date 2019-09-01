@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/index', 'BookController@viewWelcome');
 /*โชว์หน้าหนังสือแนะนำ*/
-Route::get('/view-book', 'BookController@viewBook');
+Route::get('/view-book', 'BookController@viewBook')->name('home.view-book');
 
 /*หน้าหนังสือที่ถูกสร้าง*/
 // name == alis name

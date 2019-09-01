@@ -25,36 +25,19 @@ class BookController extends Controller
 
     public function viewBook(){
 
-        $books['books'] = Books::with('authors')
-            ->orderBy('created_at','DESC')
+        $data['books'] = Books::with('authors','category','publisher','chapter')
+           ->orderBy('created_at','DESC')
             ->paginate(12);
-//        $books = Books::orderBy('created_at','DESC')->with('category')->paginate(3);
 
-//        $books = Books::all()
-//            ->sortByDesc('created_at')
-//            ->paginate(12);
-////            ->toArray();
-        return view("home.view-book",['books' => $books]);
+        return view("home.view-book",$data);
+
+
     }
 
 
     public function viewFormCreateBook()
     {
-        // get category data for create view
-        // in view relationship can be 1-1 only
-        // because view can select only one category per book
-        // if you want to select multiple you just create check box input
-        // and then send input category by array value $bookCategory[0] or get value by simple request like
-        // $request->bookCategory;
-        // cat many to many if you want to do it ,something you just do it is , pivot table why not ?
-        // because Book table just can save only 1 value of category per book right ?
-        // step for create book via multiple category
-        // 1. crete book
-        // 2. when you create book success you can get book id for next step
-        // 3. create bookCategory by bookId and CategoryId
-        // 4. getting data with pivot table  and important bookCategory not create for this step.
-        // bookCategory can create before that . that mean the category of book can create by alone via backoffice
-        // view can call category and using by model like bellow this. -->
+
         $data['category'] = BookCategory::all();
         return view('home.form')->with($data);
     }
@@ -90,8 +73,8 @@ class BookController extends Controller
             'status'             => $request->get('status')
         );
 
-              return  $response['book'] = Books::create($data);
-//            return redirect()->route('view-create-book-d');
+              $response['book'] = Books::create($data);
+           return redirect()->route('view-create-book-d');
 
     }
 

@@ -19,17 +19,19 @@ class BookController extends Controller
 {
 
 
-    public function viewWelcome(){
+    public function viewWelcome()
+    {
         return view("home.index");
     }
 
-    public function viewBook(){
+    public function viewBook()
+    {
 
-        $data['books'] = Books::with('authors','category','publisher','chapter')
-           ->orderBy('created_at','DESC')
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->orderBy('created_at', 'DESC')
             ->paginate(12);
 
-        return view("home.view-book",$data);
+        return view("home.view-book", $data);
 
     }
 
@@ -44,65 +46,67 @@ class BookController extends Controller
     private function uploadImage($request)
     {
 
-         \Storage::disk('public')->put('images/',$request->file('cover_image'));
-                return $request->file('cover_image')
-                  ->store('public');
+        \Storage::disk('public')->put('images/', $request->file('cover_image'));
+        return $request->file('cover_image')
+            ->store('public');
     }
 
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
     {
-        $path      = str_replace("public/","",$this->uploadImage($request));
-        $category  = BookCategory::create(['name'=>$request->get('category')]);
-        $publisher = BookPublisher::create(['name' =>$request->get('publisher_name')]);
-        $author    = BookAuthor::create(['name' =>$request->get('author_name')]);
+        $path = str_replace("public/", "", $this->uploadImage($request));
+        $category = BookCategory::create(['name' => $request->get('category')]);
+        $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
+        $author = BookAuthor::create(['name' => $request->get('author_name')]);
         $data = array(
-            'name'               => $request->get('name'),
-            'book_category_id'   => $category->id,
-            'book_publisher_id'  => $publisher->id,
-            'book_author_id'     => $author->id,
-            'total_chapter'      => $request->get('total_chapter'),
-            'total_page'         => $request->get('total_page'),
-            'cover_page'         => $path,
-            'description'        => $request->get('description'),
+            'name' => $request->get('name'),
+            'book_category_id' => $category->id,
+            'book_publisher_id' => $publisher->id,
+            'book_author_id' => $author->id,
+            'total_chapter' => $request->get('total_chapter'),
+            'total_page' => $request->get('total_page'),
+            'cover_page' => $path,
+            'description' => $request->get('description'),
 //            'status'             => $request->get('status')
         );
-         $data['books'] = Books::create($data);
-        return redirect()->route('view-created-book',$data);
+        $data['books'] = Books::create($data);
+        return redirect()->route('view-created-book', $data);
     }
 
 
-    public function viewCreateBook(){
-        $data['books'] = Books::with('authors','category','publisher','chapter')
-            ->orderBy('created_at','DESC');
-        return route("view-created-book",$data);
+    public function viewCreateBook()
+    {
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->orderBy('created_at', 'DESC');
+        return route("view-created-book", $data);
     }
 
 
-
-    public function viewFormEditBook(EditBookFormRequest $request){
+    public function viewFormEditBook(EditBookFormRequest $request)
+    {
         $data = Books::find($request->id);
 
-        return view('blog.form-edit',['data'=>$data]);
+        return view('blog.form-edit', ['data' => $data]);
     }
 
-    public function submitEditBook(EditBookFormRequest $request){
+    public function submitEditBook(EditBookFormRequest $request)
+    {
         //dd($request->all());
 
-        $path      = str_replace("public/","",$this->uploadImage($request));
-        $category  = BookCategory::create(['name'=>$request->get('category')]);
-        $publisher  = BookPublisher::create(['name'=>$request->get('publisher_name')]);
-        $author  = BookAuthor::create(['name'=>$request->get('author_name')]);
+        $path = str_replace("public/", "", $this->uploadImage($request));
+        $category = BookCategory::create(['name' => $request->get('category')]);
+        $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
+        $author = BookAuthor::create(['name' => $request->get('author_name')]);
 
         $data = array(
             'book_categories_id' => $category->id,
-            'book_author_id'    => $publisher->id,
+            'book_author_id' => $publisher->id,
             'book_publisher_id' => $author->id,
-            'name'               => $request->get('name'),
-            'total_chapter'      => $request->get('total_chapter'),
-            'total_page'         => $request->get('total_page'),
-            'cover_path'         => $path,
-            'description'        => $request->get('description'),
-            'status'             => $request->get('status')
+            'name' => $request->get('name'),
+            'total_chapter' => $request->get('total_chapter'),
+            'total_page' => $request->get('total_page'),
+            'cover_path' => $path,
+            'description' => $request->get('description'),
+            'status' => $request->get('status')
         );
 
 
@@ -110,19 +114,21 @@ class BookController extends Controller
         return redirect()->route('book.list');
     }
 
-    public function deleteBook(DeleteBookRequest $request){
+    public function deleteBook(DeleteBookRequest $request)
+    {
         Books::find($request->id)->delete();
         return redirect()->route('book.list');
     }
 
-    public function recordAudio(){
+    public function recordAudio()
+    {
         return view('home.view-new-recorder');
     }
 
-    public function viewListening(){
+    public function viewListening()
+    {
         return view('home.listening');
     }
-
 
 
 }

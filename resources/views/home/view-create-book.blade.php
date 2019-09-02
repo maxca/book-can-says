@@ -11,14 +11,14 @@
 
                     @foreach($cards as $key => $book)
 
-                         <div class="card mb-3">
+                        <div class="card mb-3">
                             <div class="card" style="width: 18rem; margin-outside: 4rem;">
 
                                 <img src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
 
                                      style="height: 18rem !important;
                                    object-fit: cover;"
-                                     alt="หน้าปกหนังสือ" >
+                                     alt="หน้าปกหนังสือ">
 
                                 <div class="card-body">
                                     <div class="book-name">

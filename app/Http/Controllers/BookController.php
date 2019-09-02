@@ -67,14 +67,14 @@ class BookController extends Controller
 //            'status'             => $request->get('status')
         );
          $data['books'] = Books::create($data);
-        return redirect()->route('view-created-book',$data);
+        return redirect()->route('home.view-book');
     }
 
 
     public function viewCreateBook(){
         $data['books'] = Books::with('authors','category','publisher','chapter')
             ->orderBy('created_at','DESC');
-        return route("view-created-book",$data);
+        return view("home.view-create-book",$data);
     }
 
 

@@ -25,10 +25,9 @@
                     @foreach($cards as $key => $book)
 
                 <div class="col-md-3 mb-4" >
-                    <div class="card" style="width: 18rem; margin-outside: 4rem;">
+                    <div class="card">
 
-                       <img src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-
+                       <img class="img-thumbnail card-img" src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
                             style="height: 18rem !important;
                                    object-fit: cover;"
                                 alt="หน้าปกหนังสือ" >

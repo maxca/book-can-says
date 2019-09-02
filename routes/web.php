@@ -29,7 +29,7 @@ Route::get('/view-book', 'BookController@viewBook')->name('home.view-book');
 // view rout route('view-create-book-name')
 // redirect()->route('')
 // redirect()->url();
-Route::post('/view-create-book', 'BookController@submitFormCreateBook')->name('view-created-book');
+    Route::post('/view-create-book', 'BookController@submitFormCreateBook')->name('view-created-book');
 /*หน้าformสร้างหนังสือ*/
 Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 

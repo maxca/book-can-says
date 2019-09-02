@@ -4,7 +4,7 @@
     <div class="container">
     <div class="card">
         <div class="card-body">
-            <form action="{{url('/create-book')}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('/view-create-book')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{request('id')}}">
@@ -74,18 +74,18 @@
                 </div>
 
 
-                <div class="form-check">
-                    <input  name="status" class="form-check-input" type="radio"  id="exampleRadios1" value="active" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Active
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input name="status" class="form-check-input" type="radio"  id="exampleRadios2" value="inactive">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Inactive
-                    </label>
-                </div>
+                {{--<div class="form-check">--}}
+                    {{--<input  name="status" class="form-check-input" type="radio"  id="exampleRadios1" value="active" checked>--}}
+                    {{--<label class="form-check-label" for="exampleRadios1">--}}
+                        {{--Active--}}
+                    {{--</label>--}}
+                {{--</div>--}}
+                {{--<div class="form-check">--}}
+                    {{--<input name="status" class="form-check-input" type="radio"  id="exampleRadios2" value="inactive">--}}
+                    {{--<label class="form-check-label" for="exampleRadios2">--}}
+                        {{--Inactive--}}
+                    {{--</label>--}}
+                {{--</div>--}}
 
                 <div class="form-group">
                     <label for="exampleFormControlFile1">ใส่รูปภาพ</label>
@@ -99,9 +99,9 @@
 
 
             </form>
-            <a href ="/view-new-record">
-                <button type="button" class="btn btn-primary">อัดเสียง</button>
-            </a>
+            {{--<a href ="/view-new-record">--}}
+                {{--<button type="button" class="btn btn-primary">อัดเสียง</button>--}}
+            {{--</a>--}}
         </div>
     </div>
 

@@ -29,12 +29,12 @@ Route::get('/view-book', 'BookController@viewBook')->name('home.view-book');
 // view rout route('view-create-book-name')
 // redirect()->route('')
 // redirect()->url();
-Route::post('/view-create-book', 'BookController@submitFormCreateBook')->name('view-create-book-d');
+Route::post('/view-create-book', 'BookController@submitFormCreateBook')->name('view-created-book');
 /*หน้าformสร้างหนังสือ*/
 Route::get('/view-form-create-book','BookController@viewFormCreateBook');
 
 Route::get('/view-book-form','BookController@viewFormCreateBook');
-Route::post('/create-book','BookController@submitFormCreateBook');
+//Route::post('/create-book','BookController@submitFormCreateBook');
 
 Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');

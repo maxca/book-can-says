@@ -31,7 +31,6 @@ class BookController extends Controller
 
         return view("home.view-book",$data);
 
-
     }
 
 
@@ -52,37 +51,30 @@ class BookController extends Controller
 
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
     {
-        //dd หยุดการcompile code
-//            dd($request->all());
-
-
         $path      = str_replace("public/","",$this->uploadImage($request));
         $category  = BookCategory::create(['name'=>$request->get('category')]);
         $publisher = BookPublisher::create(['name' =>$request->get('publisher_name')]);
         $author    = BookAuthor::create(['name' =>$request->get('author_name')]);
-        $response = array();
         $data = array(
-            'name'          => $request->get('name'),
-            'book_category_id' => $category->id,
-            'book_publisher_id'    => $publisher->id,
-            'book_author_id' => $author->id,
+            'name'               => $request->get('name'),
+            'book_category_id'   => $category->id,
+            'book_publisher_id'  => $publisher->id,
+            'book_author_id'     => $author->id,
             'total_chapter'      => $request->get('total_chapter'),
             'total_page'         => $request->get('total_page'),
             'cover_page'         => $path,
             'description'        => $request->get('description'),
-            'status'             => $request->get('status')
+//            'status'             => $request->get('status')
         );
-
-              $response['book'] = Books::create($data);
-           return redirect()->route('view-create-book-d');
-
+         $data['books'] = Books::create($data);
+        return redirect()->route('view-created-book',$data);
     }
 
+
     public function viewCreateBook(){
-        $books = Books::all()
-            ->sortByDesc('created_at')
-            ->toArray();
-        return view("home.view-create-book",compact('data'));
+        $data['books'] = Books::with('authors','category','publisher','chapter')
+            ->orderBy('created_at','DESC');
+        return route("view-created-book",$data);
     }
 
 

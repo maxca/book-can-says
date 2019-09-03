@@ -3,7 +3,7 @@
 
 @section('contents')
 
-    <div class="jumbotron">
+    <div class="jumbotron" xmlns="http://www.w3.org/1999/html">
         <div class="container">
             <h1 class="display-4">Book can says</h1>
             <p class="lead">หนังสือเป็นเพื่อนที่เงียบและมั่นคงมากที่สุด เป็นที่ปรึกษาที่เข้าถึงได้ง่ายและรอบรู้ที่สุด
@@ -18,10 +18,8 @@
     <section>
         <div class="container">
 
-
             @foreach($books->chunk(4) as  $cards)
-                <div class="row">
-
+                <section class="row">
                     @foreach($cards as $key => $book)
 
                         <div class="col-md-3 mb-4">
@@ -32,6 +30,7 @@
                                      style="height: 18rem !important;
                                    object-fit: cover;"
                                      alt="หน้าปกหนังสือ">
+
 
                                 <div class="card-body">
                                     <div class="book-name">
@@ -86,17 +85,19 @@
                             </div>
                         </div>
 
-                    @endforeach
-
-                </div>
             @endforeach
-            <br>
-            <br>
 
-            <div class="align-bottom">
-                {{$books->links()}}
-            </div>
         </div>
+        @endforeach
+        <br>
+        <br>
+
+        <div class="align-bottom">
+            {{$books->links()}}
+        </div>
+
+        </div>
+
     </section>
 @endsection
 

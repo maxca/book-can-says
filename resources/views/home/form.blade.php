@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form action="{{url('/view-create-book')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/create-book')}}" method="post" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <input type="hidden" name="id" value="{{request('id')}}">
@@ -106,9 +106,7 @@
 
 
                 </form>
-                {{--<a href ="/view-new-record">--}}
-                {{--<button type="button" class="btn btn-primary">อัดเสียง</button>--}}
-                {{--</a>--}}
+
             </div>
         </div>
 

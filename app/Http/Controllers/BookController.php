@@ -68,16 +68,23 @@ class BookController extends Controller
             'description' => $request->get('description'),
 //            'status'             => $request->get('status')
         );
-        $data['books'] = Books::create($data);
-        return redirect()->route('view-created-book', $data);
+
+         Books::create($data);
+        return redirect()->action('BookController@viewCreateBook');
     }
 
 
     public function viewCreateBook()
     {
+//        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+//            ->orderBy('created_at', 'DESC');
+//
+//        return view('home.view-create-book',$data);
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->orderBy('created_at', 'DESC');
-        return route("view-created-book", $data);
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+
+        return view("home.view-create-book", $data);
     }
 
 

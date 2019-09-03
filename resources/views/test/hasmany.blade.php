@@ -88,15 +88,12 @@
                     @endforeach
                 </div>
             @endforeach
-            <div class="row m-2">
 
-            </div>
             <div class="align-bottom">
                 {{$books->links()}}
             </div>
         </div>
     </section>
-
 @endsection
 
 @push('scripts-after')

@@ -24,7 +24,7 @@ class UploadSoundRequest extends FormRequest
     public function rules()
     {
         return [
-            'audio_data' => 'required|file'
+            'audio_data' => 'required'
         ];
     }
 }

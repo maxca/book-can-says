@@ -69,7 +69,7 @@ class BookController extends Controller
 //            'status'             => $request->get('status')
         );
 
-         Books::create($data);
+        Books::create($data);
         return redirect()->action('BookController@viewCreateBook');
     }
 

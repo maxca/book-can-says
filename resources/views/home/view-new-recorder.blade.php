@@ -6,8 +6,9 @@
 @endpush
 
 @section('contents')
+
     <div class="container">
-        <div class="row mt-4">
+        <form class="row mt-4" action="{{url('/create-audio')}}" method="post" enctype="multipart/form-data">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
@@ -21,6 +22,7 @@
                     </div>
                 </div>
             </div>
+        </form>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">คุณมีเวลาในการอัดเสียง 30 นาที</div>

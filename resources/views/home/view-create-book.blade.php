@@ -165,7 +165,7 @@
                                     </div>
                                     <p class="card-text">{{$book->description}}</p>
                                     <div class="text-left">
-                                        
+
                                         <a href ="/view-new-record" class="btn btn-primary">สร้างหนังสือเสียง</a>
                                     </div>
 

@@ -148,8 +148,9 @@ function createDownloadLink(blob) {
 
     //upload link
     var upload = document.createElement('a');
-    upload.href="#";
+    upload.href="/create-audio";
     upload.innerHTML = "Upload";
+    upload.class = "bts btn-primary";
     upload.addEventListener("click", function(event){
         var xhr=new XMLHttpRequest();
         xhr.onload=function(e) {

@@ -41,6 +41,10 @@ Route::get('/listening','BookController@viewListening');
 Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
 Route::get('/view-create-book','BookController@viewCreateBook')->name('book.list');
 
+
+/*บันทึกเสียงที่อัด*/
+Route::post('/create-audio','UploadSoundController@uploadAudioPath');
+
 #Route::get('/images', 'ImageController@index')->name('render.img');
 
 //Route::get('storage/images', function ($filename)

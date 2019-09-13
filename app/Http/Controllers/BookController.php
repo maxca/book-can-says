@@ -129,7 +129,7 @@ class BookController extends Controller
 
     public function recordAudio()
     {
-        return view('home.view-new-recorder');
+        return view('home.view-new-record');
     }
 
     public function viewListening()

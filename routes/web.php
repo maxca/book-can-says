@@ -66,8 +66,11 @@ Route::post('/create-audio','UploadSoundController@uploadAudioPath');
 
 Route::get('view-new-record','BookController@recordAudio');
 
-
-
+//upload sounds
+Route::group(['prefix' => 'view-new-record'], function () {
+    Route::get('/', 'BookController@recordAudio');
+    Route::post('/upload', 'UploadSoundController@uploadAudioPath');
+});
 
 Route::get('/view-listener-rec','UploadSoundController@viewRecordListener');
 
@@ -81,10 +84,7 @@ Route::get('facebook','facebookController@facebookLogin');
 Route::get('callback-url','facebookController@callBack');
 
 
-Route::group(['prefix' => 'recorder'], function () {
-    Route::get('/', 'UploadSoundController@index');
-    Route::post('/upload', 'UploadSoundController@upload');
-});
+
 
 Route::get('facebook', 'facebookController@facebookLogin');
 Route::get('callback-url', 'facebookController@callBack');

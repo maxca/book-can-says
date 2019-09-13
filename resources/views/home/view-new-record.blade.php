@@ -1,28 +1,26 @@
 @extends('template.body')
 
 @push('styles-head')
-    {{-- include file counter css --}}
-    @component('template.counter-style') @endcomponent
+{{-- include file counter css --}}
+@component('template.counter-style') @endcomponent
 @endpush
 
 @section('contents')
-
     <div class="container">
-        <form class="row mt-4" action="{{url('/create-audio')}}" method="post" enctype="multipart/form-data">
+        <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                     <div class="card-body">
-                        <button id="recordButton" class="btn btn-danger">Record</button>
-                        <button id="pauseButton" class="btn btn-secondary" disabled>Pause</button>
-                        <button id="stopButton" class="btn btn-secondary" disabled>Stop</button>
+                        <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">Record</button>
+                        <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();" disabled>Pause</button>
+                        <button id="stopButton" class="btn btn-secondary" onclick="CountDown.resetStopwatch();" disabled>Stop</button>
                         <div id="formats">Format: start recording to see sample rate</div>
 
                         <ol id="recordingsList"></ol>
                     </div>
                 </div>
             </div>
-        </form>
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">คุณมีเวลาในการอัดเสียง 30 นาที</div>
@@ -73,8 +71,9 @@
 @endsection
 
 @push('scripts-after')
-    {{--include file counter javascript--}}
-    @component('template.counter-js') @endcomponent
-    <script src="{{asset('js/base.js')}}"></script>
-    <script src="{{asset('js/recorder.js')}}"></script>
+{{--include file counter javascript--}}
+@component('template.counter-js') @endcomponent
+<script src="{{asset('js/sound/base.js')}}"></script>
+<script src="{{asset('js/sound/recorder.js')}}"></script>
+
 @endpush

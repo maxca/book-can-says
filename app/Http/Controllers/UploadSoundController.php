@@ -35,28 +35,34 @@ class UploadSoundController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
-    {
-        return view('recorder.index');
-    }
+
 
     /**
      * @param \App\Http\Requests\UploadSoundRequest $request
      * @return false|mixed|string
      */
-    public function upload(UploadSoundRequest $request)
+
+
+    /**
+     * @param \App\Http\Requests\UploadSoundRequest $request
+     * @return false|mixed|string
+     */
+    public function upload($request)
     {
         \Storage::disk('public')->put('audio/', $request->file('path'));
         return $request->file('path')
             ->store('public');
-//        return $this->uploadFile->upload();
+
+       // return $this->upload->upload();
     }
 
-    public function uploadAudioPath(UploadSoundRequest $request){
+
+    public function uploadAudioPath(UploadSoundRequest $request)
+    {
 
         $path = str_replace("public/", "", $this->upload($request));
         //$category = BookCategory::create(['name' => $request->get('category')]);
-       // $chapter = BookChapter::create(['name' => $request->get('chapter')]);
+        // $chapter = BookChapter::create(['name' => $request->get('chapter')]);
 
         $data = array(
 //            'book_category_id' => $category->id,
@@ -66,12 +72,12 @@ class UploadSoundController extends Controller
 //            'sub_book_chap' => $request->get('sub_book_chap'),
 //            'amoung_listening' => $request->get('amoung_listening')
 
-            'book_category_id' => $category =1,
-            'book_chap_id' => $chapter=1,
+            'book_category_id' => $category = 1,
+            'book_chap_id' => $chapter = 1,
             'path' => $path,
-            'total_page' => $request=1,
-            'sub_book_chap' => $request="pimpim",
-            'amoung_listening' => $request=1
+            'total_page' => $request = 1,
+            'sub_book_chap' => $request = "pimpim",
+            'amoung_listening' => $request = 1
 
         );
 

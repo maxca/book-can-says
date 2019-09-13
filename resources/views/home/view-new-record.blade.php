@@ -20,6 +20,7 @@
                         <ol id="recordingsList"></ol>
                     </div>
                 </div>
+                <span id="mySpan"></span>
             </div>
             <div class="col-md-6">
                 <div class="card">

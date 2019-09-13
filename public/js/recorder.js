@@ -156,6 +156,14 @@ function createDownloadLink(blob) {
         var xhr = new XMLHttpRequest();
         xhr.onload = function (e) {
             if (this.readyState === 4) {
+                document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
+                document.getElementById("book_category_id").value = '';
+                document.getElementById("book_chap_id").value = '';
+                document.getElementById("path").value = '';
+                document.getElementById("total_page").value = '';
+                document.getElementById("sub_book_chap").value = '';
+                document.getElementById("amoung_listening").value = '';
+
                 alert('upload success')
                 console.log("Server returned: ", e.target.responseText);
             }
@@ -165,23 +173,6 @@ function createDownloadLink(blob) {
         xhr.open("POST", "view-new-record/upload", true);
         xhr.send(fd);
     })
-    HTTPRequest.onreadystatechange = function () {
-        if (HTTPRequest.readyState === 3) {
-            document.getElementById("mySpan").innerHTML = "Now is Loading...";
-        }
-        if (HTTPRequest.readyState == 4) {
-            document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
-            document.getElementById("book_category_id").value = 1;
-            document.getElementById("book_chap_id").value = 1;
-            document.getElementById("path").value = 1;
-            document.getElementById("total_page").value = 1;
-            document.getElementById("sub_book_chap").value = 'pimpim';
-            document.getElementById("amoung_listening").value = 1;
-
-
-        }
-
-    }
 
     li.appendChild(document.createTextNode(" "))//add a space in between
     li.appendChild(upload)//add the upload link to li

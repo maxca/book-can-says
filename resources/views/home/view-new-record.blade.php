@@ -55,6 +55,19 @@
         <div class="card">
             <div class="card-header">อัพโหลดไฟล์จากเครื่องของคุณ</div>
             <div class="card-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">MP3 file</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="uploadFile">
+                        <label class="custom-file-label" for="uploadFile">เลือกไฟล์เพื่ออัพโหลด</label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit">อัพโหลด</button>
+                    </div>
+                </div>
+
                 <table class="table">
                     <tr>
                         <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>
@@ -81,6 +94,13 @@
     @component('template.counter-js') @endcomponent
     <script>
         var uploadUrlSoundUrl = "{{route('submit.upload.sound')}}"
+        $('#uploadFile').on('change',function(){
+            //get the file name
+            var fileName = $(this).val();
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
+        })
+
     </script>
     <script src="{{asset('js/base.js')}}"></script>
     <script src="{{asset('js/recorder.js')}}"></script>

@@ -77,7 +77,11 @@
 @push('scripts-after')
 {{--include file counter javascript--}}
 @component('template.counter-js') @endcomponent
-<script src="{{asset('js/sound/base.js')}}"></script>
-<script src="{{asset('js/sound/recorder.js')}}"></script>
+<script>
+    var uploadUrlSoundUrl = "{{route('submit.upload.sound')}}"
+</script>
+<script src="{{asset('js/base.js')}}"></script>
+<script src="{{asset('js/recorder.js')}}"></script>
 
 @endpush
+

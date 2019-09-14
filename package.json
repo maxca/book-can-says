@@ -26,6 +26,7 @@
     "dependencies": {
         "express": "^4.17.1",
         "font-awesome": "^4.7.0",
+        "gasparesganga-jquery-loading-overlay": "^2.1.6",
         "ioredis": "^1.15.1",
         "izimodal": "^1.5.1",
         "jquery-validation": "^1.19.1",

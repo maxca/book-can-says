@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/recorder/*',
         '/test/*',
+        '/view-new-record/upload',
     ];
 }

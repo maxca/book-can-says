@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-
+require('gasparesganga-jquery-loading-overlay');
 
 window.Vue = require('vue');
 

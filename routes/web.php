@@ -64,12 +64,12 @@ Route::post('/create-audio','UploadSoundController@uploadAudioPath');
 //    return $response;
 //});
 
-Route::get('view-new-record','BookController@recordAudio');
+
 
 //upload sounds
 Route::group(['prefix' => 'view-new-record'], function () {
-    Route::get('/', 'BookController@recordAudio');
-    Route::post('/upload', 'UploadSoundController@uploadAudioPath');
+    Route::get('/', 'BookController@recordAudio')->name('view.book.record.sound');
+    Route::post('/upload', 'UploadSoundController@uploadAudioPath')->name('submit.upload.sound');
 });
 
 Route::get('/view-listener-rec','UploadSoundController@viewRecordListener');

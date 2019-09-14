@@ -153,24 +153,26 @@ function createDownloadLink(blob) {
     upload.innerHTML = "Upload";
 
     upload.addEventListener("click", function (event) {
+        // add show loading
+        $.LoadingOverlay('show')
         var xhr = new XMLHttpRequest();
         xhr.onload = function (e) {
+            // add hide loading
+            $.LoadingOverlay('hide')
             if (this.readyState === 4) {
-                document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
-                document.getElementById("book_category_id").value = '';
-                document.getElementById("book_chap_id").value = '';
-                document.getElementById("path").value = '';
-                document.getElementById("total_page").value = '';
-                document.getElementById("sub_book_chap").value = '';
-                document.getElementById("amoung_listening").value = '';
 
                 alert('upload success')
                 console.log("Server returned: ", e.target.responseText);
             }
         };
         var fd = new FormData();
+        // custom post form data
+        // send to server
         fd.append("audio_data", blob, filename);
-        xhr.open("POST", "view-new-record/upload", true);
+        fd.append("book_id", getQueryString('book_id'))
+        // uploadUrlSoundUrl form set on .blade file
+        // section script
+        xhr.open("POST", uploadUrlSoundUrl, true);
         xhr.send(fd);
     })
 
@@ -179,4 +181,13 @@ function createDownloadLink(blob) {
 
     //add the li element to the ol
     recordingsList.appendChild(li);
+}
+
+function getQueryString(key) {
+    var queryString = location.search;
+    var urlParams = new URLSearchParams(queryString)
+    if(urlParams.has(key)) {
+        return urlParams.get(key)
+    }
+    return ''
 }

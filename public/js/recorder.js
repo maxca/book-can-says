@@ -119,8 +119,12 @@ function createDownloadLink(blob) {
     var url = URL.createObjectURL(blob);
     var au = document.createElement('audio');
     var li = document.createElement('li');
+    var li2 = document.createElement('li');
+    var li3 = document.createElement('li');
+    var li4 = document.createElement('li');
     var link = document.createElement('a');
     var ptag = document.createElement('p');
+
 
     //name of .wav file to use during upload and download (without extendion)
     var filename = new Date().toISOString();
@@ -131,26 +135,31 @@ function createDownloadLink(blob) {
 
     //save to disk link
     link.href = url;
+    link.className = "btn btn-secondary"
     link.download = filename + ".wav"; //download forces the browser to donwload the file using the  filename
-    link.innerHTML = "Save to disk";
+    link.innerHTML = "บันทึก";
 
     // add class audio listing
-    li.setAttribute('class', 'audio-list');
+    li2.setAttribute('class', 'audio-list');
+    li3.setAttribute('class', 'audio-list');
+    li4.setAttribute('class', 'audio-list');
+
 
     //add the new audio element to li
-    li.appendChild(ptag.appendChild(au));
+    li2.appendChild(ptag.appendChild(au));
 
     //add the filename to the li
-    li.appendChild(document.createTextNode(filename + ".wav "))
+    li3.appendChild(ptag.appendChild(document.createTextNode( "ชื่อไฟล์ :" + filename + ".wav")))
 
     //add the save to disk link to li
-    li.appendChild(ptag.appendChild(link));
+    li4.appendChild(ptag.appendChild(link));
 
     //upload link
     var upload = document.createElement('a');
     upload.href = "javascript:void(0);";
     upload.id = "uploadSound"
-    upload.innerHTML = "Upload";
+    upload.className ="btn btn-danger"
+    upload.innerHTML = "อัพโหลด";
 
     upload.addEventListener("click", function (event) {
         // add show loading
@@ -176,11 +185,14 @@ function createDownloadLink(blob) {
         xhr.send(fd);
     })
 
-    li.appendChild(document.createTextNode(" "))//add a space in between
-    li.appendChild(upload)//add the upload link to li
+    li4.appendChild(document.createTextNode(" "))//add a space in between
+    li4.appendChild(upload)//add the upload link to li
 
     //add the li element to the ol
-    recordingsList.appendChild(li);
+
+    recordingsList.appendChild(li2);
+    recordingsList.appendChild(li3);
+    recordingsList.appendChild(li4);
 }
 
 function getQueryString(key) {

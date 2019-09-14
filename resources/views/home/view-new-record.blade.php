@@ -1,8 +1,8 @@
 @extends('template.body')
 
 @push('styles-head')
-{{-- include file counter css --}}
-@component('template.counter-style') @endcomponent
+    {{-- include file counter css --}}
+    @component('template.counter-style') @endcomponent
 @endpush
 
 @section('contents')
@@ -12,13 +12,17 @@
                 <div class="card">
                     <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                     <div class="card-body">
-                        <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">Record</button>
-                        <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();" disabled>Pause</button>
-                        <button id="stopButton" class="btn btn-secondary" onclick="CountDown.resetStopwatch();" disabled>Stop</button>
+                        <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">Record
+                        </button>
+                        <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();" disabled>
+                            Pause
+                        </button>
+                        <button id="stopButton" class="btn btn-secondary" onclick="CountDown.resetStopwatch();"
+                                disabled>Stop
+                        </button>
                         <div id="formats">Format: start recording to see sample rate</div>
-
-                        <ol id="recordingsList"></ol>
                     </div>
+                    <ul id="recordingsList"></ul>
                 </div>
                 <span id="mySpan"></span>
             </div>
@@ -65,6 +69,7 @@
                         <td width="30%" align="left"></td>
                     </tr>
                 </table>
+
             </div>
         </div>
     </div>
@@ -72,13 +77,25 @@
 @endsection
 
 @push('scripts-after')
-{{--include file counter javascript--}}
-@component('template.counter-js') @endcomponent
-<script>
-    var uploadUrlSoundUrl = "{{route('submit.upload.sound')}}"
-</script>
-<script src="{{asset('js/base.js')}}"></script>
-<script src="{{asset('js/recorder.js')}}"></script>
+    {{--include file counter javascript--}}
+    @component('template.counter-js') @endcomponent
+    <script>
+        var uploadUrlSoundUrl = "{{route('submit.upload.sound')}}"
+    </script>
+    <script src="{{asset('js/base.js')}}"></script>
+    <script src="{{asset('js/recorder.js')}}"></script>
 
+@endpush
+
+
+@push('styles-head')
+    <style>
+        .audio-list {
+            list-style-type: none;
+        }
+        #recordingsList {
+            margin-left: -24px;
+        }
+    </style>
 @endpush
 

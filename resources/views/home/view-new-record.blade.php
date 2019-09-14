@@ -7,6 +7,8 @@
 
 @section('contents')
     <div class="container">
+        <form action="{{url('/view-new-record/upload')}}" method="post" enctype="multipart/form-data">
+            <span id="mySpan">
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card">
@@ -20,7 +22,7 @@
                         <ol id="recordingsList"></ol>
                     </div>
                 </div>
-                <span id="mySpan"></span>
+                </span>
             </div>
             <div class="col-md-6">
                 <div class="card">
@@ -41,6 +43,7 @@
                 </div>
             </div>
         </div>
+        </form>
         <div class="row justify-content-center">
             <div class="col-md-4 block">
                 <div class="circle">

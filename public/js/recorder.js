@@ -156,13 +156,6 @@ function createDownloadLink(blob) {
         var xhr = new XMLHttpRequest();
         xhr.onload = function (e) {
             if (this.readyState === 4) {
-                document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
-                document.getElementById("book_category_id").value = '';
-                document.getElementById("book_chap_id").value = '';
-                document.getElementById("path").value = '';
-                document.getElementById("total_page").value = '';
-                document.getElementById("sub_book_chap").value = '';
-                document.getElementById("amoung_listening").value = '';
 
                 alert('upload success')
                 console.log("Server returned: ", e.target.responseText);
@@ -172,7 +165,19 @@ function createDownloadLink(blob) {
         fd.append("audio_data", blob, filename);
         xhr.open("POST", "view-new-record/upload", true);
         xhr.send(fd);
+
+        document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
+        document.getElementById("book_category_id").value = '';
+        document.getElementById("book_chap_id").value = '';
+        document.getElementById("path").value = '';
+        document.getElementById("total_page").value = '';
+        document.getElementById("sub_book_chap").value = '';
+        document.getElementById("amoung_listening").value = '';
+
+
     })
+
+
 
     li.appendChild(document.createTextNode(" "))//add a space in between
     li.appendChild(upload)//add the upload link to li

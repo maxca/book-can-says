@@ -16,7 +16,7 @@
         </div>
             <div id="formats">Format: start recording to see sample rate</div>
             <h3>Recordings</h3>
-            <ol id="recordingsList"></ol>
+            <ul id="recordingsList"></ul>
 
 
 

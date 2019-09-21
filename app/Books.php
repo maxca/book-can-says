@@ -10,6 +10,7 @@ class Books extends Model
     protected $table = 'books';
     protected $fillable = [
         'id',
+        'user_id',
         'book_category_id',
         'book_author_id',
         'book_publisher_id',
@@ -17,8 +18,10 @@ class Books extends Model
         'total_chapter',
         'total_page',
         'cover_page',
+        'pdf',
         'description',
-        'status'
+        'status',
+        'publisher',
 
     ];
 
@@ -57,6 +60,11 @@ class Books extends Model
     public function audio()
     {
         return $this->hasMany(BookAudio::class, 'book_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
 

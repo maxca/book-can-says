@@ -22,5 +22,6 @@ class VerifyCsrfToken extends Middleware
         '/recorder/*',
         '/test/*',
         '/view-new-record/upload',
+        '/admin/*'
     ];
 }

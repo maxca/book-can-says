@@ -38,7 +38,6 @@ class BookController extends Controller
 
     public function viewFormCreateBook()
     {
-
         $data['category'] = BookCategory::all();
         return view('home.form')->with($data);
     }
@@ -51,9 +50,18 @@ class BookController extends Controller
             ->store('public');
     }
 
+    private function uploadPdf($request)
+    {
+
+        \Storage::disk('public')->put('pdf/', $request->file('pdf'));
+        return $request->file('pdf')
+            ->store('public');
+    }
+
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
     {
         $path      = str_replace("public/", "", $this->uploadImage($request));
+        $pathPdf   = str_replace("public/", "", $this->uploadPdf($request));
         $category  = BookCategory::create(['name' => $request->get('category')]);
         $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
         $author    = BookAuthor::create(['name' => $request->get('author_name')]);
@@ -66,11 +74,17 @@ class BookController extends Controller
             'total_page'        => $request->get('total_page'),
             'cover_page'        => $path,
             'description'       => $request->get('description'),
+            'pdf'               => $pathPdf,
 //            'status'             => $request->get('status')
         );
 
         Books::create($data);
-        return redirect()->action('BookController@viewCreateBook');
+        if(auth()->user()->role == 'admin') {
+
+        } else {
+            return redirect()->action('BookController@viewCreateBook');
+        }
+
     }
 
 

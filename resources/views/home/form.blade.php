@@ -101,6 +101,16 @@
                             <div class="alert alert-danger">{{$errors->first('cover_image')}}</div>
                         @endif
                     </div>
+                    @if(auth()->user()->role == 'admin')
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">ไฟล์ PDF</label>
+                            <input type="file" name="pdf" class="form-control-file" id="pdf"
+                                   value="{{old('pdf')}}">
+                            @if($errors->has('pdf'))
+                                <div class="alert alert-danger">{{$errors->first('pdf')}}</div>
+                            @endif
+                        </div>
+                    @endif
 
                     <button type="submit" class="btn btn-primary">สร้างหนังสือ</button>
 

@@ -17,12 +17,11 @@
         </div>
         <div id="player-content">
             <div id="album-art">
-                <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_1.jpg"
-                     class="active" id="_1">
-                <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_2.jpg" id="_2">
-                <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_3.jpg" id="_3">
-                <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_4.jpg" id="_4">
-                <img src="https://raw.githubusercontent.com/himalayasingh/music-player-1/master/img/_5.jpg" id="_5">
+                @foreach($sound['albumArtworksLink'] as $key => $covers)
+                <img src="{{$covers}}"
+                     class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">
+                @endforeach
+
                 <div id="buffer-box">Buffering ...</div>
             </div>
             <div id="player-controls">
@@ -367,10 +366,10 @@
                 tProgress = $('#current-time'), tTime = $('#track-length'), seekT, seekLoc, seekBarPos, cM, ctMinutes,
                 ctSeconds, curMinutes, curSeconds, durMinutes, durSeconds, playProgress, bTime, nTime = 0,
                 buffInterval = null, tFlag = false,
-                albums = ['Dawn', 'Me & You', 'Electro Boy', 'Home', 'Proxy (Original Mix)'],
-                trackNames = ['Skylike - Dawn', 'Alex Skrindo - Me & You', 'Kaaze - Electro Boy', 'Jordan Schor - Home', 'Martin Garrix - Proxy'],
-                albumArtworks = ['_1', '_2', '_3', '_4', '_5'],
-                trackUrl = ['https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3', 'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3', 'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3', 'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3', 'https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3'],
+                albums = @json($sound['albums']),
+                trackNames = @json($sound['trackNames']),
+                albumArtworks = @json($sound['albumArtworks']),
+                trackUrl = @json($sound['trackUrl']),
                 playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = -1;
 
             function playPause() {

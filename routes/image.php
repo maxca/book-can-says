@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/images/', 'ImageController@index')->name('render.img');
+Route::get('/render/images/', 'ImageController@index')->name('render.img');
 Route::get('/image/test', 'ImageController@testView')->name('render.test');
 
 Route::get('/has-many', 'SimpleController@testRenderViewViaHasMany')->name('render.hasmany');
@@ -17,3 +17,4 @@ Route::group(['prefix' => 'demo/book'], function ($router) {
     $router->get('/play-sound','DemoController@playSoundBook');
     $router->get('/review','DemoController@reviewBook');
 });
+

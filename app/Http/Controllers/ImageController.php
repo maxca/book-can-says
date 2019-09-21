@@ -13,10 +13,14 @@ class ImageController extends Controller
      */
     public function index(ImageRenderRequest $request)
     {
+
         if (Storage::exists($request->get('file_name'))) {
+
             return Storage::get($request->get('file_name'));
         }
     }
+
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

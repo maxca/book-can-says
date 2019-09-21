@@ -115,16 +115,37 @@ function stopRecording() {
 }
 
 function createDownloadLink(blob) {
-
+    var time = Date.now()
     var url = URL.createObjectURL(blob);
     var au = document.createElement('audio');
     var li = document.createElement('li');
     var li2 = document.createElement('li');
     var li3 = document.createElement('li');
     var li4 = document.createElement('li');
+
     var link = document.createElement('a');
     var ptag = document.createElement('p');
+    var inputTextChapterName = document.createElement('input')
+    var inputTextTotalPage = document.createElement('input')
+    var formInput = document.createElement('form')
 
+    var listInputPage = document.createElement('li');
+
+    formInput.className = "form form-control"
+
+    // create input text chapter name
+    inputTextChapterName.name = "chapter_name"
+    inputTextChapterName.type = "text"
+    inputTextChapterName.className = "form-control"
+    inputTextChapterName.placeholder = "ชื่อบทที่อ่าน"
+    inputTextChapterName.setAttribute('id', 'chapter_name_' + time)
+
+    // create input text total page
+    inputTextTotalPage.name = "total_page"
+    inputTextTotalPage.type = "text"
+    inputTextTotalPage.className = "form-control"
+    inputTextTotalPage.placeholder = "จำนวนหน้า"
+    inputTextTotalPage.setAttribute('id', 'total_page_' + time)
 
     //name of .wav file to use during upload and download (without extendion)
     var filename = new Date().toISOString();
@@ -140,38 +161,61 @@ function createDownloadLink(blob) {
     link.innerHTML = "บันทึก";
 
     // add class audio listing
-    li2.setAttribute('class', 'audio-list');
-    li3.setAttribute('class', 'audio-list');
-    li4.setAttribute('class', 'audio-list');
+    li.setAttribute('class', 'list-group-item');
+    li2.setAttribute('class', 'list-group-item list-group-item-action');
+    li3.setAttribute('class', 'list-group-item list-group-item-action');
+    li4.setAttribute('class', 'list-group-item list-group-item-warning');
+    listInputPage.setAttribute('class', 'list-group-item');
 
+    // add input chapter name
+    // add input text
+    li.appendChild(formInput.appendChild(inputTextChapterName))
+    listInputPage.appendChild(inputTextTotalPage)
 
     //add the new audio element to li
     li2.appendChild(ptag.appendChild(au));
 
     //add the filename to the li
-    li3.appendChild(ptag.appendChild(document.createTextNode( "ชื่อไฟล์ :" + filename + ".wav")))
+    li3.appendChild(ptag.appendChild(document.createTextNode("ชื่อไฟล์ :" + filename + ".wav")))
 
     //add the save to disk link to li
     li4.appendChild(ptag.appendChild(link));
 
+
     //upload link
     var upload = document.createElement('a');
     upload.href = "javascript:void(0);";
-    upload.id = "uploadSound"
-    upload.className ="btn btn-danger"
+    upload.id = "uploadSound" + time
     upload.innerHTML = "อัพโหลด";
+    upload.setAttribute('item-key', time)
+    upload.setAttribute('class', 'btn btn-danger btn-upload')
 
     upload.addEventListener("click", function (event) {
-        // add show loading
+        // find element chapter name [input[name='chapter_name']]
+        var key = $(this).attr('item-key')
+        console.log(key)
+        var chapter = document.getElementById('chapter_name_' + key).value
+        var totalPage = document.getElementById('total_page_' + key).value
+        if (chapter == '') {
+            alert('กรุณากรอกชื่อบท')
+            document.getElementById('chapter_name_' + key).focus()
+            return false
+        }
+        if (totalPage == '') {
+            alert('กรุณากรอกจำนวนหน้า')
+            document.getElementById('total_page_' + key).focus()
+            return false
+        }
+        console.log(chapter)
+        console.log(totalPage)
+
         $.LoadingOverlay('show')
         var xhr = new XMLHttpRequest();
         xhr.onload = function (e) {
             // add hide loading
             $.LoadingOverlay('hide')
             if (this.readyState === 4) {
-
                 alert('upload success')
-                console.log("Server returned: ", e.target.responseText);
             }
         };
         var fd = new FormData();
@@ -179,19 +223,12 @@ function createDownloadLink(blob) {
         // send to server
         fd.append("audio_data", blob, filename);
         fd.append("book_id", getQueryString('book_id'))
+        fd.append("chapter_name", chapter)
+        fd.append("total_page", totalPage)
         // uploadUrlSoundUrl form set on .blade file
         // section script
         xhr.open("POST", uploadUrlSoundUrl, true);
         xhr.send(fd);
-
-        document.getElementById("mySpan").innerHTML = HTTPRequest.responseText;
-        document.getElementById("book_category_id").value = '';
-        document.getElementById("book_chap_id").value = '';
-        document.getElementById("path").value = '';
-        document.getElementById("total_page").value = '';
-        document.getElementById("sub_book_chap").value = '';
-        document.getElementById("amoung_listening").value = '';
-
 
     })
 
@@ -205,6 +242,8 @@ function createDownloadLink(blob) {
 
     //add the li element to the ol
 
+    recordingsList.appendChild(li);
+    recordingsList.appendChild(listInputPage);
     recordingsList.appendChild(li2);
     recordingsList.appendChild(li3);
     recordingsList.appendChild(li4);
@@ -213,7 +252,7 @@ function createDownloadLink(blob) {
 function getQueryString(key) {
     var queryString = location.search;
     var urlParams = new URLSearchParams(queryString)
-    if(urlParams.has(key)) {
+    if (urlParams.has(key)) {
         return urlParams.get(key)
     }
     return ''

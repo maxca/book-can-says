@@ -8,7 +8,7 @@
 @section('contents')
     <div class="container">
         <form action="{{url('/view-new-record/upload')}}" method="post" enctype="multipart/form-data">
-            <span id="mySpan">
+
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card">
@@ -24,9 +24,9 @@
                         </button>
                         <div id="formats">Format: start recording to see sample rate</div>
                     </div>
-                    <ul id="recordingsList"></ul>
+                    <ul id="recordingsList" class="list-group"></ul>
                 </div>
-                </span>
+
             </div>
             <div class="col-md-6">
                 <div class="card">
@@ -70,6 +70,12 @@
                         <button class="btn btn-outline-primary" type="submit">อัพโหลด</button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">6
+                        
+                    </div>
+                    <div class="col">6</div>
+                </div>
 
                 <table class="table">
                     <tr>
@@ -104,6 +110,48 @@
             $(this).next('.custom-file-label').html(fileName);
         })
 
+
+
+            $(".btn-upload").on('click', function () {
+                alert('s')
+                let id = $(this).attr('item-key')
+                let filename = $(this).attr('filename')
+                let chapter = $("#" + id).val()
+                console.log('id',id)
+                console.log('filename',filename)
+                console.log('chapter',chapter)
+
+                $.LoadingOverlay('show')
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function (e) {
+                    // add hide loading
+                    $.LoadingOverlay('hide')
+                    if (this.readyState === 4) {
+                        alert('upload success')
+                        console.log("Server returned: ", e.target.responseText);
+                    }
+                };
+                var fd = new FormData();
+                // custom post form data
+                // send to server
+                fd.append("audio_data", blob, filename);
+                fd.append("book_id", getQueryString('book_id'))
+                fd.append("chapter_name", chapter)
+                // uploadUrlSoundUrl form set on .blade file
+                // section script
+                xhr.open("POST", uploadUrlSoundUrl, true);
+                xhr.send(fd);
+            })
+
+        function uploadSound() {
+            let id = $(this).attr('item-key')
+            let filename = $(this).attr('filename')
+            let chapter = $("#" + id).val()
+            console.log('id',id)
+            console.log('filename',filename)
+            console.log('chapter',chapter)
+        }
+
     </script>
     <script src="{{asset('js/base.js')}}"></script>
     <script src="{{asset('js/recorder.js')}}"></script>
@@ -116,9 +164,7 @@
         .audio-list {
             list-style-type: none;
         }
-        #recordingsList {
-            margin-left: -24px;
-        }
+
     </style>
 @endpush
 

@@ -22,6 +22,7 @@ class BookAudio extends Model
         'id',
         'book_id',
         'book_chap_id',
+        'chapter_name',
         'path',
         'total_page',
         'sub_book_chap',

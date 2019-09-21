@@ -61,6 +61,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">กิจกรรม</a>
                     </li>
+                    @if(auth()->user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>
+                        </li>
+                    @endif
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -129,7 +134,7 @@
 <script src="{{mix('js/app.js')}}"></script>
 @stack('scripts-after')
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>

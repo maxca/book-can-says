@@ -28,6 +28,8 @@ class BookController extends Controller
     {
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+//            ->where('publish_status','publish')
+//            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
@@ -44,7 +46,6 @@ class BookController extends Controller
 
     private function uploadImage($request)
     {
-
         \Storage::disk('public')->put('images/', $request->file('cover_image'));
         return $request->file('cover_image')
             ->store('public');

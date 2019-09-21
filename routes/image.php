@@ -12,7 +12,7 @@ Route::post('test/recorder/upload', 'SimpleController@upload')->name('render.upl
 
 Route::group(['prefix' => 'demo/book'], function ($router) {
     $router->get('/','DemoController@viewBooks');
-    $router->get('/{id}','DemoController@viewBookDetail');
+    $router->get('/{id}','DemoController@viewBookDetail')->name('show.book.detail');
     $router->get('/category/{category_id}','DemoController@viewBookCategory');
     $router->get('/play-sound','DemoController@playSoundBook');
     $router->get('/review','DemoController@reviewBook');

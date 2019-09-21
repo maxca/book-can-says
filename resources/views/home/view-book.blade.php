@@ -14,39 +14,30 @@
         </div>
 
     </div>
-
     <section>
         <div class="container">
 
             @foreach($books->chunk(4) as  $cards)
-                <section class="row">
+
+                <div class="row">
                     @foreach($cards as $key => $book)
-
                         <div class="col-md-3 mb-4">
-                            <div class="card" style="width: 18rem; margin-outside: 4rem;">
-
-                                <img src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-
-                                     style="height: 18rem !important;
-                                   object-fit: cover;"
-                                     alt="หน้าปกหนังสือ">
-
-
+                            <div class="card">
+                                <a href="{{route('show.book.detail',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!">
+                                 <img class="card-img img-thumbnail book-cover"
+                                     src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
+                                     alt="book cover">
+                                </a>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-action active font-weight-bold">{{$book->name}}</li>
+                                </ul>
                                 <div class="card-body">
-                                    <div class="book-name">
-
-                                <span class="font-weight-bolder">
-                                    <h5 class="card-title">{{$book->name}}</h5>
-                                </span>
-
-                                    </div>
-
                                     <div class="book-author">
                                         <span class="font-weight-bold">
                                             <i class="fa fa-user-o"></i> ชื่อผู้แต่ง:
                                         </span>
-                                        @foreach($book->authors as $authors)
-                                            <span class="font-italic">{{$authors->name}}</span>
+                                        @foreach($book->authors as $author)
+                                            <span class="font-italic">{{$author->name}}</span>
                                         @endforeach
                                     </div>
                                     <div class="book-category">
@@ -77,27 +68,41 @@
                                         <span class="font-italic">{{$book->total_page}}</span>
                                     </div>
                                     <p class="card-text">{{$book->description}}</p>
-                                    <div class="text-left">
-                                        <a href="#" class="btn btn-primary">ดาวน์โหลดหนังสือ</a>
+                                    <div class="text-right">
+                                        <a href="#" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-download" aria-hidden="true"></i> ดาวโหลด
+                                        </a>
+                                        <a href="{{route('render.record', ['id' => $book->id])}}" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-save" aria-hidden="true"></i> บันทึกเสียง
+                                        </a>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-
+                    @endforeach
+                </div>
             @endforeach
 
+            <div class="align-bottom">
+                {{$books->links()}}
+            </div>
         </div>
-        @endforeach
-        <br>
-        <br>
-
-        <div class="align-bottom">
-            {{$books->links()}}
-        </div>
-
-        </div>
-
     </section>
 @endsection
+
+@push('styles-head')
+    <style>
+        .book-cover {
+            width:100%;
+            height: 230px;
+        }
+        .card-text{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+@endpush
+
 

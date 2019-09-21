@@ -30,7 +30,7 @@ class BookController extends Controller
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
-
+//        return $data;
         return view("home.view-book", $data);
 
     }

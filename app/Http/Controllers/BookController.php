@@ -52,10 +52,13 @@ class BookController extends Controller
 
     private function uploadPdf($request)
     {
+        if ($request->has('pdf')) {
+            \Storage::disk('public')->put('pdf/', $request->file('pdf'));
+            return $request->file('pdf')
+                ->store('public');
+        }
+        return null;
 
-        \Storage::disk('public')->put('pdf/', $request->file('pdf'));
-        return $request->file('pdf')
-            ->store('public');
     }
 
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
@@ -67,6 +70,7 @@ class BookController extends Controller
         $author    = BookAuthor::create(['name' => $request->get('author_name')]);
         $data      = array(
             'name'              => $request->get('name'),
+            'user_id'           => auth()->user()->id,
             'book_category_id'  => $category->id,
             'book_publisher_id' => $publisher->id,
             'book_author_id'    => $author->id,
@@ -79,7 +83,7 @@ class BookController extends Controller
         );
 
         Books::create($data);
-        if(auth()->user()->role == 'admin') {
+        if (auth()->user()->role == 'admin') {
 
         } else {
             return redirect()->action('BookController@viewCreateBook');

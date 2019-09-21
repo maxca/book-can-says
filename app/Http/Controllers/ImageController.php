@@ -20,6 +20,15 @@ class ImageController extends Controller
         }
     }
 
+    public function download(ImageRenderRequest $request)
+    {
+
+        if (Storage::exists($request->get('file_name'))) {
+
+            return Storage::download($request->get('file_name'));
+        }
+    }
+
 
 
     /**

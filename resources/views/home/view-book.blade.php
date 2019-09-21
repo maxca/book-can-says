@@ -69,7 +69,7 @@
                                     </div>
                                     <p class="card-text">{{$book->description}}</p>
                                     <div class="text-right">
-                                        <a href="#" class="btn btn-primary btn-sm">
+                                        <a href="{{route('render.download',['file_name' => 'public/pdf/'. $book->pdf])}}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-download" aria-hidden="true"></i> ดาวโหลด
                                         </a>
                                         <a href="{{route('render.record', ['id' => $book->id])}}" class="btn btn-danger btn-sm">

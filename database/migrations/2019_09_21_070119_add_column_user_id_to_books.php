@@ -14,7 +14,7 @@ class AddColumnUserIdToBooks extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
-            $table->enum('publisher', ['unpublish', 'publisher'])->default('unpublish')
+            $table->enum('publish_status', ['unpublish', 'publisher'])->default('unpublish')
                 ->after('status');
         });
     }
@@ -26,7 +26,7 @@ class AddColumnUserIdToBooks extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn(['user_id', 'publisher']);
+            $table->dropColumn(['user_id', 'publish_status']);
         });
     }
 }

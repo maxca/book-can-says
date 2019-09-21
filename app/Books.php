@@ -21,7 +21,7 @@ class Books extends Model
         'pdf',
         'description',
         'status',
-        'publisher',
+        'publish_status',
 
     ];
 

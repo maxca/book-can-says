@@ -30,7 +30,7 @@
                             <td>{{$book->authors->first()->name}}</td>
                             <td>{{$book->user->name ?? ''}}</td>
                             <td>
-                                @if($book->publisher == 'publisher')
+                                @if($book->publish_status == 'publisher')
                                     <span class="badge-pill badge badge-success">เผยแพร่</span>
                                 @else
                                     <span class="badge-pill badge badge-danger">ไม่เผยแพร่</span>
@@ -86,7 +86,7 @@
 
         function updateBook(bookId, status) {
             $.LoadingOverlay('hide')
-            $.post(route + bookId, {publisher: status}, function (response) {
+            $.post(route + bookId, {publish_status: status}, function (response) {
                 console.log(response)
                 window.location.reload()
             }, 'json')

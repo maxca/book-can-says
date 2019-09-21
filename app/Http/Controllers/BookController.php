@@ -85,9 +85,9 @@ class BookController extends Controller
 
         Books::create($data);
         if (auth()->user()->role == 'admin') {
-
+            return redirect()->route('admin.books');
         } else {
-            return redirect()->action('BookController@viewCreateBook');
+            return redirect()->route('home.view-book');
         }
 
     }

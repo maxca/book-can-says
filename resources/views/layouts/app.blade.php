@@ -51,6 +51,7 @@
                             <a class="dropdown-item" href="#">การเมือง</a>
                             <a class="dropdown-item" href="#">นิยาย</a>
                             <a class="dropdown-item" href="#">เทคโนโลยี</a>
+                            <a class="dropdown-item" href="#">เเกม</a>
                         </div>
                     </li>
 
@@ -61,11 +62,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">กิจกรรม</a>
                     </li>
-                    @if(auth()->user()->role == 'admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>
-                        </li>
-                    @endif
+{{--                    @if(auth()->user()->role == 'admin')--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -105,7 +106,7 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li>
+                        </li> 
                     @endguest
                 </ul>
             </div>

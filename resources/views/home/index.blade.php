@@ -23,12 +23,14 @@
                 และเป็นครูที่อดทนที่สุด </p>
             <p class="role">
 
-                <button type="button" class="button">
-                    <a href="ผู้ฟัง">ผู้ฟัง</a>
-                </button>
+                <a href="/view-blind">
+                    <button type="button" class="button">สำหรับผู้ฟัง</button></button>
+                </a>
 
-                    <a href="/view-book">
+
+                <a href="/view-book">
                         <button type="button" class="button">สำหรับจิตอาสา</button></button>
+
                     </a>
 
 

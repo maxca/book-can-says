@@ -19,11 +19,13 @@
 /*หน้าแรก*/
 
 Route::get('/', 'BookController@viewWelcome');
+/*โชว์หน้าฟังเสียง*/
+Route::get('/view-blind', 'BookController@viewBlind')->name('home.view-blind');
+
 
 Route::group(['middleware' => 'auth'], function () {
     /*โชว์หน้าหนังสือแนะนำ*/
     Route::get('/view-book', 'BookController@viewBook')->name('home.view-book');
-
 
     Route::get('/view-create-book', 'BookController@viewCreateBook')->name('view-created-book');
     /*หน้าformสร้างหนังสือ*/

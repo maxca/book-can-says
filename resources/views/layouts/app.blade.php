@@ -23,9 +23,11 @@
 </head>
 <body>
 <div id="app">
+
+
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="/index">
+            <a class="navbar-brand" href="/view-book">
                 <img src="<?php echo asset('img/logo.svg'); ?>" width="40" height="40" alt="Book can says">
 
             </a>
@@ -59,14 +61,7 @@
                         <a class="nav-link" href="/view-form-create-book">สร้างหนังสือ</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">กิจกรรม</a>
-                    </li>
-{{--                    @if(auth()->user()->role == 'admin')--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
+
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -106,7 +101,12 @@
                                     @csrf
                                 </form>
                             </div>
-                        </li> 
+                        </li>
+                        @if(auth()->user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>
+                            </li>
+                        @endif
                     @endguest
                 </ul>
             </div>

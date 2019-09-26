@@ -24,12 +24,12 @@
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <a href="{{route('show.book.detail',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!">
-                                 <img class="card-img img-thumbnail book-cover"
-                                     src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-                                     alt="book cover">
+                                    <img class="card-img img-thumbnail book-cover"
+                                         src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
+                                         alt="book cover">
                                 </a>
-                                <ul class="card-title">
-                                    <h5 class="font-weight-bold">{{$book->name}}</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-action active font-weight-bold">{{$book->name}}</li>
                                 </ul>
                                 <div class="card-body">
                                     <div class="book-author">
@@ -68,13 +68,12 @@
                                         <span class="font-italic">{{$book->total_page}}</span>
                                     </div>
                                     <p class="card-text">{{$book->description}}</p>
-                                    <div class="text-right">
-                                        <a href="{{route('render.download',['file_name' => 'public/pdf/'. $book->pdf])}}" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-download" aria-hidden="true"></i> ดาวโหลด
+
+                                    <div class="">
+                                        <a href="{{route('show.book.detail',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!" >
+                                            <i class="fa fa-volume-up btn btn-primary btn-sm mr"> ฟังหนังสือเสียง</i>
                                         </a>
-                                        <a href="{{route('view.book.record.sound', ['book_id' => $book->id])}}" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-save" aria-hidden="true"></i> บันทึกเสียง
-                                        </a>
+
                                     </div>
 
                                 </div>
@@ -92,17 +91,17 @@
 @endsection
 
 @push('styles-head')
-    <style>
-        .book-cover {
-            width:100%;
-            height: 230px;
-        }
-        .card-text{
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-    </style>
+<style>
+    .book-cover {
+        width:100%;
+        height: 230px;
+    }
+    .card-text{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
 @endpush
 
 

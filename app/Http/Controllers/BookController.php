@@ -38,6 +38,20 @@ class BookController extends Controller
     }
 
 
+    public function viewBlind()
+    {
+
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+//            ->where('publish_status','publish')
+//            ->where('user_id',auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+//        return $data;
+        return view("home.view-blind", $data);
+
+    }
+
+
     public function viewFormCreateBook()
     {
         $data['category'] = BookCategory::all();

@@ -10,15 +10,46 @@
                     <div class="media">
                         <img class="img-thumbnail rounded" src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}" alt="" width="150" height="150">
                         <div class="media-body ml-2">
-                            <h5>Title</h5>
-                            <span>Detail</span>
-                            <div class="review">
-                                <i class="fa fa-star checked"></i>
-                                <i class="fa fa-star checked"></i>
-                                <i class="fa fa-star checked"></i>
-                                <i class="fa fa-star checked"></i>
-                                <i class="fa fa-star checked"></i>
-                            </div>
+                            <h5 class="font-weight-bold">{{$book->name}}</h5>
+                            </ul>
+                            <div class="card-body">
+                                <div class="book-author">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-user-o"></i> ชื่อผู้แต่ง:
+                                        </span>
+                                    @foreach($book->authors as $author)
+                                        <span class="font-italic">{{$author->name}}</span>
+                                    @endforeach
+                                </div>
+                                <div class="book-category">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-address-book-o"></i> หมวดหมู่:
+                                        </span>
+                                    <span class="font-italic">{{$book->category->name}}</span>
+                                </div>
+
+                                <div class="book-publisher">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-book"></i> สำนักพิมพ์:
+                                        </span>
+                                    @foreach($book->publisher as $publisher)
+                                        <span class="font-italic">{{$publisher->name}}</span>
+                                    @endforeach
+                                </div>
+                                <div class="book-chapter">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-bookmark-o"></i> จำนวนบท:
+                                        </span>
+                                    <span class="font-italic">{{$book->total_chapter}}</span>
+                                </div>
+                                <div class="book-chapter">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-bookmark-o"></i> จำนวนหน้า:
+                                        </span>
+                                    <span class="font-italic">{{$book->total_page}}</span>
+                                </div>
+                                <p class="card-text">{{$book->description}}</p>
+
                         </div>
                     </div>
                 </div>

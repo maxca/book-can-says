@@ -70,12 +70,7 @@
                         <button class="btn btn-outline-primary" type="submit">อัพโหลด</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">6
-
-                    </div>
-                    <div class="col">6</div>
-                </div>
+                
 
                 <table class="table">
                     <tr>

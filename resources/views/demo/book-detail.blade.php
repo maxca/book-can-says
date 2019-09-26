@@ -54,6 +54,7 @@
                     </div>
                 </div>
             </div>
+            </div>
 
             <div class="row mt-lg-2">
                 <div class="col">
@@ -62,7 +63,7 @@
                         @foreach($book->audio as $key => $audio)
                         <li class="list_sound list-group-item list-group-item-action justify-content-between align-items-center d-flex" id="list_{{$key}}">
                             {{$audio->chapter_name}}
-                            <span class="badge badge-primary badge-pill">5:30 min</span>
+                            {{--<span class="badge badge-primary badge-pill">5:30 min</span>--}}
                         </li>
                         @endforeach
 
@@ -71,7 +72,6 @@
 
             </div>
 
-        </div>
         <div class="row">
             <div class="col mt-lg-5">
                 <ul class="list-group">

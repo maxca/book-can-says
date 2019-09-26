@@ -29,7 +29,7 @@
 
 
                 <a href="/view-book">
-                        <button type="button" class="button">สำหรับจิตอาสา</button></button>
+                        <button type="button" class="button">จิตอาสา</button></button>
 
                     </a>
 
@@ -61,19 +61,49 @@
 
     .button {
 
-        color: black;
-        border: 2px solid #555555;
-        padding: 16px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 22px;
-        margin: 4px 2px;
-        -webkit-transition-duration: 0.4s;
-        /* Safari */
-        transition-duration: 0.4s;
-        cursor: pointer;
+        /*color: black;*/
+        /*border: 2px solid #555555;*/
+        /*padding: 16px 32px;*/
+        /*text-align: center;*/
+        /*text-decoration: none;*/
+        /*display: inline-block;*/
+        /*font-size: 22px;*/
+        /*margin: 4px 2px;*/
+        /*-webkit-transition-duration: 0.4s;*/
+        /*!* Safari *!*/
+        /*transition-duration: 0.4s;*/
+        /*cursor: pointer;*/
 
+        box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
+        border: .4em solid #DCDCDC;
+        font-size: 1em;
+        line-height: 1.1em;
+        color: #000000;
+        background-color: #ffffff;
+        margin: auto;
+        border-radius: 50%;
+        height: 7em;
+        width: 7em;
+        position: relative;
+        opacity:0.8;
+
+    }
+
+    .button:hover {
+        color:#ffffff;
+        background-color: #CFCFCF;
+        text-decoration: none;
+        border-color: #DCDCDC;
+
+    }
+    .button:visited {
+        color:#ffffff;
+        background-color: #CFCFCF;
+        text-decoration: none;
+
+    }
+    .button-link-greater-than {
+        font-size: 1em;
     }
 </style>
 

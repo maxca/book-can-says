@@ -125,7 +125,7 @@ class BookController extends Controller
     {
         $data = Books::find($request->id);
 
-        return view('blog.form-edit', ['data' => $data]);
+        return view('home.view-form-editBook', ['data' => $data]);
     }
 
     public function submitEditBook(EditBookFormRequest $request)

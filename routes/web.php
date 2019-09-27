@@ -31,6 +31,10 @@ Route::group(['middleware' => 'auth'], function () {
     /*หน้าformสร้างหนังสือ*/
     Route::get('/view-form-create-book', 'BookController@viewFormCreateBook');
 
+    /*หน้าeditหนังสือ*/
+    Route::get('/view-form-editBook', 'BookController@viewFormEditBook')->name('form.edit.book');
+    Route::post('/edit-book', 'BookController@submitEditBook');
+
     Route::get('/view-book-form', 'BookController@viewFormCreateBook');
     Route::post('/create-book', 'BookController@submitFormCreateBook');
 

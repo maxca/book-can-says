@@ -109,7 +109,7 @@
                         </li>
                         @if(auth()->user()->role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.books')}}">จัดการหนังสือ</a>
+                                <a class="nav-link" href="{{route('admin.books')}}">การเผยแพร่</a>
                             </li>
                         @endif
                     @endguest

@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('admin.manage-book')->with($data);
     }
 
-    public function approveBook(AdminUpdateBookRequest $request, $bookId)
+    public function updateBook(AdminUpdateBookRequest $request, $bookId)
     {
         $book = Books::find($bookId);
         $book->update($request->all());

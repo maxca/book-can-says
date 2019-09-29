@@ -28,7 +28,7 @@ class BookController extends Controller
     {
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-           // ->where('publish_status','publish')
+            ->where('publish_status','publisher')
           //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
@@ -42,7 +42,7 @@ class BookController extends Controller
     {
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-//            ->where('publish_status','publish')
+            ->where('publish_status','publisher')
 //            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
@@ -68,7 +68,7 @@ class BookController extends Controller
     private function uploadPdf($request)
     {
         if ($request->has('pdf')) {
-            \Storage::disk('public')->put('pdf/', $request->file('pdf'));
+            \Storage::disk('public')->put('pdfs/', $request->file('pdf'));
             return $request->file('pdf')
                 ->store('public');
         }

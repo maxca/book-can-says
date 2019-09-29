@@ -101,7 +101,7 @@ class BookController extends Controller
         if (auth()->user()->role == 'admin') {
             return redirect()->route('admin.books');
         } else {
-            return redirect()->route('home.view-book');
+            return redirect()->route('home.view-book-list');
         }
 
     }

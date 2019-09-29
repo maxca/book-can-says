@@ -10,7 +10,8 @@
                         <tr>
                             <th scope="col">ชื่อหนังสือ</th>
                             <th scope="col">ผู้แต่ง</th>
-                            <th scope="col">สำนักพิพม์</th>
+                            <th scope="col">สำนักพิมพ์</th>
+                            <th scope="col">สถานะ</th>
                             <th scope="col" style="text-align: right">แก้ไข</th>
                             <th scope="col" style="text-align: right">ลบหนังสือ</th>
 
@@ -31,6 +32,16 @@
                             @foreach($book->publisher as $publisher)
                                 <td>{{$publisher->name}}</td>
                             @endforeach
+
+                            <td>
+                                @if($book->publish_status == 'publisher')
+                                    <span class="badge-pill badge badge-success">เผยแพร่</span>
+                                @else
+                                    <span class="badge-pill badge badge-danger">ไม่เผยแพร่</span>
+                                @endif
+                            </td>
+
+
 
                             <td style="text-align: right">
                                     <a href="{{route('edit',['id' => $book->id])}}" class="btn btn-dark">แก้ไขข้อมูลหนังสือ</a>

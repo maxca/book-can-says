@@ -38,6 +38,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/delete-book', 'BookController@deleteBook')->name('delete.book');
     Route::get('/view-create-book', 'BookController@viewCreateBook')->name('book.list');
 
+    /*แก้ไขหนังสือ*/
+    Route::get('/view-edit-form', 'BookController@viewFormEditBook')->name('edit');
+    Route::get('/vvv', 'BookController@aaa');
+    Route::post('/edit-book','BookController@submitEditBook');
+
+    /*ลบหนังสือ*/
+    Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
+
+    Route::get('/view-book-list','BookController@viewBookList')->name('home.view-book-list');
+
+
 
     /*บันทึกเสียงที่อัด*/
     Route::post('/create-audio', 'UploadSoundController@uploadAudioPath');

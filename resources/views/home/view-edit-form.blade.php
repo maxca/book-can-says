@@ -1,8 +1,9 @@
 @extends('template.master')
 
 @section('contents')
-    <form action="{{url('/create-book')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('/edit-book')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
+
         <div class="form-group">
             <label for="exampleInputEmail1">Book name</label>
             <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -26,7 +27,6 @@
                 <option value="เกษตร">เกษตร</option>
                 <option value="กีฬา">กีฬา</option>
                 <option value="อาหาร">อาหาร</option>
-
             </select>
         </div>
 
@@ -34,11 +34,11 @@
             <label for="exampleInputPassword1">Total page</label>
             <input name="total_page" type="number" class="form-control" placeholder="total page" value="{{$data->total_page}}">
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Total </label>
-            <input name="total_chapter" type="number" class="form-control" placeholder="total chapter" value="{{$data->total_chapter}}>
-        </div>
 
+        <div class="form-group">
+            <label for="exampleInputPassword1">Total chapter</label>
+            <input name="total_page" type="number" class="form-control" placeholder="total chapter" value="{{$data->total_chapter}}">
+        </div>
 
         <div class="form-group">
             <label for="exampleInputPassword1">Description</label>

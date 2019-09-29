@@ -23,11 +23,10 @@
                     @foreach($cards as $key => $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">
-                                <a href="{{route('show.book.detail',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!">
                                  <img class="card-img img-thumbnail book-cover"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
                                      alt="book cover">
-                                </a>
+
                                 <ul class="card-title">
                                     <h5 class="font-weight-bold">{{$book->name}}</h5>
                                 </ul>

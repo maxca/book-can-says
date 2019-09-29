@@ -28,8 +28,8 @@ class BookController extends Controller
     {
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-//            ->where('publish_status','publish')
-//            ->where('user_id',auth()->user()->id)
+           // ->where('publish_status','publish')
+          //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
@@ -109,10 +109,7 @@ class BookController extends Controller
 
     public function viewCreateBook()
     {
-//        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-//            ->orderBy('created_at', 'DESC');
-//
-//        return view('home.view-create-book',$data);
+
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
@@ -124,13 +121,19 @@ class BookController extends Controller
     public function viewFormEditBook(EditBookFormRequest $request)
     {
         $data = Books::find($request->id);
+        //dd($request->all());
+        return view('home.vvv',['data'=>$data]);
+    }
 
-        return view('blog.form-edit', ['data' => $data]);
+    public function aaa(EditBookFormRequest $request)
+    {
+        return view('home.vvv');
+
     }
 
     public function submitEditBook(EditBookFormRequest $request)
     {
-        //dd($request->all());
+
 
         $path      = str_replace("public/", "", $this->uploadImage($request));
         $category  = BookCategory::create(['name' => $request->get('category')]);
@@ -149,15 +152,14 @@ class BookController extends Controller
             'status'             => $request->get('status')
         );
 
-
         Books::find($request->id)->update($data);
-        return redirect()->route('book.list');
+        return redirect()->route('home.view-book-list');
     }
 
     public function deleteBook(DeleteBookRequest $request)
     {
         Books::find($request->id)->delete();
-        return redirect()->route('book.list');
+        return redirect()->route('home.view-book-list')->with('ลบหนังสือสำเร็จ','หนังสือของคุณได้ถูกลบแล้ว');
     }
 
     public function recordAudio()
@@ -168,6 +170,15 @@ class BookController extends Controller
     public function viewListening()
     {
         return view('home.listening');
+    }
+
+    public function viewBookList()
+    {
+
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+        return view('home.view-book-list', $data);
     }
 
 

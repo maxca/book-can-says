@@ -19,6 +19,7 @@
 /*หน้าแรก*/
 
 Route::get('/', 'BookController@viewWelcome');
+
 /*โชว์หน้าฟังเสียง*/
 Route::get('/view-blind', 'BookController@viewBlind')->name('home.view-blind');
 
@@ -30,6 +31,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/view-create-book', 'BookController@viewCreateBook')->name('view-created-book');
     /*หน้าformสร้างหนังสือ*/
     Route::get('/view-form-create-book', 'BookController@viewFormCreateBook');
+
+    /*หน้าeditหนังสือ*/
+    Route::get('/view-form-editBook', 'BookController@viewFormEditBook')->name('form.edit.book');
+    Route::post('/edit-book', 'BookController@submitEditBook');
 
     Route::get('/view-book-form', 'BookController@viewFormCreateBook');
     Route::post('/create-book', 'BookController@submitFormCreateBook');

@@ -20,6 +20,7 @@
             @foreach($books->chunk(4) as  $cards)
 
                 <div class="row">
+
                     @foreach($cards as $key => $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">

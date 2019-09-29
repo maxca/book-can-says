@@ -6,6 +6,7 @@
     <div class="container">
         <div class="container-inline border p-4">
             <div class="row">
+
                 <div class="col">
                     <div class="media">
                         <img class="img-thumbnail rounded" src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}" alt="" width="150" height="150">
@@ -54,6 +55,10 @@
                     </div>
                 </div>
             </div>
+
+                <div class="col mr-5 btn-link">
+                    <a href="{{route('form.edit.book',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!">แก้ไขหนังสือเสียง</a>
+                </div>
             </div>
 
             <div class="row mt-lg-2">

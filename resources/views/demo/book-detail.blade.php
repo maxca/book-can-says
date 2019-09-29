@@ -1,6 +1,6 @@
 @extends('template.body')
 
-@section('title','Book Can see : Custom title list')
+@section('title','Book Can Say : Custom title list')
 
 @section('contents')
     <div class="container">

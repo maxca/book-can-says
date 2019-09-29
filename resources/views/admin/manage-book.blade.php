@@ -1,11 +1,11 @@
 @extends('template.body')
 
-@section('title','Book Can see : ผู้ดุแลระบบจัดการข้อมูลหนังสือ')
+@section('title','Book Can Say : ผู้ดุแลระบบจัดการข้อมูลหนังสือ')
 
 @section('contents')
     <div class="container">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="color: #1f1f1f">
                 <h5 class="card-title">จัดการหนังสือ</h5>
             </div>
             <!-- /.card-header -->
@@ -13,10 +13,11 @@
                 <table class="table table-condensed">
                     <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
+                        <th style="width: 10px">ลำดับ</th>
                         <th>ชื่อหนังสือ</th>
                         <th>ผู้แต่ง</th>
                         <th>ชื่อผู้อ่าน</th>
+                        <th>คำอธิบาย</th>
                         <th>สถานะการเผยแพร่</th>
                         <th class="text-right">จัดการ</th>
                     </tr>
@@ -29,6 +30,8 @@
                             <td>{{$book->name}}</td>
                             <td>{{$book->authors->first()->name}}</td>
                             <td>{{$book->user->name ?? ''}}</td>
+                            <td>{{$book->description}}</td>
+
                             <td>
                                 @if($book->publish_status == 'publisher')
                                     <span class="badge-pill badge badge-success">เผยแพร่</span>

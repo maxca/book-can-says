@@ -6,20 +6,20 @@
     <div class="container">
         <div class="card">
             <div class="card-header" style="color: #1f1f1f">
-                <h5 class="card-title">จัดการหนังสือ</h5>
+                <h3 class="card-title">จัดการหนังสือ</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <table class="table table-condensed">
                     <thead>
                     <tr>
-                        <th style="width: 10px">ลำดับ</th>
-                        <th>ชื่อหนังสือ</th>
-                        <th>ผู้แต่ง</th>
-                        <th>ชื่อผู้อ่าน</th>
-                        <th>คำอธิบาย</th>
-                        <th>สถานะการเผยแพร่</th>
-                        <th class="text-right">จัดการ</th>
+                        <th style="width: 7%">ลำดับ</th>
+                        <th style="width: 15%">ชื่อหนังสือ</th>
+                        <th style="width: 10%">ผู้แต่ง</th>
+                        <th style="width: 10%">ชื่อผู้อ่าน</th>
+                        <th style="width: 30%">คำอธิบาย</th>
+                        <th style="width: 13%">สถานะ</th>
+                        <th class="text-center" style="width: 20%">จัดการ</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,9 @@
                             <td>{{$book->name}}</td>
                             <td>{{$book->authors->first()->name}}</td>
                             <td>{{$book->user->name ?? ''}}</td>
-                            <td>{{$book->description}}</td>
+                            <td class="w">
+                                {{$book->description}}
+                            </td>
 
                             <td>
                                 @if($book->publish_status == 'publisher')
@@ -96,3 +98,11 @@
         }
     </script>
 @endpush
+
+<style>
+    .table{
+        table-layout:fixed;
+        overflow:hidden;
+        word-wrap:break-word;
+    }
+</style>

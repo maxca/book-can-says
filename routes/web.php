@@ -19,6 +19,7 @@
 /*หน้าแรก*/
 
 Route::get('/', 'BookController@viewWelcome');
+
 /*โชว์หน้าฟังเสียง*/
 Route::get('/view-blind', 'BookController@viewBlind')->name('home.view-blind');
 

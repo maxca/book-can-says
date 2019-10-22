@@ -95,6 +95,10 @@
                                    จัดการหนังสือ
                                 </a>
 
+                                <a class="dropdown-item" href="{{ url('/view-audio-list') }}">
+                                    จัดการเสียง
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -111,6 +115,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('admin.books')}}">การเผยแพร่</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="dropdown-item" href="{{ url('/view-audio-list') }}">
+                                    จัดการเสียง
+                                </a>
+                            </li>
+
                         @endif
                     @endguest
                 </ul>

@@ -48,6 +48,7 @@ class UploadSoundController extends Controller
             'total_page'       => $request->get('total_page'),
             'sub_book_chap'    => "pimpim",
             'amoung_listening' => 1,
+
         );
 
         return BookAudio::updateOrCreate([

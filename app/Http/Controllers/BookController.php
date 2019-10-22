@@ -43,7 +43,6 @@ class BookController extends Controller
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status','publisher')
-//            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
@@ -174,8 +173,8 @@ class BookController extends Controller
 
     public function viewBookList()
     {
-
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
         return view('home.view-book-list', $data);

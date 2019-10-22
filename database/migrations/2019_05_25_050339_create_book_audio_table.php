@@ -20,6 +20,7 @@ class CreateBookAudioTable extends Migration
             $table->integer('total_page');
             $table->string('sub_book_chap');
             $table->integer('amoung_listening');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

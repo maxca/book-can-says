@@ -40,6 +40,26 @@ class DemoController extends Controller
         return view('demo.book-category');
     }
 
+    public function viewAudioList()
+    {
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('user_id',auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+        return view('home.view-audio-list', $data);
+    }
+
+    public function viewVerifyAudio()
+    {
+        $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter', 'review','audio'])
+            ->where('user_id',auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+       return view('home.view-verify-audio', $data);
+    }
+
+
+
     public function playSoundBook(PlaySoundBookRequest $request)
     {
 

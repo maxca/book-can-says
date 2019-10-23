@@ -45,7 +45,7 @@
 
                             <td class="text-right">
                                 <audio controls>
-                                    <source  src="{{asset('sounds/'.$audio->path)}}" type="audio/wav">
+                                    <source  src="{{route('get.sound', ['file_name' =>  $audio->path])}}" type="audio/wav">
                                     Your browser does not support the audio element.
                                 </audio>
 

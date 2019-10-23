@@ -6,7 +6,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header" style="color: #1f1f1f">
-                <h3 class="card-title">จัดการหนังสือ</h3>
+                <h3 class="card-title">จัดการหนังสือเสียง</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
@@ -45,7 +45,7 @@
 
                             <td class="text-right">
                                 <audio controls>
-                                    <source  src="{{asset('sounds/'.$audio->path)}}" type="audio/wav">
+                                    <source  src="{{asset('public/sounds/'.$audio->path)}}" type="audio/wav">
                                     Your browser does not support the audio element.
                                 </audio>
 
@@ -54,7 +54,7 @@
 
                             <td>
 
-                                    @if($audio->status == 'publisher')
+                                    @if($audio->status == 'active')
                                         <span class="badge-pill badge badge-success">เผยแพร่</span>
                                     @else
                                         <span class="badge-pill badge badge-danger">ไม่เผยแพร่</span>
@@ -62,8 +62,8 @@
 
                             </td>
                             <td class="text-right">
-                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$audio->id}}">
-                                    <i class="fa fa-book"></i>
+                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$audio->id}}" style="width: 77%" >
+                                    <i class="fa fa-book" ></i>
                                     เผยแพร่
                                 </button>
 
@@ -101,21 +101,21 @@
 
 @push('scripts-after')
 <script>
-    var route = "{{url('admin/book')}}/"
-    $('.unpublish').on('click', function () {
-        console.log($(this).data('book_id'))
+    var route = "{{url('admin/audio')}}/"
+    $('.inactive').on('click', function () {
+        console.log($(this).data('id'))
         $.LoadingOverlay('show')
-        updateBook($(this).data('book_id'), 'unpublish')
+        updateBook($(this).data('id'), 'inactive')
     })
-    $(".publisher").on('click', function () {
+    $(".active").on('click', function () {
         $.LoadingOverlay('show')
-        console.log($(this).data('book_id'))
-        updateBook($(this).data('book_id'), 'publisher')
+        console.log($(this).data('id'))
+        updateBook($(this).data('id'), 'active')
     })
 
-    function updateBook(bookId, status) {
+    function updateBook($audioId, status) {
         $.LoadingOverlay('hide')
-        $.post(route + bookId, {publish_status: status}, function (response) {
+        $.post(route + $audioId, {status: status}, function (response) {
             console.log(response)
             window.location.reload()
         }, 'json')

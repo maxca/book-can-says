@@ -56,7 +56,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     /*จัดการเสียง*/
     Route::get('/view-audio-list','DemoController@viewAudioList')->name('home.view-audio-list');
-    Route::get('/view-verify-audio','DemoController@viewVerifyAudio')->name('verify-audio');
 
 
 

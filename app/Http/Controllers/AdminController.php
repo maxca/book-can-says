@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BookAudio;
 use App\Books;
 use App\Http\Requests\AdminUpdateBookRequest;
 use Illuminate\Http\Request;
@@ -20,6 +21,13 @@ class AdminController extends Controller
     public function updateBook(AdminUpdateBookRequest $request, $bookId)
     {
         $book = Books::find($bookId);
+        $book->update($request->all());
+        return $book;
+    }
+
+    public function updateAudio(AdminUpdateBookRequest $request, $audioId)
+    {
+        $book = BookAudio::find($audioId);
         $book->update($request->all());
         return $book;
     }

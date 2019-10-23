@@ -44,7 +44,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$book->id}}">
+                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$book->id}}" style="width: 57%">
                                     <i class="fa fa-book"></i>
                                     เผยแพร่
                                 </button>

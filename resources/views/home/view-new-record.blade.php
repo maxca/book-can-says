@@ -14,15 +14,15 @@
                 <div class="card">
                     <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                     <div class="card-body">
-                        <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">Record
+                        <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">เริ่มอัด
                         </button>
                         <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();" disabled>
-                            Pause
+                            หยุดพัก
                         </button>
                         <button id="stopButton" class="btn btn-secondary" onclick="CountDown.resetStopwatch();"
-                                disabled>Stop
+                                disabled>หยุด
                         </button>
-                        <div id="formats">Format: start recording to see sample rate</div>
+                        <div id="formats">กดเริ่มเพื่ออัดเสียง</div>
                     </div>
                     <ul id="recordingsList" class="list-group"></ul>
                 </div>

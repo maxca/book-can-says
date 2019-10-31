@@ -4,9 +4,9 @@
 
 @section('contents')
     <div class="container">
+{{--        {{dd($book)}}--}}
         <div class="container-inline border p-4">
             <div class="row">
-
                 <div class="col">
                     <div class="media">
                         <img class="img-thumbnail rounded" src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}" alt="" width="150" height="150">

@@ -26,7 +26,8 @@ class BookAudio extends Model
         'path',
         'total_page',
         'sub_book_chap',
-        'amoung_listening'
+        'amoung_listening',
+        'status'
     ];
 
     /**
@@ -36,4 +37,7 @@ class BookAudio extends Model
     {
         return $this->hasMany(BookChapter::class, 'id', 'book_chap_id');
     }
+
+
+
 }

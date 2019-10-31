@@ -4,13 +4,6 @@
 
 @section('contents')
     <div class="container">
-        @if (session('alert'))
-            <div class="alert alert-success">
-                {{ session('alert') }}
-            </div>
-        @endif
-
-
         <div class="card">
             <div class="card-header" style="color: #1f1f1f">
                 <h3 class="card-title">จัดการหนังสือ</h3>
@@ -63,10 +56,10 @@
 
                             <td class="text-right">
                                 <a href="{{route('verify-audio',['id' => $book->id])}}">
-                                    <button class="btn btn-dark ">
-                                        <i class="fa fa-cog"></i>
-                                        จัดการเสียง
-                                    </button>
+                                <button class="btn btn-dark ">
+                                    <i class="fa fa-cog"></i>
+                                    จัดการเสียง
+                                </button>
                                 </a>
                             </td>
                         </tr>
@@ -107,7 +100,6 @@
         updateBook($(this).data('book_id'), 'publisher')
     })
 
-
     function updateBook(bookId, status) {
         $.LoadingOverlay('hide')
         $.post(route + bookId, {publish_status: status}, function (response) {
@@ -115,8 +107,7 @@
             window.location.reload()
         }, 'json')
     }
-
-    </script>
+</script>
 @endpush
 
 <style>

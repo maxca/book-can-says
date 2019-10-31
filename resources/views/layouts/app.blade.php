@@ -53,9 +53,6 @@
                                 @endforeach
                             </select>
                         </a>
-
-
-
                     </li>
 
                     <li class="nav-item">
@@ -105,6 +102,7 @@
                                     จัดการหนังสือ
                                 </a>
 
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -119,8 +117,10 @@
                         </li>
                         @if(auth()->user()->role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.books')}}">การเผยแพร่</a>
+                                <a class="nav-link" href="{{ route('admin.books') }}">การเผยแพร่</a>
                             </li>
+
+
                         @endif
                     @endguest
                 </ul>

@@ -17,10 +17,9 @@
     <section>
         <div class="container">
 
-            @foreach($books->chunk(4) as  $cards)
-
+            @foreach($books->chunk(4) as $rows)
                 <div class="row">
-                    @foreach($cards as $key => $book)
+                    @foreach($rows as $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <a href="{{route('show.book.detail',['id' => $book->id])}}" data-toggle="tooltip" title="ฟังหนังสือเสียงออนไลน์!">

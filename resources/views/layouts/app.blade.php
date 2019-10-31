@@ -46,15 +46,16 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ประเภทหนังสือ
+                            <select name="category" class="form-control" id="exampleFormControlSelect2"
+                                    value="{{old('category')}}">
+                                @foreach ($bookcat_array as $data)
+                                    <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                                @endforeach
+                            </select>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">สังคม</a>
-                            <a class="dropdown-item" href="#">การเมือง</a>
-                            <a class="dropdown-item" href="#">นิยาย</a>
-                            <a class="dropdown-item" href="#">เทคโนโลยี</a>
-                            <a class="dropdown-item" href="#">เเกม</a>
-                        </div>
+
+
+
                     </li>
 
                     <li class="nav-item">
@@ -62,15 +63,24 @@
                     </li>
 
 
-
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>
+                <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+                    <div class="input-group">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="ค้นหา"
+                               aria-label="Search">
+                        <span class="input-group-prepend">
+                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">ค้นหา</button>
+                        </span>
+                    </div>
                 </form>
 
+            {{--                <form class="form-inline my-2 my-lg-0">--}}
+            {{--                    <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search">--}}
+            {{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>--}}
+            {{--                </form>--}}
 
-                <!-- Right Side Of Navbar -->
+
+            <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
@@ -92,7 +102,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ url('/view-book-list') }}">
-                                   จัดการหนังสือ
+                                    จัดการหนังสือ
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

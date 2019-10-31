@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         #\Samark\CustomRoute\CustomRouteServiceProvider::class,
+        App\Providers\DynamicClassServiceProvider::class,
 
     ],
 

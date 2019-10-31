@@ -93,3 +93,8 @@ Route::get('login/google/callback', 'Auth\GoogleLoginController@handleProviderCa
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/search','BookController@search');
+
+Route::get('/view-book-category/ท่องเที่ยว','BookController@viewCategory');
+

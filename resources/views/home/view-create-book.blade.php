@@ -1,11 +1,14 @@
-
-
 @extends('template.body')
 
 
 @section('contents')
 
     <div class="jumbotron" xmlns="http://www.w3.org/1999/html">
+
+    </div>
+
+    <section>
+
         <div class="container">
             <h1 class="display-4">Book can says</h1>
             <p class="lead">หนังสือเป็นเพื่อนที่เงียบและมั่นคงมากที่สุด เป็นที่ปรึกษาที่เข้าถึงได้ง่ายและรอบรู้ที่สุด
@@ -15,11 +18,7 @@
             <a class="btn btn-primary btn-lg" href="#" role="button">ตัวอย่างหนังสือเสียง</a>
         </div>
 
-    </div>
-
-    <section>
         <div class="container">
-
             @foreach($books->chunk(4) as  $cards)
                 <section class="row">
                     @foreach($cards as $key => $book)

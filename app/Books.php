@@ -25,7 +25,6 @@ class Books extends Model
 
     ];
 
-
     public function favorite()
     {
         return $this->belongsTo(Favai, 'favorite_id');
@@ -66,6 +65,7 @@ class Books extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
 
 
 }

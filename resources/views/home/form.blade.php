@@ -12,11 +12,11 @@
                         <input type="text" name="name" class="form-control" id="exampleInputEmail1"
                                aria-describedby="emailHelp"
                                placeholder="Enter book name" value="{{old('name')}}">
-
                         @if($errors->has('name'))
                             <div class="alert alert-danger">{{$errors->first('name')}}</div>
                         @endif
                     </div>
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">Publisher</label>
                         <input name="publisher_name" type="text" class="form-control" id="exampleInputPassword1"
@@ -41,10 +41,10 @@
                         <label for="exampleFormControlSelect2">Category</label>
                         <select name="category" class="form-control" id="exampleFormControlSelect2"
                                 value="{{old('category')}}">
-                            <option value="ท่องเที่ยว">ท่องเที่ยว</option>
-                            <option value="เกษตร">เกษตร</option>
-                            <option value="กีฬา">กีฬา</option>
-                            <option value="อาหาร">อาหาร</option>
+                            @foreach ($bookcat_array as $data)
+                                <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                            @endforeach
+
 
                         </select>
                         @if($errors->has('category'))

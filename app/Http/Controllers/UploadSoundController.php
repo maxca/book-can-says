@@ -46,13 +46,12 @@ class UploadSoundController extends Controller
             'chapter_name'     => $request->get('chapter_name'),
             'path'             => $soundPath,
             'total_page'       => $request->get('total_page'),
-            'sub_book_chap'    => "gg",
-            'amoung_listening' => 1
+            'sub_book_chap'    => 'lan wang ji',
+            'amoung_listening' => 1,
 
 
         );
 
-        dd($data);
 
 
         return BookAudio::updateOrCreate([

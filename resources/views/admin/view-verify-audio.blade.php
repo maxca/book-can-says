@@ -45,7 +45,8 @@
 
                             <td class="text-right">
                                 <audio controls>
-                                    <source  src="{{asset('public/sounds/'.$audio->path)}}" type="audio/wav">
+
+                                    <source  src="{{route('get.sound', ['file_name' =>  $audio->path])}}" type="audio/wav">
                                     Your browser does not support the audio element.
                                 </audio>
 
@@ -62,13 +63,13 @@
 
                             </td>
                             <td class="text-right">
-                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$audio->id}}" style="width: 77%" >
+                                <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
                                     <i class="fa fa-book" ></i>
                                     เผยแพร่
                                 </button>
 
 
-                                <button class="btn btn-danger btn-sm unpublish" data-book_id="{{$audio->id}}">
+                                <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">
                                     <i class="fa fa-trash"></i>
                                     ไม่เผยแพร่
                                 </button>
@@ -101,21 +102,22 @@
 
 @push('scripts-after')
 <script>
+
     var route = "{{url('admin/audio')}}/"
     $('.inactive').on('click', function () {
-        console.log($(this).data('id'))
+        console.log($(this).data('book_id'))
         $.LoadingOverlay('show')
-        updateBook($(this).data('id'), 'inactive')
+        updateAudio($(this).data('book_id'), 'inactive')
     })
     $(".active").on('click', function () {
         $.LoadingOverlay('show')
-        console.log($(this).data('id'))
-        updateBook($(this).data('id'), 'active')
+        console.log($(this).data('book_id'))
+        updateAudio($(this).data('book_id'), 'active')
     })
 
-    function updateBook($audioId, status) {
+    function updateAudio(audioId, status) {
         $.LoadingOverlay('hide')
-        $.post(route + $audioId, {status: status}, function (response) {
+        $.post(route + audioId, {status: status}, function (response) {
             console.log(response)
             window.location.reload()
         }, 'json')

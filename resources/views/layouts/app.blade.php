@@ -53,7 +53,7 @@
                             <a class="dropdown-item" href="#">การเมือง</a>
                             <a class="dropdown-item" href="#">นิยาย</a>
                             <a class="dropdown-item" href="#">เทคโนโลยี</a>
-                            <a class="dropdown-item" href="#">เเกม</a>
+                            <a class="dropdown-item" href="#">เกม</a>
                         </div>
                     </li>
 
@@ -95,9 +95,6 @@
                                    จัดการหนังสือ
                                 </a>
 
-                                <a class="dropdown-item" href="{{ url('/view-audio-list') }}">
-                                    จัดการเสียง
-                                </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -113,13 +110,9 @@
                         </li>
                         @if(auth()->user()->role == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('admin.books')}}">การเผยแพร่</a>
+                                <a class="nav-link" href="{{ route('admin.books') }}">การเผยแพร่</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="dropdown-item" href="{{ url('/view-audio-list') }}">
-                                    จัดการเสียง
-                                </a>
-                            </li>
+
 
                         @endif
                     @endguest

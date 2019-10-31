@@ -14,6 +14,7 @@ use App\Books;
 use App\Http\Requests\SubmitFormCreateBookRequest;
 use App\Http\Controllers\UploadSoundController;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 class BookController extends Controller
 {
@@ -98,9 +99,9 @@ class BookController extends Controller
 
         Books::create($data);
         if (auth()->user()->role == 'admin') {
-            return redirect()->route('admin.books');
+            return redirect()->route('admin.books')->with('alert','สร้างข้อมูลหนังสือสำเร็จ');
         } else {
-            return redirect()->route('home.view-book-list');
+            return redirect()->route('home.view-book-list')->with('alert','สร้างข้อมูลหนังสือสำเร็จ');
         }
 
     }
@@ -121,14 +122,17 @@ class BookController extends Controller
     {
         $data = Books::find($request->id);
         //dd($request->all());
-        return view('home.vvv',['data'=>$data]);
+        return view('home.view-edit-form',['data'=>$data]);
     }
-
-    public function aaa(EditBookFormRequest $request)
+    public function updateEditBook(EditBookFormRequest $request)
     {
-        return view('home.vvv');
+        //dd($request->id);
+        $data = Books::find($request->id);
+        $data->update($request->all());
 
+        return redirect()->route('home.view-book-list')->with('alert','แก้ไขข้อมูลหนังสือสำเร็จ');
     }
+
 
     public function submitEditBook(EditBookFormRequest $request)
     {
@@ -157,8 +161,10 @@ class BookController extends Controller
 
     public function deleteBook(DeleteBookRequest $request)
     {
-        Books::find($request->id)->delete();
-        return redirect()->route('home.view-book-list')->with('ลบหนังสือสำเร็จ','หนังสือของคุณได้ถูกลบแล้ว');
+        $books = Books::find($request->id)->delete();
+
+
+        return redirect()->route('home.view-book-list')->with('alert','ลบข้อมูลหนังสือสำเร็จ');
     }
 
     public function recordAudio()
@@ -177,7 +183,7 @@ class BookController extends Controller
             ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
-        return view('home.view-book-list', $data);
+        return view('admin.view-book-list', $data);
     }
 
 

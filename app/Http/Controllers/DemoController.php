@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BookAudio;
 use App\Books;
 use App\Http\Requests\PlaySoundBookRequest;
 use App\Http\Requests\ReviewBookRequest;
@@ -28,12 +29,16 @@ class DemoController extends Controller
     public function viewBookDetail(ViewBookDetailRequest $request, $bookId)
     {
         $sound = $this->playSound->getJsonDataForPlugin($bookId);
-        $book = Books::where('id', $bookId)->with(['category', 'publisher', 'authors', 'chapter', 'review','audio'])->first();
-//        return $book;
+        $book = Books::where('books.id', $bookId)->first();
+        $bookAudio = BookAudio::all()
+            ->where('book_id', '=', $bookId)
+            ->where('status','=','active');
+        $book->audio = $bookAudio;
         return view('demo.book-detail')
             ->with(['book' => $book])
             ->with(['sound' => $sound]);
     }
+
 
     public function viewBookCategory(ViewBookCategoryRequest $request)
     {
@@ -43,7 +48,7 @@ class DemoController extends Controller
     public function viewAudioList()
     {
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->where('user_id',auth()->user()->id)
+            ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
         return view('home.view-audio-list', $data);
@@ -51,13 +56,12 @@ class DemoController extends Controller
 
     public function viewVerifyAudio()
     {
-        $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter', 'review','audio'])
-            ->where('user_id',auth()->user()->id)
+        $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter', 'review', 'audio'])
+            ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
-       return view('home.view-verify-audio', $data);
+        return view('admin.view-verify-audio', $data);
     }
-
 
 
     public function playSoundBook(PlaySoundBookRequest $request)

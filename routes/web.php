@@ -45,8 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /*แก้ไขหนังสือ*/
     Route::get('/view-edit-form', 'BookController@viewFormEditBook')->name('edit');
-    Route::get('/vvv', 'BookController@aaa');
-    Route::post('/edit-book','BookController@submitEditBook');
+    Route::post('/edit-book','BookController@updateEditBook');
 
     /*ลบหนังสือ*/
     Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
@@ -56,6 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /*จัดการเสียง*/
     Route::get('/view-audio-list','DemoController@viewAudioList')->name('home.view-audio-list');
+    Route::get('/view-verify-audio','DemoController@viewVerifyAudio')->name('verify-audio');
 
 
 

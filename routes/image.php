@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/render/images/', 'ImageController@index')->name('render.img');
+Route::get('/sound', 'ImageController@index')->name('get.sound');
 Route::get('/render/download/', 'ImageController@download')->name('render.download');
 Route::get('/image/test', 'ImageController@testView')->name('render.test');
 

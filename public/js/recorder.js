@@ -122,14 +122,11 @@ function createDownloadLink(blob) {
     var li2 = document.createElement('li');
     var li3 = document.createElement('li');
     var li4 = document.createElement('li');
-    var li5 = document.createElement('li');
-
 
     var link = document.createElement('a');
     var ptag = document.createElement('p');
     var inputTextChapterName = document.createElement('input')
     var inputTextTotalPage = document.createElement('input')
-    var inputTextSubChap = document.createElement('input')
     var formInput = document.createElement('form')
 
     var listInputPage = document.createElement('li');
@@ -150,13 +147,6 @@ function createDownloadLink(blob) {
     inputTextTotalPage.placeholder = "จำนวนหน้า"
     inputTextTotalPage.setAttribute('id', 'total_page_' + time)
 
-    // create input text sub chap
-    inputTextSubChap.name = "sub_book_chap"
-    inputTextSubChap.type = "text"
-    inputTextSubChap.className = "form-control"
-    inputTextSubChap.placeholder = "บทย่อย"
-    inputTextSubChap.setAttribute('id', 'sub_book_chap_' + time)
-
     //name of .wav file to use during upload and download (without extendion)
     var filename = new Date().toISOString();
 
@@ -175,15 +165,12 @@ function createDownloadLink(blob) {
     li2.setAttribute('class', 'list-group-item list-group-item-action');
     li3.setAttribute('class', 'list-group-item list-group-item-action');
     li4.setAttribute('class', 'list-group-item list-group-item-warning');
-    li5.setAttribute('class', 'list-group-item list-group-item-warning');
     listInputPage.setAttribute('class', 'list-group-item');
 
     // add input chapter name
     // add input text
     li.appendChild(formInput.appendChild(inputTextChapterName))
     listInputPage.appendChild(inputTextTotalPage)
-    listInputPage.appendChild(inputTextSubChap)
-
 
     //add the new audio element to li
     li2.appendChild(ptag.appendChild(au));
@@ -193,9 +180,6 @@ function createDownloadLink(blob) {
 
     //add the save to disk link to li
     li4.appendChild(ptag.appendChild(link));
-
-    //add the save to disk link to li
-    li5.appendChild(ptag.appendChild(link));
 
 
     //upload link
@@ -212,8 +196,6 @@ function createDownloadLink(blob) {
         console.log(key)
         var chapter = document.getElementById('chapter_name_' + key).value
         var totalPage = document.getElementById('total_page_' + key).value
-        var subChap = document.getElementById('sub_book_chap_' + key).value
-
         if (chapter == '') {
             alert('กรุณากรอกชื่อบท')
             document.getElementById('chapter_name_' + key).focus()
@@ -224,15 +206,8 @@ function createDownloadLink(blob) {
             document.getElementById('total_page_' + key).focus()
             return false
         }
-        if (subChap == '') {
-            alert('กรุณากรอกจำนวนหน้า')
-            document.getElementById('sub_book_chap_' + key).focus()
-            return false
-        }
         console.log(chapter)
         console.log(totalPage)
-        console.log(subChap)
-
 
         $.LoadingOverlay('show')
         var xhr = new XMLHttpRequest();
@@ -249,7 +224,7 @@ function createDownloadLink(blob) {
         fd.append("audio_data", blob, filename);
         fd.append("book_id", getQueryString('book_id'))
         fd.append("chapter_name", chapter)
-        fd.append("sub_book_chap", subChap)
+        fd.append("total_page", totalPage)
         // uploadUrlSoundUrl form set on .blade file
         // section script
         xhr.open("POST", uploadUrlSoundUrl, true);
@@ -264,9 +239,6 @@ function createDownloadLink(blob) {
     li4.appendChild(document.createTextNode(" "))//add a space in between
     li4.appendChild(upload)//add the upload link to li
 
-    li5.appendChild(document.createTextNode(" "))//add a space in between
-    li5.appendChild(upload)//add the upload link to li
-
 
     //add the li element to the ol
 
@@ -275,8 +247,6 @@ function createDownloadLink(blob) {
     recordingsList.appendChild(li2);
     recordingsList.appendChild(li3);
     recordingsList.appendChild(li4);
-    recordingsList.appendChild(li5);
-
 }
 
 function getQueryString(key) {

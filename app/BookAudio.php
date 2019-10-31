@@ -37,4 +37,7 @@ class BookAudio extends Model
     {
         return $this->hasMany(BookChapter::class, 'id', 'book_chap_id');
     }
+
+
+
 }

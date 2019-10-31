@@ -27,9 +27,9 @@ class AdminController extends Controller
 
     public function updateAudio(AdminUpdateBookRequest $request, $audioId)
     {
-        $book = BookAudio::find($audioId);
-        $book->update($request->all());
-        return $book;
+        $data = BookAudio::find($audioId);
+        $data->update($request->all());
+        return $data;
     }
 
 }

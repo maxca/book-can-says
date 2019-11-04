@@ -15,6 +15,7 @@ use App\Http\Requests\SubmitFormCreateBookRequest;
 use App\Http\Controllers\UploadSoundController;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Providers\SweetAlertServiceProvider;
 
 class BookController extends Controller
 {

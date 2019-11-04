@@ -1,0 +1,91 @@
+@import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
+
+
+
+body.is-dark-mode,
+.post.is-dark-mode {
+    background-color: #1d2124;
+}
+
+body, .post {
+    background-color: white;
+}
+
+.card{
+    width: 18rem;
+    table-layout:fixed;
+    overflow:hidden;
+    word-wrap:break-word;
+}
+
+.card-title{
+    font-size: 24px;
+}
+
+
+
+.container{
+    font-family: 'Kanit', sans-serif;
+}
+
+.book-cover {
+    width:100%;
+    height: 230px;
+}
+.card-text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+
+}
+.card{
+    width: 18rem;
+    table-layout:fixed;
+    overflow:hidden;
+    word-wrap:break-word;
+}
+
+.mb-4, .my-4{
+    margin: 50px 40px 40px 40px;
+
+}
+.row{
+    align-items: center;
+}
+.dropdown{
+    align-items: center;
+    background-color: transparent;
+}
+
+.btn-secondary{
+    margin: 60px 40px 40px 40px;
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    font-size: 24px;
+}
+
+.dropdown-item{
+    color: black;
+    background-color: transparent;
+    border: transparent;
+    font-size: 20px;
+}
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 300px;
+    vertical-align: middle;
+}
+
+.adjust{
+    font-size:100px;
+    color: white;
+}
+
+.A{
+    background: transparent;
+    border: transparent;
+    color: white;
+}

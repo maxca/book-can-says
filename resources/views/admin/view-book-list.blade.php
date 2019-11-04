@@ -113,6 +113,9 @@
 
 <style>
 
+    .table{
+        margin-top: 30px;
+    }
     #id_confrmdiv {
         display: none;
         background-color: #eee;

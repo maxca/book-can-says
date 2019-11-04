@@ -81,6 +81,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+Route::get('view-blind-d', 'BookController@switchModes')->name('home.view-blind-d');
+
+
 Route::get('facebook', 'facebookController@facebookLogin');
 Route::get('callback-url', 'facebookController@callBack');
 

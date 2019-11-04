@@ -15,6 +15,7 @@ class AdminController extends Controller
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+//        dd($data);
         return view('admin.manage-book')->with($data);
     }
 

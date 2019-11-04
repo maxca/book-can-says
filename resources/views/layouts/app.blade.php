@@ -24,7 +24,6 @@
 <body>
 <div id="app">
 
-
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="/">
@@ -153,5 +152,12 @@
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+    $( '#app .navbar-nav a' ).on( 'click', function () {
+        $( '#app .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+        $( this ).parent( 'li' ).addClass( 'active' );
+    });
+
 </script>
+
 </html>

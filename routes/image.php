@@ -20,3 +20,4 @@ Route::group(['prefix' => 'demo/book'], function ($router) {
     $router->get('/review','DemoController@reviewBook');
 });
 
+Route::get('/test-player', 'DemoController@testPlayer')->name('demo.testPlayer');

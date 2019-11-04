@@ -19,7 +19,7 @@
                         <th style="width: 10%">ชื่อผู้อ่าน</th>
                         <th style="width: 10%">ชื่อตอน</th>
                         <th style="width: 10%">ชื่อตอนย่อย</th>
-                        <th class="text-center" style="width: 35%">จัดการเสียง</th>
+                        <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
                         <th class="text-center" style="width: 15%">การเผยแพร่</th>
 
@@ -28,32 +28,33 @@
                     <tbody>
                     @php $count = $books->firstItem(); @endphp
                     @foreach($books as $key => $book)
+
                         @foreach($book->audio as $audio)
 
                             <tr>
-                            <td>{{( $count++)}}.</td>
-                            <td>{{$book->name}}</td>
-                            <td>{{$book->authors->first()->name}}</td>
-                            <td>{{$book->user->name ?? ''}}</td>
-                            <td>
+                                <td>{{( $count++)}}.</td>
+                                <td>{{$book->name}}</td>
+                                <td>{{$book->authors->first()->name}}</td>
+                                <td>{{$book->user->name ?? ''}}</td>
+                                <td>
                                     <span class="chapter-name">{{$audio->chapter_name}}</span>
 
-                            </td>
-                            <td>
+                                </td>
+                                <td>
                                     <span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>
-                            </td>
+                                </td>
 
-                            <td class="text-right">
-                                <audio controls>
+                                <td class="text-right">
+                                    <audio controls>
 
-                                    <source  src="{{route('get.sound', ['file_name' =>  $audio->path])}}" type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
+                                        <source  src="{{route('get.sound', ['file_name' =>  $audio->path])}}" type="audio/wav">
+                                        Your browser does not support the audio element.
+                                    </audio>
 
 
-                            </td>
+                                </td>
 
-                            <td>
+                                <td>
 
                                     @if($audio->status == 'active')
                                         <span class="badge-pill badge badge-success">เผยแพร่</span>
@@ -61,23 +62,24 @@
                                         <span class="badge-pill badge badge-danger">ไม่เผยแพร่</span>
                                     @endif
 
-                            </td>
-                            <td class="text-right">
-                                <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
-                                    <i class="fa fa-book" ></i>
-                                    เผยแพร่
-                                </button>
+                                </td>
+
+                                <td class="text-right">
+                                    <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
+                                        <i class="fa fa-book" ></i>
+                                        เผยแพร่
+                                    </button>
 
 
-                                <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">
-                                    <i class="fa fa-trash"></i>
-                                    ไม่เผยแพร่
-                                </button>
-                            </td>
+                                    <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">
+                                        <i class="fa fa-trash"></i>
+                                        ไม่เผยแพร่
+                                    </button>
+                                </td>
                                 @endforeach
 
-                        </tr>
-                    @endforeach
+                            </tr>
+                        @endforeach
 
                     </tbody>
                 </table>

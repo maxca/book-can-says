@@ -60,9 +60,11 @@ class DemoController extends Controller
             ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+//        return $data;
+//        dd($data);
+
         return view('admin.view-verify-audio', $data);
     }
-
 
     public function playSoundBook(PlaySoundBookRequest $request)
     {
@@ -72,5 +74,9 @@ class DemoController extends Controller
     public function reviewBook(ReviewBookRequest $request)
     {
 
+    }
+
+    public function testPlayer(){
+        return view('demo.test-player');
     }
 }

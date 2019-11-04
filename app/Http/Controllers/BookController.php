@@ -30,6 +30,10 @@ class BookController extends Controller
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
+            ->wherehas('user', function ($query) {
+                $query->where('role','admin');
+            })
+//            ->where('book_categories_id','=','%'.$fliter.'%')
             //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
@@ -170,8 +174,7 @@ class BookController extends Controller
     {
 
         $books = Books::find($request->id)->delete();
-
-
+        BookAudio::where('book_id', $request->id)->delete();
         return redirect()->route('home.view-book-list')->with('alert','ลบข้อมูลหนังสือสำเร็จ');
     }
 
@@ -213,35 +216,20 @@ class BookController extends Controller
 
     }
 
-    public function viewCategory(){
-//        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-        $data['books'] = Books::where('books.id')->first()
-//        $bookAudio = BookAudio::all()
-            ->where('book_category_id',"=",'1')
-//        $book->audio = $bookAudio;
-//        return view('demo.book-detail')
-//            ->with(['book' => $book])
-//            ->with(['sound' => $sound]);
 
-//            Book::table('Books')
-//            ->join('book_categories','book_categories.id','books.id')
-//            ->where(' id','1')
-//            ->get()
 
-//        $data['books'] = DB::table('books')
-//            ->select('books.id','books.name','books.book_category_id')
-//            ->join('book_categories','book_categories.id','=','books.id')
-//            ->where('name','ท่องเที่ยว')
-//            ->get()
+    public function switchModes()
+    {
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
 
+            ->where('publish_status', 'publisher')
+//            ->where('user_id',auth()->user()->id)
 
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
-        return view("home.view-book", $data);
-        return view('admin.view-book-list', $data);
+        return view("home.view-blind-d", $data);
 
     }
-
 
 }

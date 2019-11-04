@@ -11,7 +11,8 @@ use App\Books;
 use App\Services\Uploads\UploadSound;
 use App\Http\Requests\UploadSoundRequest;
 use App\Http\Controllers\BookController;
-use http\Env\Request;
+//use http\Env\Request;
+use Illuminate\Http\Request;
 
 /**
  * Class UploadSoundController
@@ -41,20 +42,16 @@ class UploadSoundController extends Controller
     public function uploadAudioPath(UploadSoundRequest $request)
     {
         $soundPath = $this->uploadFile->upload();
-        $data      = array(
-            'book_id'          => $request->get('book_id'),
+        $data = array(
+            'book_id' => $request->get('book_id'),
             'book_category_id' => 1,
-            'book_chap_id'     => 1,
-            'chapter_name'     => $request->get('chapter_name'),
-            'path'             => $soundPath,
-            'total_page'       => $request->get('total_page'),
-            'sub_book_chap'    => 'lan wang ji',
+            'book_chap_id' => 1,
+            'chapter_name' => $request->get('chapter_name'),
+            'path' => $soundPath,
+            'total_page' => $request->get('total_page'),
+            'sub_book_chap' => 'lan wang ji',
             'amoung_listening' => 1,
-
-
         );
-
-
 
         return BookAudio::updateOrCreate([
             'book_id' => $request->book_id,
@@ -63,38 +60,38 @@ class UploadSoundController extends Controller
 
     }
 
-    public function uploadAudioOffline($request)
+    public function showUploadForm()
     {
-
-        if ($request->has('audio')) {
-            \Storage::disk('public')->put('sounds/', $request->file('audio'));
-            return $request->file('audio')
-                ->store('public');
-        }
-        return null;
-
-//        $this->validate($request,
-//            ['select_audio' => 'required|audio']);
-//        $audio = $request->file(' select_audio ');
-//        $new_name = rand() . '.' . $audio->getClientOriginalExtension();
-//        $audio->move(public_path('sound'), $new_name);
-//        return back()->with('success', ‘อัพโหลดไฟล์เรียบร้อยแล้ว’)->with('path', $new_name);
-
-
+        return view("home.view-new-record-offline");
     }
 
-    public function submitOfflineAudio(UploadSoundRequest $request)
+    public function uploadAudioOffline(Request $request)
     {
+//        if($request->hasFile('select_audio')){
+//            return $request->file->store('public/sounds');
+////            return 'yes';
+//        }
+
+        \Storage::disk('public')->put('sounds', $request->file('select_audio'));
+//        return $request->file->getCliantOriginalName();
+         return $request->file('select_audio')
+            ->store('public/sounds');
+    }
+
+    public function submitOfflineAudio(Request $request)
+    {
+//        dd($request->id);
+
         $soundPath = str_replace("public/", "", $this->uploadAudioOffline($request));
 //        $soundPath = $this->uploadFile->upload();
         $data = array(
-            'book_id' => $request->get('book_id'),
+            'book_id' => 1,
             'book_category_id' => 1,
             'book_chap_id' => 1,
             'chapter_name' => $request->get('chapter_name'),
             'path' => $soundPath,
             'total_page' => $request->get('total_page'),
-            'sub_book_chap' => "pimpim",
+            'sub_book_chap' => "wei wu xian",
             'amoung_listening' => 1,
         );
 

@@ -47,4 +47,5 @@
 </body>
 
 @include('template.footer')
+@include('sweetalert::alert')
 

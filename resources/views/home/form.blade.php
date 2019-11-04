@@ -1,6 +1,10 @@
 @extends('template.body')
 
 @section('contents')
+{{--    <script>--}}
+{{--        swal("สร้างหนังสือเรียบร้อย", "กดปุ่มเพื่อไปต่อ", "success");--}}
+{{--    </script>--}}
+
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -42,10 +46,8 @@
                         <select name="category" class="form-control" id="exampleFormControlSelect2"
                                 value="{{old('category')}}">
                             @foreach ($bookcat_array as $data)
-                                <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                                <option value="{{ $data->id }}">{{ $data->name }}</option>
                             @endforeach
-
-
                         </select>
                         @if($errors->has('category'))
                             <div class="alert alert-danger">{{$errors->first('category')}}</div>
@@ -79,20 +81,6 @@
                         @endif
                     </div>
 
-
-                    {{--<div class="form-check">--}}
-                    {{--<input  name="status" class="form-check-input" type="radio"  id="exampleRadios1" value="active" checked>--}}
-                    {{--<label class="form-check-label" for="exampleRadios1">--}}
-                    {{--Active--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-check">--}}
-                    {{--<input name="status" class="form-check-input" type="radio"  id="exampleRadios2" value="inactive">--}}
-                    {{--<label class="form-check-label" for="exampleRadios2">--}}
-                    {{--Inactive--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-
                     <div class="form-group">
                         <label for="exampleFormControlFile1">ใส่รูปภาพ</label>
                         <input type="file" name="cover_image" class="form-control-file" id="exampleFormControlFile1"
@@ -125,3 +113,5 @@
 
 
 @endsection
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

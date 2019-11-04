@@ -19,7 +19,7 @@
                         <th style="width: 10%">ชื่อผู้อ่าน</th>
                         <th style="width: 10%">ชื่อตอน</th>
                         <th style="width: 10%">ชื่อตอนย่อย</th>
-                        <th class="text-center" style="width: 35%">จัดการเสียง</th>
+                        <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
                         <th class="text-center" style="width: 15%">การเผยแพร่</th>
 
@@ -62,6 +62,7 @@
                                     @endif
 
                             </td>
+
                             <td class="text-right">
                                 <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
                                     <i class="fa fa-book" ></i>

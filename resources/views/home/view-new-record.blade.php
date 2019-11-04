@@ -14,9 +14,11 @@
                     <div class="card">
                         <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                         <div class="card-body">
-                            <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">เริ่มอัด
+                            <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">
+                                เริ่มอัด
                             </button>
-                            <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();" disabled>
+                            <button id="pauseButton" class="btn btn-secondary" onclick="CountDown.Timer.toggle();"
+                                    disabled>
                                 หยุดพัก
                             </button>
                             <button id="stopButton" class="btn btn-secondary" onclick="CountDown.resetStopwatch();"
@@ -52,6 +54,7 @@
             <div class="col-md-4 block">
                 <div class="circle">
                     <p>หรือ</p>
+                    <input type="button" value="Put Your Text Here" onclick="window.location.href='view-new-record-offline'" />
                 </div>
             </div>
         </div>
@@ -71,21 +74,47 @@
         {{--                    </div>--}}
         {{--                </div>--}}
 
+        <form action="{{url('/view-new-record-offline/upload')}}" method="post" enctype="multipart/form-data">
+            {{csrf_field()}}
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">อัพโหลดเสียงแบบออพไลน์</div>
+                    <div class="card-body">
+                        <input type="hidden" name="id" value="{{request('id')}}">
+                        <div><label>เลือกไฟล์เพื่ออัพโหลด</label></div>
+                        <div class="form-group">
+                            <input type="file" name="select_audio" id="select_audio" value="{{old('select_audio')}}">
+                        </div>
+                        <div class="form-group">
+                            <input name="chapter_name" type="text" class="form-control" placeholder="ชื่อบทที่อ่าน"
+                                   id="chapter_name">
+                        </div>
 
-        <table class="table">
-            <tr>
-                <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>
-                <td width="30"><input type="file" name="select_image"/></td>
-                <td width="30%" align="left">
-                    <input type="submit" name="upload" class="btn btn-primary"
-                           value="อัพโหลด"></td>
-            </tr>
-            <tr>
-                <td width="40%" align="right"></td>
-                <td width="30"><span class="text-muted">อัพโหลดเป็นไฟล์ .mp3 เท่านั้น!!</span></td>
-                <td width="30%" align="left"></td>
-            </tr>
-        </table>
+                        <div class="form-group">
+                            <input name="total_page" type="text" class="form-control" placeholder="จำนวนหน้า"
+                                   id="total_page">
+                        </div>
+                        <button type="submit" id="uploadOfflineButton" class="btn btn-danger">อัพโหลดเสียง</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        {{--        <table class="table">--}}
+        {{--            <tr>--}}
+        {{--                <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>--}}
+        {{--                <td width="30"><input type="file" name="select_image"/></td>--}}
+        {{--                <td width="30%" align="left">--}}
+        {{--                    <input type="submit" name="upload" class="btn btn-primary"--}}
+        {{--                           value="อัพโหลด"></td>--}}
+        {{--            </tr>--}}
+        {{--            <tr>--}}
+        {{--                <td width="40%" align="right"></td>--}}
+        {{--                <td width="30"><span class="text-muted">อัพโหลดเป็นไฟล์ .mp3 เท่านั้น!!</span></td>--}}
+        {{--                <td width="30%" align="left"></td>--}}
+        {{--            </tr>--}}
+        {{--        </table>--}}
 
     </div>
     </div>

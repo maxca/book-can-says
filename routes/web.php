@@ -45,30 +45,29 @@ Route::group(['middleware' => 'auth'], function () {
 
     /*แก้ไขหนังสือ*/
     Route::get('/view-edit-form', 'BookController@viewFormEditBook')->name('edit');
-    Route::post('/edit-book','BookController@updateEditBook');
+    Route::post('/edit-book', 'BookController@updateEditBook');
 
     /*ลบหนังสือ*/
-    Route::get('/delete-book','BookController@deleteBook')->name('delete.book');
+    Route::get('/delete-book', 'BookController@deleteBook')->name('delete.book');
 
     /*จัดการข้อมูลหนังสือ*/
-    Route::get('/view-book-list','BookController@viewBookList')->name('home.view-book-list');
+    Route::get('/view-book-list', 'BookController@viewBookList')->name('home.view-book-list');
 
     /*จัดการเสียง*/
-    Route::get('/view-audio-list','DemoController@viewAudioList')->name('home.view-audio-list');
-    Route::get('/view-verify-audio','DemoController@viewVerifyAudio')->name('verify-audio');
-
-
-
+    Route::get('/view-audio-list', 'DemoController@viewAudioList')->name('home.view-audio-list');
+    Route::get('/view-verify-audio', 'DemoController@viewVerifyAudio')->name('verify-audio');
 
 
     /*บันทึกเสียงที่อัด*/
     Route::post('/create-audio', 'UploadSoundController@uploadAudioPath');
 
 
-//upload sounds
+    //upload sounds online
     Route::group(['prefix' => 'view-new-record'], function () {
         Route::get('/', 'BookController@recordAudio')->name('view.book.record.sound');
+//        Route::get('/', 'BookController@uploadAudioOffline')->name('view.book.record.sound');
         Route::post('/upload', 'UploadSoundController@uploadAudioPath')->name('submit.upload.sound');
+//        Route::post('/uploadOffline', 'UploadSoundController@uploadAudioOffline')->name('submit.upload.sound');
     });
 
 
@@ -88,19 +87,21 @@ Route::get('callback-url', 'facebookController@callBack');
 Route::get('facebook', 'facebookController@facebookLogin');
 Route::get('callback-url', 'facebookController@callBack');
 
-
-Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
-
-Route::get('login/google', 'Auth\GoogleLoginController@redirectToProvider');
-Route::get('login/google/callback', 'Auth\GoogleLoginController@handleProviderCallback');
+//login social
+//Route::get('login/facebook', 'Auth\FacebookLoginController@redirectToProvider');
+//Route::get('login/facebook/callback', 'Auth\FacebookLoginController@handleProviderCallback');
+//
+//Route::get('login/google', 'Auth\GoogleLoginController@redirectToProvider');
+//Route::get('login/google/callback', 'Auth\GoogleLoginController@handleProviderCallback');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/search','BookController@search');
+Route::get('/search', 'BookController@search');
 
-Route::get('/view-book-category/ท่องเที่ยว','BookController@viewCategory');
+//upload sounds offline
+Route::get('/view-offline-upload', 'UploadSoundController@showUploadForm')->name('view-offline-upload.file');
+Route::post('/view-offline-upload', 'UploadSoundController@submitOfflineAudio');
 

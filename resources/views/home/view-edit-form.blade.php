@@ -31,12 +31,13 @@
 
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Category</label>
-                <select name="category" class="form-control" id="exampleFormControlSelect2">
-                    <option value="ท่องเที่ยว">ท่องเที่ยว</option>
-                    <option value="เกษตร">เกษตร</option>
-                    <option value="กีฬา">กีฬา</option>
-                    <option value="อาหาร">อาหาร</option>
+                <select name="category" class="form-control" id="exampleFormControlSelect2"
+                        value="{{old('category')}}">
+                    @foreach ($bookcat_array as $data)
+                        <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                    @endforeach
                 </select>
+
             </div>
 
 

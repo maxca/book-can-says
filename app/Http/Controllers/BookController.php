@@ -14,7 +14,7 @@ use App\Books;
 use App\Http\Requests\SubmitFormCreateBookRequest;
 use App\Http\Controllers\UploadSoundController;
 use Illuminate\Support\Facades\DB;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BookController extends Controller
 {
@@ -25,8 +25,29 @@ class BookController extends Controller
         return view("home.index");
     }
 
-    public function viewBook()
+    public function viewBook(Request $request)
     {
+//        $fliter = $request->get('category');
+//        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+//                ->where('publish_status', 'publisher')
+//            ->where('book_category_id','=',$fliter)
+//            //  ->where('user_id',auth()->user()->id)
+//            ->orderBy('created_at', 'DESC')
+//            ->paginate(12);
+////        return $data;
+//        return view("home.view-book", $data);
+
+        if ($request) {
+//            dd($request);
+//            $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+//                ->where('publish_status', 'publisher')
+////            ->where('book_categories_id','=','%'.$fliter.'%')
+//                //  ->where('user_id',auth()->user()->id)
+//                ->orderBy('created_at', 'DESC')
+//                ->paginate(12);
+////        return $data;
+//            return view("home.view-book", $data);
+
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
@@ -37,8 +58,21 @@ class BookController extends Controller
             //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+
+        } else {
+
+            $fliter = $request->get('category');
+            $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+                ->where('publish_status', 'publisher')
+                ->where('book_category_id', '=', $fliter)
+//                ->where('name','=','%'.$fliter.'%')
+                //  ->where('user_id',auth()->user()->id)
+                ->orderBy('created_at', 'DESC')
+                ->paginate(12);
 //        return $data;
-        return view("home.view-book", $data);
+            return view("home.view-book", $data);
+        }
+
 
     }
 
@@ -47,7 +81,6 @@ class BookController extends Controller
     {
 
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-
             ->where('publish_status', 'publisher')
 //            ->where('user_id',auth()->user()->id)
 
@@ -61,6 +94,7 @@ class BookController extends Controller
 
     public function viewFormCreateBook()
     {
+
         $data['category'] = BookCategory::all();
         return view('home.form')->with($data);
     }
@@ -85,15 +119,17 @@ class BookController extends Controller
 
     public function submitFormCreateBook(SubmitFormCreateBookRequest $request)
     {
+
+
         $path = str_replace("public/", "", $this->uploadImage($request));
         $pathPdf = str_replace("public/", "", $this->uploadPdf($request));
-        $category = BookCategory::create(['name' => $request->get('category')]);
+//        $category = BookCategory::create(['name' => $request->get('category')]);
         $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
         $author = BookAuthor::create(['name' => $request->get('author_name')]);
         $data = array(
             'name' => $request->get('name'),
             'user_id' => auth()->user()->id,
-            'book_category_id' => $category->id,
+            'book_category_id' => $request->get('category'),
             'book_publisher_id' => $publisher->id,
             'book_author_id' => $author->id,
             'total_chapter' => $request->get('total_chapter'),
@@ -104,11 +140,12 @@ class BookController extends Controller
 //            'status'             => $request->get('status')
         );
 
+
         Books::create($data);
         if (auth()->user()->role == 'admin') {
-            return redirect()->route('admin.books')->with('alert','สร้างข้อมูลหนังสือสำเร็จ');
+            return redirect()->route('admin.books')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
         } else {
-            return redirect()->route('home.view-book-list')->with('alert','สร้างข้อมูลหนังสือสำเร็จ');
+            return redirect()->route('home.view-book-list')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
         }
 
     }
@@ -128,34 +165,30 @@ class BookController extends Controller
     public function viewFormEditBook(EditBookFormRequest $request)
     {
         $data = Books::find($request->id);
-        //dd($request->all());
-//<<<<<<< HEAD
-//        return view('home.vvv', ['data' => $data]);
-//=======
-        return view('home.view-edit-form',['data'=>$data]);
-//>>>>>>> 18bb61e1c413070a071d0299d28736aaf179d669
+
+        return view('home.view-edit-form', ['data' => $data]);
+
     }
+
     public function updateEditBook(EditBookFormRequest $request)
     {
         //dd($request->id);
         $data = Books::find($request->id);
         $data->update($request->all());
 
-        return redirect()->route('home.view-book-list')->with('alert','แก้ไขข้อมูลหนังสือสำเร็จ');
+        return redirect()->route('home.view-book-list')->with('success', 'แก้ไขข้อมูลหนังสือสำเร็จ');
     }
 
 
     public function submitEditBook(EditBookFormRequest $request)
     {
-
-
         $path = str_replace("public/", "", $this->uploadImage($request));
-        $category = BookCategory::create(['name' => $request->get('category')]);
+//        $category = BookCategory::create(['name' => $request->get('category')]);
         $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
         $author = BookAuthor::create(['name' => $request->get('author_name')]);
 
         $data = array(
-            'book_categories_id' => $category->id,
+            'book_categories_id' => $request->get('category'),
             'book_author_id' => $publisher->id,
             'book_publisher_id' => $author->id,
             'name' => $request->get('name'),
@@ -165,6 +198,8 @@ class BookController extends Controller
             'description' => $request->get('description'),
             'status' => $request->get('status')
         );
+
+        Alert::success('Success Title', 'Success Message');
 
         Books::find($request->id)->update($data);
         return redirect()->route('home.view-book-list');
@@ -176,6 +211,7 @@ class BookController extends Controller
         $books = Books::find($request->id)->delete();
         BookAudio::where('book_id', $request->id)->delete();
         return redirect()->route('home.view-book-list')->with('alert','ลบข้อมูลหนังสือสำเร็จ');
+
     }
 
     public function recordAudio()
@@ -191,7 +227,7 @@ class BookController extends Controller
     public function viewBookList()
     {
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->where('user_id',auth()->user()->id)
+            ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
         return view('admin.view-book-list', $data);
@@ -202,13 +238,8 @@ class BookController extends Controller
     {
         $search = $request->get('search');
 //        $posts = Books::table('posts')
-
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->where('name','like','%'.$search.'%')
-//            ->where('book_author_id','like','%'.$search.'%')
-//            ->where('name','like','%'.$search.'%')
-//            ->where('name','like','%'.$search.'%')
-
+            ->where('name', 'like', '%' . $search . '%')
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
@@ -217,8 +248,7 @@ class BookController extends Controller
     }
 
 
-
-    public function switchModes()
+  public function switchModes()
     {
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
 

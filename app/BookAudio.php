@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class BookAudio
@@ -21,6 +22,7 @@ class BookAudio extends Model
     protected $fillable = [
         'id',
         'book_id',
+        'user_id',
         'book_chap_id',
         'chapter_name',
         'path',
@@ -31,13 +33,17 @@ class BookAudio extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function chapther()
     {
         return $this->hasMany(BookChapter::class, 'id', 'book_chap_id');
     }
 
+    public function reader()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 
 
 }

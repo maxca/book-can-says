@@ -23,8 +23,7 @@
         <div class="form-group">
             <label for="exampleFormControlSelect2">Category</label>
             <select name="category"  class="form-control" id="exampleFormControlSelect2">
-                <option value="ท่องเที่ยว">ท่องเที่ยว</option>
-                <option value="เกษตร">เกษตร</option>
+                <option value="ท่องเที่ยว">ท่องเที่ยว</option'                <option value="เกษตร">เกษตร</option>
                 <option value="กีฬา">กีฬา</option>
                 <option value="อาหาร">อาหาร</option>
 

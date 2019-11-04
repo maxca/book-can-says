@@ -43,15 +43,18 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <select name="category" class="form-control" id="exampleFormControlSelect2"
-                                    value="{{old('category')}}">
+{{--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
+{{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+
+                        <form class="form-inline my-2 my-lg-0" action="/view-book" method="get" id="category">
+                            <select name="category" class="form-control" onchange="getSelectValue()">
+                                <option value="0" href="/view-book/"> หมวดหมู่หนังสือ </option>
                                 @foreach ($bookcat_array as $data)
-                                    <option value="{{ $data->id }}" >{{ $data->name }}</option>
+                                    <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
                                 @endforeach
                             </select>
-                        </a>
+                        </form>
+{{--                        </a>--}}
                     </li>
 
                     <li class="nav-item">
@@ -119,7 +122,6 @@
                                 <a class="nav-link" href="{{ route('admin.books') }}">การเผยแพร่</a>
                             </li>
 
-
                         @endif
                     @endguest
                 </ul>
@@ -153,11 +155,18 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    $( '#app .navbar-nav a' ).on( 'click', function () {
-        $( '#app .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
-        $( this ).parent( 'li' ).addClass( 'active' );
-    });
+//    $( '#app .navbar-nav a' ).on( 'click', function () {
+//        $( '#app .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+//        $( this ).parent( 'li' ).addClass( 'active' );
+//    });
 
 </script>
 
+<script>
+    function getSelectValue(){
+        var selectValue = document.getElementById("category").value;
+        console.log(selectValue);
+        document.querySelector("#category").submit()
+    }
+</script>
 </html>

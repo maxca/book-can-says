@@ -64,11 +64,11 @@
 
                                 </td>
 
-                                <td class="text-right">
-                                    <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
-                                        <i class="fa fa-book" ></i>
-                                        เผยแพร่
-                                    </button>
+                            <td class="text-right">
+                                <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
+                                    <i class="fa fa-book" ></i>
+                                    เผยแพร่
+                                </button>
 
 
                                     <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">

@@ -37,6 +37,7 @@ class DemoController extends Controller
         return view('demo.book-detail')
             ->with(['book' => $book])
             ->with(['sound' => $sound]);
+//            ->with(['playlist' => $sound]);
     }
 
 

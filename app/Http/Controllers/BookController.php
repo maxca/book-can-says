@@ -58,6 +58,7 @@ class BookController extends Controller
             //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+        return view("home.view-book", $data);
 
         } else {
 
@@ -143,9 +144,9 @@ class BookController extends Controller
 
         Books::create($data);
         if (auth()->user()->role == 'admin') {
-            return redirect()->route('admin.books')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
+            return redirect()->route('admin.books')->with('alert', 'สร้างข้อมูลหนังสือสำเร็จ');
         } else {
-            return redirect()->route('home.view-book-list')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
+            return redirect()->route('home.view-book-list')->with('alert', 'สร้างข้อมูลหนังสือสำเร็จ');
         }
 
     }

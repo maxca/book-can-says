@@ -35,7 +35,7 @@
         <div class="col-1"></div>
         <div class="col-9">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo asset('img/logo.svg'); ?>" width="45" height="45" alt="Book can says">
+                <img src="<?php echo asset('img/logo.svg'); ?>" width="45" height="45" alt="กลับหน้าหลัก">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -47,13 +47,13 @@
 
 
             <div class="col-1 col-md-1">
-                <button class="fa fa-font A " aria-label="เพิ่มขนาดตัวหนังสือ" type="button" data-toggle="tooltip"
+                <button class="fa fa-font A " alt="เพิ่มขนาดตัวหนังสือ" type="button" data-toggle="tooltip"
                         title="เพิ่มขนาดตัวหนังสือ!"
                         onclick="tsw_demo_change_font_size();"></button>
             </div>
             <div class="col-1 col-md-1">
                 <a class="btn" href="/view-blind">
-                    <button class="fa fa-adjust A" aria-label="โหลดกลางคืน"
+                    <button class="fa fa-adjust A" alt="โหลดกลางคืน"
                             type="button" data-toggle="tooltip" title="โหลดกลางคืน!"></button>
                 </a>
             </div>

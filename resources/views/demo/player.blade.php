@@ -27,7 +27,7 @@
             <div id="player-controls">
                 <div class="control">
                     <div class="button" id="play-previous">
-                        <i class="fa fa-backward" aria-label="ตอนก่อนหน้า"></i>
+                        <i class="fa fa-backward" aria-label="กดสองครั้งเพื่อตอนก่อนหน้า"></i>
                     </div>
                 </div>
                 <div class="control">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="control">
                     <div class="button" id="play-next">
-                        <i class="fa fa-forward" aria-label="ตอนถัดไป"></i>
+                        <i class="fa fa-forward" aria-label="กดสองครั้งเพื่อไปตอนถัดไป"></i>
                     </div>
                 </div>
             </div>

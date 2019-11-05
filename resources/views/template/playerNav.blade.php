@@ -29,8 +29,8 @@
 <div id="app">
 
     <nav class="navbar navbar-light bg-dark custom-switch">
-        <div class="col-md-7" aria-label="กลับหน้าแรก">
-            <a class="navbar-brand " href="/view-blind">
+        <div class="col-md-7" >
+            <a class="navbar-brand " href="/view-blind" alt="กลับหน้าเลือกหนังสือ">
                 <p class="fa fa-chevron-left "></p><span class="back font-weight-bold">กลับ</span>
             </a>
         </div>

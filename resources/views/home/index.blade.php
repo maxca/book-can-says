@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{{mix('css/app.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <title>BooK Can Say</title>
@@ -26,7 +26,7 @@
             <div class="row c">
                 <div class="col">
                     <a href="/view-blind">
-                        <button alt="สำหรับผู้ฟัง" type="button" class="btn btn-dark circle">สำหรับผู้ฟัง</button>
+                        <button alt="สำหรับผู้ที่ต้องการฟังหนังสือเสียง" type="button" class="btn btn-dark circle">ผู้ฟัง</button>
                         </button>
                     </a>
 
@@ -65,9 +65,9 @@
 
     .circle {
         border-radius: 100%;
-        width: 150px;
-        height: 150px;
-        font-size: 24px;
+        width: 120px;
+        height: 120px;
+        font-size: 20px;
 
     }
 

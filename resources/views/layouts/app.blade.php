@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo asset('img/logo_bg_black.svg'); ?>" width="40" height="40" alt="Book can says">
+                <img src="<?php echo asset('img/logo_bg_black.svg'); ?>" width="40" height="40" alt="Book Can Say">
 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

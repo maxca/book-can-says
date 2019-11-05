@@ -14,7 +14,7 @@
 
     @stack('styles-head')
 
-    <title>@yield('title','Book Can Says')</title>
+    <title>@yield('title','Book Can Say')</title>
 
 </head>
 

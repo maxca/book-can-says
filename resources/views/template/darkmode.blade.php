@@ -53,7 +53,7 @@
             </div>
             <div class="col-1 col-md-1">
                 <a class="btn" href="/view-blind">
-                    <button class="fa fa-adjust A" aria-label="โหลดกลางคืน" href="/view-blind"
+                    <button class="fa fa-adjust A" aria-label="โหลดกลางคืน"
                             type="button" data-toggle="tooltip" title="โหลดกลางคืน!"></button>
                 </a>
             </div>

@@ -5,7 +5,7 @@
 
     <div class="jumbotron" xmlns="http://www.w3.org/1999/html">
         <div class="container">
-            <h1 class="display-4">Book can says</h1>
+            <h1 class="display-4">Book Can Say</h1>
             <p class="lead">หนังสือเป็นเพื่อนที่เงียบและมั่นคงมากที่สุด เป็นที่ปรึกษาที่เข้าถึงได้ง่ายและรอบรู้ที่สุด
                 และเป็นครูที่อดทนที่สุด </p>
             <hr class="my-4">

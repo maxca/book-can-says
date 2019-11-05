@@ -270,7 +270,7 @@ class BookController extends Controller
             ->paginate(12);
 
         $data['books'] = $book;
-        return view("home.view-blind", $data);
+        return view("home.view-blind-d", $data);
 
     }
 

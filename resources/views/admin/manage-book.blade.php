@@ -12,9 +12,21 @@
 
 
         <div class="card">
-            <div class="card-header" style="color: #1f1f1f">
-                <h3 class="card-title">จัดการหนังสือ</h3>
-            </div>
+            {{--<div class="card-header" style="color: #1f1f1f">--}}
+                <div class="row">
+                    <div class="col-9 ml-5">
+                        <h3 class="card-title">จัดการหนังสือ</h3>
+                    </div>
+                    <div class="col ml-7">
+                        <a href="{{route('verify-audio')}}">
+                            <button class="btn btn-dark ">
+                                <i class="fa fa-cog"></i>
+                                จัดการเสียง
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            {{--</div>--}}
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <table class="table table-condensed">
@@ -27,7 +39,6 @@
                         <th style="width: 30%">คำอธิบาย</th>
                         <th style="width: 13%">สถานะ</th>
                         <th class="text-center" style="width: 20%">การเผยแพร่</th>
-                        <th class="text-center" style="width: 20%">จัดการเสียง</th>
 
                     </tr>
                     </thead>
@@ -51,7 +62,7 @@
                                 @endif
                             </td>
                             <td class="text-right">
-                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$book->id}}" style="width: 57%">
+                                <button class="btn btn-success btn-sm publisher" data-book_id="{{$book->id}}" >
                                     <i class="fa fa-book"></i>
                                     เผยแพร่
                                 </button>
@@ -61,14 +72,7 @@
                                 </button>
                             </td>
 
-                            <td class="text-right">
-                                <a href="{{route('verify-audio',['id' => $book->id])}}">
-                                    <button class="btn btn-dark ">
-                                        <i class="fa fa-cog"></i>
-                                        จัดการเสียง
-                                    </button>
-                                </a>
-                            </td>
+
                         </tr>
                     @endforeach
 
@@ -124,5 +128,9 @@
         table-layout:fixed;
         overflow:hidden;
         word-wrap:break-word;
+    }
+    .row{
+        margin-top: 30px;
+        margin-bottom: 10px;
     }
 </style>

@@ -17,10 +17,11 @@
                         @endforeach
                     </select>
                 </form>
+
             </div>
 
             @foreach($books->chunk(3) as $rows)
-                <div class="row justify-content-center">
+                <div class="row">
                     @foreach($rows as $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">

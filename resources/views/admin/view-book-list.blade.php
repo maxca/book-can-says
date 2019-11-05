@@ -77,9 +77,9 @@
                                         <button id="id_falsebtn">ยกเลิก</button>
                                     </div>
                                 </div>
+
                                 <button type="button" onclick="doSomething()" class="btn btn-light">ลบข้อมูลหนังสือ
                                 </button>
-                                {{--                                <a href="" class="btn-delete" >ลบหนังสือ</a>--}}
 
                             </td>
 
@@ -115,26 +115,6 @@
         };
     }
 
-    {{--function doDelAlert(id) {--}}
-    {{--    var csrf_token = $(meta[name = "csrf_token"]).attr('content');--}}
-    {{--    swal({--}}
-    {{--        title: "คุณแน่ใจหรือไม่ที่จะลบหนังสือ?",--}}
-    {{--        text: "เมื่อลบแล้วจะไม่สามารถเรียกคืนได้",--}}
-    {{--        icon: "warning",--}}
-    {{--        showCancelButton: true,--}}
-    {{--        buttons: true,--}}
-    {{--        dangerMode: true,--}}
-    {{--    })--}}
-    {{--        .then((willDelete))=>{--}}
-    {{--        if (willDelete) {--}}
-    {{--            $.ajax({--}}
-    {{--                url: "{{url('contact')}}" + '/' + id,--}}
-    {{--                type: "POST",--}}
-    {{--                data--}}
-    {{--            });--}}
-    {{--        }--}}
-    {{--    }--}}
-    {{--};--}}
 </script>
 
 <style>
@@ -179,3 +159,4 @@
         padding-top: 1.5%;
     }
 </style>
+

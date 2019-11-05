@@ -33,8 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/view-form-create-book', 'BookController@viewFormCreateBook');
 
     /*หน้าeditหนังสือ*/
-    Route::get('/view-form-editBook', 'BookController@viewFormEditBook')->name('form.edit.book');
-    Route::post('/edit-book', 'BookController@submitEditBook');
+   // Route::get('/view-form-editBook', 'BookController@viewFormEditBook')->name('form.edit.book');
+   // Route::post('/edit-book', 'BookController@submitEditBook');
 
     Route::get('/view-book-form', 'BookController@viewFormCreateBook');
     Route::post('/create-book', 'BookController@submitFormCreateBook');
@@ -72,6 +72,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/view-listener-rec', 'UploadSoundController@viewRecordListener');
+
+//manage-audio by volunteer
+//    Route::get('/manage-audio', 'BookController@manageAudio')->name('home.manage-audio');
 
 
     Route::get('recorder', function () {

@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
 
-
-
     @stack('styles-head')
 
     <title>@yield('title','Book Can Say')</title>
@@ -33,29 +31,34 @@
 <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
         <a class="navbar-brand col-8" href="/">
-            <img  src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="45" height="45" alt="Book can says">
+            <img src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="45" height="45" alt="Book can says">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="ค้นหาชื่อหนังสือ" aria-label="ค้นหาชื่อหนังสือ">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">ค้นหา</button>
-            </form>
 
-            <div class="col-md-1">
-                <button class="fa fa-font A" aria-label="เพิ่มขนาดตัวหนังสือ" type="button" onclick="tsw_demo_change_font_size();"></button>
-
-                <a class="fa fa-adjust" aria-label="โหลดกลางคืน" href="/view-blind-d"></a>
-
+            <div class="col-1 col-md-1">
+                <button class="fa fa-font A " aria-label="เพิ่มขนาดตัวหนังสือ" type="button" data-toggle="tooltip"
+                        title="เพิ่มขนาดตัวหนังสือ"
+                        onclick="tsw_demo_change_font_size();"></button>
+            </div>
+            <div class="col-1 col-md-1">
+                <a class="btn" href="/view-blind-d">
+                    <button class="fa fa-adjust A" aria-label="โหลดกลางคืน"
+                            type="button" data-toggle="tooltip" title="โหลดกลางคืน"></button>
+                </a>
             </div>
 
         </div>
     </nav>
+
 
     <main class="py-4">
         @yield('content')

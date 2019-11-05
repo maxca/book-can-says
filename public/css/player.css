@@ -11,7 +11,7 @@
 h1{
     color: white;
     margin-left: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
 }
 .back{
     color: white;
@@ -19,9 +19,9 @@ h1{
     font-family: Kanit;
 }
 
-#player-content{
-    width: 1080px;
-}
+/*#player-content{*/
+    /*width: 1080px;*/
+/*}*/
 
 .list_sound{
     background: white;
@@ -58,7 +58,7 @@ body {
     /*top: 50%;*/
     right: 0;
     left: 0;
-    width: 430px;
+    /*width: 430px;*/
     height: 100px;
     /*margin: -4px auto;*/
 }
@@ -105,7 +105,7 @@ body {
     border-radius: 15px 15px 0 0;
     transition: 0.3s ease top;
     z-index: 1;
-    width: 240%;
+    /*width: 240%;*/
 }
 
 #player-track.active {
@@ -308,9 +308,9 @@ body {
 }
 
 #player-controls {
-    width: 250px;
+    /*width: 250px;*/
     height: 100%;
-    margin: 0 640px 0 141px;
+    /*margin: 0 640px 0 141px;*/
     float: right;
     overflow: hidden;
 }

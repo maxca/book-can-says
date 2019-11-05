@@ -74,7 +74,6 @@ body {
 
 .form-inline .form-control {
     display: inline-block;
-    width: 300px;
     vertical-align: middle;
 }
 
@@ -86,5 +85,14 @@ body {
 .A{
     background: transparent;
     border: transparent;
+    color: white;
+}
+.mb-4 {
+    margin-left: 50px;
+}
+
+.form-control{
+    font-size: 30px;
+    margin-top: 40px;
     color: white;
 }

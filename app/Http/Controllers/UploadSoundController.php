@@ -88,6 +88,7 @@ class UploadSoundController extends Controller
             'total_page' => $request->get('total_page'),
             'sub_book_chap' => "wei wu xian",
             'amoung_listening' => 1,
+            'status'             => 'inactive'
         );
 //        dd($data);
         return redirect()->route('view.book.record.sound')->with('success', 'อัพโหลดหนังสือสำเร็จ');

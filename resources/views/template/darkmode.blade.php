@@ -35,7 +35,7 @@
         <div class="col-1"></div>
         <div class="col-9">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo asset('img/logo.svg'); ?>" width="45" height="45" alt="กลับหน้าหลัก">
+                <img src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="45" height="45" alt="Book can says">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

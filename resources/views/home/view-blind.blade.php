@@ -12,8 +12,8 @@
 
                 <div class="dropdown " id="dropdownFont" aria-label="กดเพื่อเลือกประเภทหนังสือ">
                     <form class="form-inline my-2 my-lg-0" action="/view-blind" method="get" id="category">
-                        <select name="category" class="form-control" onchange="getSelectValue()">
-                            <option value="0" href="/view-blind/"> หมวดหมู่หนังสือ</option>
+                        <select name="category" class="form-control btn-light" onchange="getSelectValue()">
+                            <option value="0" href="/view-blind/">เลือกหมวดหมู่หนังสือ</option>
                             @foreach ($bookcat_array as $data)
                                 <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
                             @endforeach

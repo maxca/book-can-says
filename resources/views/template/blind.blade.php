@@ -31,10 +31,13 @@
 <div id="app">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-
-        <a class="navbar-brand col-8" href="/">
-            <img src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="45" height="45" alt="Book can says">
+        <div class="col-1"></div>
+        <div class="col-9">
+        <a class="navbar-brand" href="/">
+            <img src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="45" height="45" alt="Book can says">
         </a>
+        </div>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 

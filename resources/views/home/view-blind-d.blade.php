@@ -10,8 +10,8 @@
         <div class="container" id="myContent">
             <div class="row justify-content-center">
                 <form class="form-inline my-2 my-lg-0" action="/view-blind-d" method="get" id="category">
-                    <select name="category" class="form-control" onchange="getSelectValue()">
-                        <option value="0" href="/view-book/"> หมวดหมู่หนังสือ</option>
+                    <select name="category" class="form-control btn-dark" onchange="getSelectValue()">
+                        <option value="0" href="/view-book/">เลือกหมวดหมู่หนังสือ</option>
                         @foreach ($bookcat_array as $data)
                             <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
                         @endforeach

@@ -19,7 +19,7 @@
 <div class="home">
     <main role="main" class="inner cover">
         <div class="cover-heading">
-            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="300"
+            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="300"
                  height="300" alt="Book can says">
 
             <p class="role">

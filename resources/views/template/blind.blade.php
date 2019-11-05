@@ -24,7 +24,7 @@
 
     @stack('styles-head')
 
-    <title>@yield('title','Book Can Says')</title>
+    <title>@yield('title','Book Can Say')</title>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand col-8" href="/">
-            <img src="<?php echo asset('img/logo.svg'); ?>" width="45" height="45" alt="Book can says">
+            <img  src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="45" height="45" alt="Book can says">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

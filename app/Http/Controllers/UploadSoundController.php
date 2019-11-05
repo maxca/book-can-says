@@ -60,32 +60,27 @@ class UploadSoundController extends Controller
 
     }
 
-    public function showUploadForm()
+    public function showUploadForm(Request $request)
     {
-        return view("home.view-new-record-offline");
+        $data = Books::find($request->id);
+        return view("home.view-new-record",$data);
     }
 
-    public function uploadAudioOffline(Request $request)
+    public function uploadAudioOffline($request)
     {
-//        if($request->hasFile('select_audio')){
-//            return $request->file->store('public/sounds');
-////            return 'yes';
-//        }
-
-        \Storage::disk('public')->put('sounds', $request->file('select_audio'));
-//        return $request->file->getCliantOriginalName();
-         return $request->file('select_audio')
+        \Storage::disk('public')->put('sounds/', $request->file('select_audio'));
+        return $request->file('select_audio')
             ->store('public/sounds');
     }
 
     public function submitOfflineAudio(Request $request)
     {
 //        dd($request->id);
-
+//        $book_id = Books::find($request->id);
         $soundPath = str_replace("public/", "", $this->uploadAudioOffline($request));
 //        $soundPath = $this->uploadFile->upload();
         $data = array(
-            'book_id' => 1,
+            'book_id' => $request->get('book_id'),
             'book_category_id' => 1,
             'book_chap_id' => 1,
             'chapter_name' => $request->get('chapter_name'),
@@ -94,11 +89,12 @@ class UploadSoundController extends Controller
             'sub_book_chap' => "wei wu xian",
             'amoung_listening' => 1,
         );
-
-        return BookAudio::updateOrCreate([
-            'book_id' => $request->book_id,
-            'chapter_name' => $request->chapter_name,
-        ], $data);
+//        dd($data);
+        return redirect()->route('view.book.record.sound')->with('success', 'อัพโหลดหนังสือสำเร็จ');
+//        return BookAudio::updateOrCreate([
+//            'book_id' => $request->book_id,
+//            'chapter_name' => $request->chapter_name,
+//        ], $data);
 
 
     }

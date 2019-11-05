@@ -54,36 +54,26 @@
             <div class="col-md-4 block">
                 <div class="circle">
                     <p>หรือ</p>
-                    <input type="button" value="Put Your Text Here" onclick="window.location.href='view-new-record-offline'" />
+                </div>
+                <div>
+{{--                    <button onclick="window.location.href='/view-offline-upload'">อัพโหลดเสียงของคุณแบบออฟไลน์</button>--}}
+{{--                    <input type="button" value="อัพโหลดเสียงของคุณแบบออฟไลน์"--}}
+{{--                           onclick="window.location.href='/view-offline-upload'"/>--}}
                 </div>
             </div>
         </div>
-        {{--        <div class="card">--}}
-        {{--            <div class="card-header">อัพโหลดไฟล์จากเครื่องของคุณ</div>--}}
-        {{--            <div class="card-body">--}}
-        {{--                <div class="input-group mb-3">--}}
-        {{--                    <div class="input-group-prepend">--}}
-        {{--                        <span class="input-group-text">MP3 file</span>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="custom-file">--}}
-        {{--                        <input type="file" class="custom-file-input" id="uploadFile">--}}
-        {{--                        <label class="custom-file-label" for="uploadFile">เลือกไฟล์เพื่ออัพโหลด</label>--}}
-        {{--                    </div>--}}
-        {{--                    <div class="input-group-append">--}}
-        {{--                        <button class="btn btn-outline-primary" type="submit">อัพโหลด</button>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
 
-        <form action="{{url('/view-new-record-offline/upload')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route("view-offline-upload.file")}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">อัพโหลดเสียงแบบออพไลน์</div>
+                    <div class="card-header">อัพโหลดเสียงแบบออฟไลน์</div>
                     <div class="card-body">
-                        <input type="hidden" name="id" value="{{request('id')}}">
+                        <input  type="hidden" name="book_id" value="{{request('book_id')}}">
                         <div><label>เลือกไฟล์เพื่ออัพโหลด</label></div>
                         <div class="form-group">
-                            <input type="file" name="select_audio" id="select_audio" value="{{old('select_audio')}}">
+                            <input type="file" name="select_audio" id="select_audio"
+                                   value="{{old('select_audio')}}">
                         </div>
                         <div class="form-group">
                             <input name="chapter_name" type="text" class="form-control" placeholder="ชื่อบทที่อ่าน"
@@ -94,28 +84,12 @@
                             <input name="total_page" type="text" class="form-control" placeholder="จำนวนหน้า"
                                    id="total_page">
                         </div>
-                        <button type="submit" id="uploadOfflineButton" class="btn btn-danger">อัพโหลดเสียง</button>
+                        <input type="submit" class="btn btn-primary" value="อัพโหลด">
+                        {{--                        <button type="submit" id="uploadOfflineButton" class="btn btn-danger">อัพโหลดเสียง</button>--}}
                     </div>
                 </div>
             </div>
         </form>
-
-
-        {{--        <table class="table">--}}
-        {{--            <tr>--}}
-        {{--                <td width="40%" align="right"><label> เลือกไฟล์เพื่ออัพโหลด </label></td>--}}
-        {{--                <td width="30"><input type="file" name="select_image"/></td>--}}
-        {{--                <td width="30%" align="left">--}}
-        {{--                    <input type="submit" name="upload" class="btn btn-primary"--}}
-        {{--                           value="อัพโหลด"></td>--}}
-        {{--            </tr>--}}
-        {{--            <tr>--}}
-        {{--                <td width="40%" align="right"></td>--}}
-        {{--                <td width="30"><span class="text-muted">อัพโหลดเป็นไฟล์ .mp3 เท่านั้น!!</span></td>--}}
-        {{--                <td width="30%" align="left"></td>--}}
-        {{--            </tr>--}}
-        {{--        </table>--}}
-
     </div>
     </div>
     </div>

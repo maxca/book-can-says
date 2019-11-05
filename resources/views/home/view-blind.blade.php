@@ -10,15 +10,14 @@
         <div class="container" id="myContent">
             <div class="row justify-content-center">
             <div class="dropdown " id="dropdownFont">
-                <button class="btn btn-secondary dropdown-toggle " type="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                    เลือกประเภทหนังสือ
-                </button>
-                <div class="dropdown-menu " aria-labelledby="dropdownMenuButton"  >
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <form class="form-inline my-2 my-lg-0" action="/view-blind" method="get" id="category">
+                    <select name="category" class="form-control" onchange="getSelectValue()">
+                        <option value="0" href="/view-book/"> หมวดหมู่หนังสือ</option>
+                        @foreach ($bookcat_array as $data)
+                            <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
+                        @endforeach
+                    </select>
+                </form>
             </div>
             </div>
 
@@ -75,6 +74,13 @@
         </div>
     </section>
 @endsection
+<script>
+    function getSelectValue() {
+        var selectValue = document.getElementById("category").value;
+        console.log(selectValue);
+        document.querySelector("#category").submit()
+    }
+</script>
 
 
 

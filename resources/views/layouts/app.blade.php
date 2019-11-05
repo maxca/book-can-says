@@ -19,7 +19,7 @@
 
     @stack('styles-head')
 
-    <title>@yield('title','Book Can Says')</title>
+    <title>@yield('title','Book Can Say')</title>
 </head>
 <body>
 <div id="app">
@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo asset('img/logo.svg'); ?>" width="40" height="40" alt="Book can says">
+                <img src="<?php echo asset('img/logo_bg_black.svg'); ?>" width="40" height="40" alt="Book can says">
 
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -43,18 +43,18 @@
                     </li>
 
                     <li class="nav-item dropdown">
-{{--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
-{{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+                        {{--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
+                        {{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 
-                        <form class="form-inline my-2 my-lg-0" action="/view-book" method="get" id="category">
+                        <form class="form-inline my-2 my-lg-0" action="/view-book-category" method="get" id="category">
                             <select name="category" class="form-control" onchange="getSelectValue()">
-                                <option value="0" href="/view-book/"> หมวดหมู่หนังสือ </option>
+                                <option value="0" href="/view-book/"> หมวดหมู่หนังสือ</option>
                                 @foreach ($bookcat_array as $data)
                                     <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
                                 @endforeach
                             </select>
                         </form>
-{{--                        </a>--}}
+                        {{--                        </a>--}}
                     </li>
 
                     <li class="nav-item">
@@ -63,23 +63,22 @@
 
 
                 </ul>
+                {{--                <form class="form-inline my-2 my-lg-0">--}}
+                {{--                    <input class="form-control mr-sm-2" type="search" placeholder="ค้นหาชื่อหนังสือ" aria-label="ค้นหาชื่อหนังสือ">--}}
+                {{--                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">ค้นหา</button>--}}
+                {{--                </form>--}}
+
                 <form class="form-inline my-2 my-lg-0" action="/search" method="get">
                     <div class="input-group">
-                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="ค้นหา"
-                               aria-label="Search">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="ค้นหาชื่อหนังสือ"
+                               aria-label="ค้นหาชื่อหนังสือ">
                         <span class="input-group-prepend">
-                            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">ค้นหา</button>
+                           <button class="btn btn-dark" type="submit">ค้นหา</button>
                         </span>
                     </div>
                 </form>
 
-            {{--                <form class="form-inline my-2 my-lg-0">--}}
-            {{--                    <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search">--}}
-            {{--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">ค้นหา</button>--}}
-            {{--                </form>--}}
-
-
-            <!-- Right Side Of Navbar -->
+                <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
@@ -139,13 +138,12 @@
             <p class="float-right">
                 <a href="#">Back to top</a>
             </p>
-            <p>© Book Can Says ,2019</p>
+            <p>© Book Can Say,2019</p>
             <p>SIT,KMUTT</p>
         </div>
     </footer>
-
-
 </div>
+
 </body>
 
 <script src="{{mix('js/app.js')}}"></script>
@@ -155,15 +153,15 @@
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-//    $( '#app .navbar-nav a' ).on( 'click', function () {
-//        $( '#app .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
-//        $( this ).parent( 'li' ).addClass( 'active' );
-//    });
+    //    $( '#app .navbar-nav a' ).on( 'click', function () {
+    //        $( '#app .navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+    //        $( this ).parent( 'li' ).addClass( 'active' );
+    //    });
 
 </script>
 
 <script>
-    function getSelectValue(){
+    function getSelectValue() {
         var selectValue = document.getElementById("category").value;
         console.log(selectValue);
         document.querySelector("#category").submit()

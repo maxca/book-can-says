@@ -108,3 +108,5 @@ Route::get('/search', 'BookController@search');
 Route::get('/view-offline-upload', 'UploadSoundController@showUploadForm')->name('view-offline-upload.file');
 Route::post('/view-offline-upload', 'UploadSoundController@submitOfflineAudio');
 
+Route::get('/view-book-category', 'BookController@viewBookCategory');
+

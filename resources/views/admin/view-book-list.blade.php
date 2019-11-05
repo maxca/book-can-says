@@ -4,9 +4,14 @@
     <div class="container">
         <div class="container">
 
-            @if (session('success_message'))
+            {{--            @if (session('success_message'))--}}
+            {{--                <div class="alert alert-success">--}}
+            {{--                    {{ session('success_message') }}--}}
+            {{--                </div>--}}
+            {{--            @endif--}}
+            @if (session('alert'))
                 <div class="alert alert-success">
-                    {{ session('success_message') }}
+                    {{ session('alert') }}
                 </div>
             @endif
 
@@ -61,20 +66,20 @@
                             </td>
                             <td style="text-align: right">
 
-                                {{--                                <div id="id_confrmdiv"> ต้องการลบข้อมูลหนังสือ?--}}
-                                {{--                                    <div class="confirm">--}}
-                                {{--                                        <a id="delete-btn" href="{{route('delete.book',['id' => $book->id])}}"--}}
-                                {{--                                           class="btn btn-light">--}}
-                                {{--                                            <button id="id_truebtn">ยืนยัน</button>--}}
-                                {{--                                        </a>--}}
-                                {{--                                    </div>--}}
-                                {{--                                    <div class="unconfirm">--}}
-                                {{--                                        <button id="id_falsebtn">ยกเลิก</button>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
-
+                                <div id="id_confrmdiv"> ต้องการลบข้อมูลหนังสือ?
+                                    <div class="confirm">
+                                        <a id="delete-btn" href="{{route('delete.book',['id' => $book->id])}}"
+                                           class="btn btn-light">
+                                            <button id="id_truebtn">ยืนยัน</button>
+                                        </a>
+                                    </div>
+                                    <div class="unconfirm">
+                                        <button id="id_falsebtn">ยกเลิก</button>
+                                    </div>
+                                </div>
                                 <button type="button" onclick="doSomething()" class="btn btn-light">ลบข้อมูลหนังสือ
                                 </button>
+                                {{--                                <a href="" class="btn-delete" >ลบหนังสือ</a>--}}
 
                             </td>
 
@@ -95,50 +100,49 @@
 <script>
 
     function doSomething() {
-        swal({
-            title: "คุณแน่ใจหรือไม่ที่จะลบหนังสือ?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Your imaginary file has been deleted!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("Your imaginary file is safe!");
-                }
-            });
+        var id_confrmdiv = $("#id_confrmdiv");
+        document.getElementById('id_confrmdiv').style.display = "block"; //this is the replace of this line
 
+        document.getElementById('id_truebtn').onclick = function () {
+            //do your delete operation
+            //alert('true');
+        };
+
+        document.getElementById('id_falsebtn').onclick = function () {
+            id_confrmdiv.hide();
+            //alert('false');
+            return false;
+        };
     }
 
-
-    // function doSomething() {
-    // var id_confrmdiv = $("#id_confrmdiv");
-    // document.getElementById('id_confrmdiv').style.display = "block"; //this is the replace of this line
-    //
-    // document.getElementById('id_truebtn').onclick = function () {
-    //     //do your delete operation
-    //     //alert('true');
-    // };
-    //
-    // document.getElementById('id_falsebtn').onclick = function () {
-    //     id_confrmdiv.hide();
-    //     //alert('false');
-    //     return false;
-    // };
-    // }
+    {{--function doDelAlert(id) {--}}
+    {{--    var csrf_token = $(meta[name = "csrf_token"]).attr('content');--}}
+    {{--    swal({--}}
+    {{--        title: "คุณแน่ใจหรือไม่ที่จะลบหนังสือ?",--}}
+    {{--        text: "เมื่อลบแล้วจะไม่สามารถเรียกคืนได้",--}}
+    {{--        icon: "warning",--}}
+    {{--        showCancelButton: true,--}}
+    {{--        buttons: true,--}}
+    {{--        dangerMode: true,--}}
+    {{--    })--}}
+    {{--        .then((willDelete))=>{--}}
+    {{--        if (willDelete) {--}}
+    {{--            $.ajax({--}}
+    {{--                url: "{{url('contact')}}" + '/' + id,--}}
+    {{--                type: "POST",--}}
+    {{--                data--}}
+    {{--            });--}}
+    {{--        }--}}
+    {{--    }--}}
+    {{--};--}}
 </script>
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <style>
 
-    .table{
+    .table {
         margin-top: 30px;
     }
+
     #id_confrmdiv {
         display: none;
         background-color: #eee;

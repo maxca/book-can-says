@@ -17,22 +17,21 @@
 <div class="home">
     <main role="main" class="inner cover">
         <div class="cover-heading">
-            <img src="<?php echo asset('img/logo.svg'); ?>" width="300" height="300" alt="Book can says">
+            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="300" height="300" alt="Book can says">
 
-            <p class="lead">หนังสือเป็นเพื่อนที่เงียบและมั่นคงมากที่สุด เป็นที่ปรึกษาที่เข้าถึงได้ง่ายและรอบรู้ที่สุด
-                และเป็นครูที่อดทนที่สุด </p>
             <p class="role">
 
                 <a href="/view-blind">
-                    <button type="button" class="button">สำหรับผู้ฟัง</button></button>
+                    <button alt="สำหรับผู้ฟัง" type="button" class="btn btn-dark">สำหรับผู้ฟัง</button>
+                    </button>
                 </a>
 
 
                 <a href="/view-book">
-                        <button type="button" class="button">จิตอาสา</button></button>
+                    <button alt="สำหรับจิตอาสา" type="button" class="btn btn-dark">จิตอาสา</button>
+                    </button>
 
-                    </a>
-
+                </a>
 
 
             </p>
@@ -50,7 +49,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-image: url("https://images.unsplash.com/photo-1467245891624-dff3e966bcca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -59,52 +57,6 @@
         font-size: 18px;
     }
 
-    .button {
-
-        /*color: black;*/
-        /*border: 2px solid #555555;*/
-        /*padding: 16px 32px;*/
-        /*text-align: center;*/
-        /*text-decoration: none;*/
-        /*display: inline-block;*/
-        /*font-size: 22px;*/
-        /*margin: 4px 2px;*/
-        /*-webkit-transition-duration: 0.4s;*/
-        /*!* Safari *!*/
-        /*transition-duration: 0.4s;*/
-        /*cursor: pointer;*/
-
-        box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
-        border: .4em solid #DCDCDC;
-        font-size: 1em;
-        line-height: 1.1em;
-        color: #000000;
-        background-color: #ffffff;
-        margin: auto;
-        border-radius: 50%;
-        height: 7em;
-        width: 7em;
-        position: relative;
-        opacity:0.8;
-
-    }
-
-    .button:hover {
-        color:#ffffff;
-        background-color: #CFCFCF;
-        text-decoration: none;
-        border-color: #DCDCDC;
-
-    }
-    .button:visited {
-        color:#ffffff;
-        background-color: #CFCFCF;
-        text-decoration: none;
-
-    }
-    .button-link-greater-than {
-        font-size: 1em;
-    }
 </style>
 
 

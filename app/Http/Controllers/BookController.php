@@ -25,65 +25,40 @@ class BookController extends Controller
         return view("home.index");
     }
 
-    public function viewBook(Request $request)
+    public function viewBook()
     {
 //        $fliter = $request->get('category');
-//        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-//                ->where('publish_status', 'publisher')
-//            ->where('book_category_id','=',$fliter)
-//            //  ->where('user_id',auth()->user()->id)
-//            ->orderBy('created_at', 'DESC')
-//            ->paginate(12);
-////        return $data;
-//        return view("home.view-book", $data);
-
-        if ($request) {
-//            dd($request);
-//            $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-//                ->where('publish_status', 'publisher')
-////            ->where('book_categories_id','=','%'.$fliter.'%')
-//                //  ->where('user_id',auth()->user()->id)
-//                ->orderBy('created_at', 'DESC')
-//                ->paginate(12);
-////        return $data;
-//            return view("home.view-book", $data);
-
-
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
-            ->wherehas('user', function ($query) {
-                $query->where('role','admin');
-            })
-//            ->where('book_categories_id','=','%'.$fliter.'%')
+//            ->where('book_category_id','=',$fliter)
             //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+        return view("home.view-book", $data);
 
-        } else {
+    }
 
-            $fliter = $request->get('category');
-            $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-                ->where('publish_status', 'publisher')
-                ->where('book_category_id', '=', $fliter)
-//                ->where('name','=','%'.$fliter.'%')
-                //  ->where('user_id',auth()->user()->id)
-                ->orderBy('created_at', 'DESC')
-                ->paginate(12);
-//        return $data;
-            return view("home.view-book", $data);
-        }
-
+    public function viewBookCategory(Request $request)
+    {
+        $fliter = $request->get('category');
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('publish_status', 'publisher')
+            ->where('book_category_id', '=', $fliter)
+            //  ->where('user_id',auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+        return view("home.view-book-category", $data);
 
     }
 
 
-    public function viewBlind()
+    public function viewBlind(Request $request)
     {
-
+        $fliter = $request->get('category');
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
-//            ->where('user_id',auth()->user()->id)
-
+            ->where('book_category_id', '=', $fliter)
+            //            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;
@@ -113,7 +88,7 @@ class BookController extends Controller
             return $request->file('pdf')
                 ->store('public');
         }
-        return null;
+//        return null;
 
     }
 
@@ -145,7 +120,7 @@ class BookController extends Controller
         if (auth()->user()->role == 'admin') {
             return redirect()->route('admin.books')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
         } else {
-            return redirect()->route('home.view-book-list')->with('success', 'สร้างข้อมูลหนังสือสำเร็จ');
+            return redirect()->route('home.view-book-list')->with('alert', 'สร้างข้อมูลหนังสือสำเร็จ');
         }
 
     }
@@ -199,7 +174,7 @@ class BookController extends Controller
             'status' => $request->get('status')
         );
 
-        Alert::success('Success Title', 'Success Message');
+//        Alert::success('Success Title', 'Success Message');
 
         Books::find($request->id)->update($data);
         return redirect()->route('home.view-book-list');
@@ -207,10 +182,11 @@ class BookController extends Controller
 
     public function deleteBook(DeleteBookRequest $request)
     {
+//        BookAudio::destroy($request);
 
         $books = Books::find($request->id)->delete();
         BookAudio::where('book_id', $request->id)->delete();
-        return redirect()->route('home.view-book-list')->with('alert','ลบข้อมูลหนังสือสำเร็จ');
+        return redirect()->route('home.view-book-list')->with('alert', 'ลบข้อมูลหนังสือสำเร็จ');
 
     }
 
@@ -248,13 +224,13 @@ class BookController extends Controller
     }
 
 
-  public function switchModes()
+    public function switchModes(Request $request)
     {
+        $fliter = $request->get('category');
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-
             ->where('publish_status', 'publisher')
-//            ->where('user_id',auth()->user()->id)
-
+            ->where('book_category_id', '=', $fliter)
+            //            ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        return $data;

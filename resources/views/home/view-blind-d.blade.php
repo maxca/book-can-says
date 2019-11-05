@@ -9,7 +9,7 @@
     <section>
         <div class="container" id="myContent">
             <div class="row justify-content-center">
-                <div class="dropdown">
+                <div class="dropdown" aria-label="กดเพื่อเลือกประเภทหนังสือ">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="myContentDark"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         เลือกประเภทหนังสือ
@@ -23,7 +23,7 @@
             </div>
 
             @foreach($books->chunk(3) as $rows)
-                <div class="row justify-content-center">
+                <div class="row">
                     @foreach($rows as $book)
                         <div class="col-md-3 mb-4">
                             <div class="card">

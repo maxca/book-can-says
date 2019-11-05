@@ -22,7 +22,7 @@
                      class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">
                 @endforeach
 
-                <div id="buffer-box">Buffering ...</div>
+                <div id="buffer-box">กำลังโหลด</div>
             </div>
             <div id="player-controls">
                 <div class="control">

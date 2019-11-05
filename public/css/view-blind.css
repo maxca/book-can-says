@@ -89,3 +89,12 @@ body, .post {
     border: transparent;
     color: white;
 }
+
+.mb-4 {
+    margin-left: 50px;
+}
+
+.form-control{
+    font-size: 30px;
+    margin-top: 40px;
+}

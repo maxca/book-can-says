@@ -18,7 +18,6 @@
                         <th style="width: 10%">ผู้แต่ง</th>
                         <th style="width: 10%">ชื่อผู้อ่าน</th>
                         <th style="width: 10%">ชื่อตอน</th>
-                        <th style="width: 10%">ชื่อตอนย่อย</th>
                         <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
                         <th class="text-center" style="width: 15%">การเผยแพร่</th>
@@ -40,14 +39,15 @@
                                     <span class="chapter-name">{{$audio->chapter_name}}</span>
 
                                 </td>
-                                <td>
-                                    <span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>
-                                </td>
+                                {{--<td>--}}
+                                {{--<span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>--}}
+                                {{--</td>--}}
 
                                 <td class="text-right">
                                     <audio controls>
 
-                                        <source  src="{{route('get.sound', ['file_name' =>  $audio->path])}}" type="audio/wav">
+                                        <source src="{{route('get.sound', ['file_name' =>  $audio->path])}}"
+                                                type="audio/wav">
                                         Your browser does not support the audio element.
                                     </audio>
 
@@ -64,11 +64,12 @@
 
                                 </td>
 
-                            <td class="text-right">
-                                <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}" style="width: 77%" >
-                                    <i class="fa fa-book" ></i>
-                                    เผยแพร่
-                                </button>
+                                <td class="text-right">
+                                    <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}"
+                                            style="width: 77%">
+                                        <i class="fa fa-book"></i>
+                                        เผยแพร่
+                                    </button>
 
 
                                     <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">

@@ -6,6 +6,12 @@
             {{csrf_field()}}
 
         <input name="id" type="hidden" value="{{$data->id}}"/>
+            @php
+
+                $authorName = implode(",", $data->authors->pluck('name')->toArray());
+                $publishName = implode(",", $data->publisher->pluck('name')->toArray());
+            @endphp
+
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Book name</label>
@@ -14,19 +20,16 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Publisher</label>
-                @foreach($data->publisher as $publisher)
                     <input name="publisher_name" type="text" class="form-control" id="exampleInputPassword1"
                            placeholder="Publisher"
-                           value="{{$publisher->name}}">
-                @endforeach
+                           value="{{$publishName}}">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Author</label>
-                @foreach($data->authors as $author)
-                    <input name="author_name" type="text" class="form-control" id="exampleInputPassword1"
-                           placeholder="author"
-                           value="{{$author->name}}">
-                @endforeach
+
+                <input name="author_name" type="text" class="form-control" id="exampleInputPassword1"
+                       placeholder="author"
+                       value="{{$authorName}}">
             </div>
 
             <div class="form-group">
@@ -41,22 +44,27 @@
             </div>
 
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">Total page</label>
-                <input name="total_page" type="number" class="form-control" placeholder="total page" value="{{$data->total_page}}">
-            </div>
+            {{--<div class="form-group">--}}
+                {{--<label for="exampleInputPassword1">Total page</label>--}}
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">Total chapter</label>
-                <input name="total_page" type="number" class="form-control" placeholder="total chapter"
-                       value="{{$data->total_chapter}}">
-            </div>
+                {{--<input name="total_page" type="number" class="form-control" placeholder="total page" value="{{$data->total_page}}">--}}
+                {{--{{dd($data->total_page)}}--}}
+
+            {{--</div>--}}
+
+            {{--<div class="form-group">--}}
+                {{--<label for="exampleInputPassword1">Total chapter</label>--}}
+                {{--<input name="total_page" type="number" class="form-control" placeholder="total chapter"--}}
+                       {{--value="{{$data->total_chapter}}">--}}
+                {{--{{dd($data->total_chapter)}}--}}
+            {{--</div>--}}
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Description</label>
                 <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
                           rows="3">{{$data->description}}</textarea>
             </div>
+            {{--{{dd($data->description)}}--}}
 
 
             <div class="form-check">

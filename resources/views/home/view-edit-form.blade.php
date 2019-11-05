@@ -14,26 +14,24 @@
 
 
             <div class="form-group">
-                <label for="exampleInputEmail1">Book name</label>
+                <label for="exampleInputEmail1">ชื่อหนังสือ</label>
                 <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                       placeholder="Enter book name" value="{{$data->name}}">
+                       value="{{$data->name}}">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Publisher</label>
+                <label for="exampleInputPassword1">สำนักพิมพ์</label>
                     <input name="publisher_name" type="text" class="form-control" id="exampleInputPassword1"
-                           placeholder="Publisher"
                            value="{{$publishName}}">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Author</label>
+                <label for="exampleInputPassword1">ผู้แต่ง</label>
 
                 <input name="author_name" type="text" class="form-control" id="exampleInputPassword1"
-                       placeholder="author"
                        value="{{$authorName}}">
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlSelect2">Category</label>
+                <label for="exampleFormControlSelect2">หมวดหมู่หนังสือ</label>
                 <select name="category" class="form-control" id="exampleFormControlSelect2"
                         value="{{old('category')}}">
                     @foreach ($bookcat_array as $data)
@@ -60,7 +58,7 @@
             {{--</div>--}}
 
             <div class="form-group">
-                <label for="exampleInputPassword1">Description</label>
+                <label for="exampleInputPassword1">เรื่องย่อหนังสือ</label>
                 <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
                           rows="3">{{$data->description}}</textarea>
             </div>
@@ -68,21 +66,21 @@
 
 
             <div class="form-check">
-                <input name="status" class="form-check-input" type="radio" id="exampleRadios1" value="active" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                    Active
-                </label>
+                <input name="status" class="form-check-input" type="hidden" id="exampleRadios1" value="active" checked>
+                {{--<label class="form-check-label" for="exampleRadios1">--}}
+                    {{--Active--}}
+                {{--</label>--}}
             </div>
             <div class="form-check">
-                <input name="status" class="form-check-input" type="radio" id="exampleRadios2" value="inactive">
-                <label class="form-check-label" for="exampleRadios2">
-                    Inactive
-                </label>
+                <input name="status" class="form-check-input" type="hidden" id="exampleRadios2" value="inactive">
+                {{--<label class="form-check-label" for="exampleRadios2">--}}
+                    {{--Inactive--}}
+                {{--</label>--}}
             </div>
 
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-dark">แก้ไขข้อมูลหนังสือ</button>
         </form>
     </div>
 @endsection

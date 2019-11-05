@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
     <title>BooK Can Say</title>
 </head>
 
@@ -17,22 +19,26 @@
 <div class="home">
     <main role="main" class="inner cover">
         <div class="cover-heading">
-            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="300" height="300" alt="Book can says">
+            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo_bg_white.svg'); ?>" width="300"
+                 height="300" alt="Book can says">
 
             <p class="role">
+            <div class="row c">
+                <div class="col">
+                    <a href="/view-blind">
+                        <button alt="สำหรับผู้ฟัง" type="button" class="btn btn-dark circle">สำหรับผู้ฟัง</button>
+                        </button>
+                    </a>
 
-                <a href="/view-blind">
-                    <button alt="สำหรับผู้ฟัง" type="button" class="btn btn-dark">สำหรับผู้ฟัง</button>
-                    </button>
-                </a>
+                </div>
+                <div class="col">
+                    <a href="/view-book">
+                        <button alt="สำหรับจิตอาสา" type="button" class="btn btn-dark circle">จิตอาสา</button>
+                        </button>
 
-
-                <a href="/view-book">
-                    <button alt="สำหรับจิตอาสา" type="button" class="btn btn-dark">จิตอาสา</button>
-                    </button>
-
-                </a>
-
+                    </a>
+                </div>
+            </div>
 
             </p>
 
@@ -53,9 +59,21 @@
         background-repeat: no-repeat;
         background-size: cover;
         text-align: center;
-        font-family: sans-serif;
+        font-family: Kanit;
         font-size: 18px;
     }
+
+    .circle {
+        border-radius: 100%;
+        width: 150px;
+        height: 150px;
+        font-size: 24px;
+
+    }
+
+    /*.c {*/
+        /*justify-content: center;*/
+    /*}*/
 
 </style>
 

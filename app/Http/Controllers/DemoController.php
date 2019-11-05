@@ -32,7 +32,7 @@ class DemoController extends Controller
         $book = Books::where('books.id', $bookId)->first();
         $bookAudio = BookAudio::all()
             ->where('book_id', '=', $bookId)
-            ->where('status','=','active');
+            ->where('status', '=', 'active');
         $book->audio = $bookAudio;
         return view('demo.book-detail')
             ->with(['book' => $book])
@@ -63,7 +63,6 @@ class DemoController extends Controller
             ->paginate(12);
 //        return $data;
 //        dd($data);
-
         return view('admin.view-verify-audio', $data);
     }
 
@@ -77,7 +76,8 @@ class DemoController extends Controller
 
     }
 
-    public function testPlayer(){
+    public function testPlayer()
+    {
         return view('demo.test-player');
     }
 }

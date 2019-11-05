@@ -31,8 +31,8 @@
                     </div>
                 </div>
                 <div class="control">
-                    <div class="button" id="play-pause-button">
-                        <i class="fa fa-play" aria-label="หยุดเล่น"></i>
+                    <div class="button" id="play-pause-button" >
+                        <i class="fa fa-play" aria-label="กดเล่นเสียงหรือหยุดเล่น"></i>
                     </div>
                 </div>
                 <div class="control">

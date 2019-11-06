@@ -177,6 +177,7 @@ return [
         #\Samark\CustomRoute\CustomRouteServiceProvider::class,
         App\Providers\DynamicClassServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+//        Goodnesskay\LaravelPdfViewer\LaravelPdfViewerServiceProvider::class,
 
     ],
 

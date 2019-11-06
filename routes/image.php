@@ -4,8 +4,8 @@ Route::get('/render/images/', 'ImageController@index')->name('render.img');
 Route::get('/sound', 'ImageController@index')->name('get.sound');
 Route::get('/render/download/', 'ImageController@download')->name('render.download');
 Route::get('/image/test', 'ImageController@testView')->name('render.test');
-
 Route::get('/has-many', 'SimpleController@testRenderViewViaHasMany')->name('render.hasmany');
+Route::get('/render/pdfs/', 'ImageController@showPDF')->name('render.pdf');
 
 
 Route::get('/test/record', 'SimpleController@testRecord')->name('render.record');
@@ -21,3 +21,5 @@ Route::group(['prefix' => 'demo/book'], function ($router) {
 });
 
 Route::get('/test-player', 'DemoController@testPlayer')->name('demo.testPlayer');
+
+

@@ -226,7 +226,9 @@ class BookController extends Controller
 
     public function recordAudio()
     {
-        return view('home.view-new-record');
+        $data = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('publish_status', 'publisher')->first();
+        return view('home.view-new-record')->with(['data'=>$data]);
     }
 
     public function viewListening()

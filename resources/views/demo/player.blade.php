@@ -18,8 +18,8 @@
         <div id="player-content">
             <div id="album-art">
                 @foreach($sound['albumArtworksLink'] as $key => $covers)
-                <img src="{{$covers}}" alt="ปกหนังสือ"
-                     class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">
+                    <img src="{{$covers}}" alt="ปกหนังสือ"
+                         class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">
                 @endforeach
 
                 <div id="buffer-box">กำลังโหลด</div>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="control">
-                    <div class="button" id="play-pause-button" >
+                    <div class="button" id="play-pause-button">
                         <i class="fa fa-play" aria-label="กดเล่นเสียงหรือหยุดเล่น"></i>
                     </div>
                 </div>
@@ -61,6 +61,12 @@
                 albumArtworks = @json($sound['albumArtworks']),
                 trackUrl = @json($sound['trackUrl']),
                 playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = -1;
+
+            $(".list_sound").on('click', function () {
+
+                selectTrack($(this).data('id'));
+
+            });
 
             function playPause() {
                 setTimeout(function () {
@@ -195,6 +201,7 @@
             }
 
             function selectTrack(flag) {
+                console.log(flag)
                 if (flag == 0 || flag == 1)
                     ++currIndex;
                 else

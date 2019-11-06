@@ -29,15 +29,13 @@ class DemoController extends Controller
     public function viewBookDetail(ViewBookDetailRequest $request, $bookId)
     {
         $sound = $this->playSound->getJsonDataForPlugin($bookId);
-        $book = Books::where('books.id', $bookId)->first();
-        $bookAudio = BookAudio::all()
-            ->where('book_id', '=', $bookId)
-            ->where('status', '=', 'active');
-        $book->audio = $bookAudio;
+        $book  = Books::where('id', $bookId)->with(['audio' => function ($query) {
+            $query->where('status', 'active');
+        }])->first();
+
         return view('demo.book-detail')
             ->with(['book' => $book])
             ->with(['sound' => $sound]);
-//            ->with(['playlist' => $sound]);
     }
 
 

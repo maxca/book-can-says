@@ -23,13 +23,13 @@
 
         </div>
 
-{{--        {{dd($book)}}--}}
-        <div class="container-inline">
+        {{--        {{dd($book)}}--}}
+        <div class="container-inline mt-3">
             <div class="row">
                 <div class="col">
                     <div class="media">
 
-                            <div class="media-body ml-2">
+                        <div class="media-body ml-2">
                             {{--<h5 class="font-weight-bold" aria-label="ชื่อหนังสือ.{{$book->name}}">{{$book->name}}</h5>--}}
                             <div class="card-body">
 
@@ -37,8 +37,10 @@
 
                                     <ul class="list-group">
                                         @foreach($book->audio as $key => $audio)
-                                            <li class="list_sound list-group-item list-group-item-action justify-content-between align-items-center d-flex" id="list_{{$key}}"
-                                            aria-label="ชื่อบท.{{$audio->chapter_name}}">
+                                            <li class="list_sound list-group-item list-group-item-action justify-content-between align-items-center d-flex"
+                                                id="list_{{$key}}"
+                                                data-id="{{++$key}}"
+                                                aria-label="ชื่อบท.{{$audio->chapter_name}}">
                                                 {{$audio->chapter_name}}
                                                 {{--<span class="badge badge-primary badge-pill">5:30 min</span>--}}
                                             </li>
@@ -47,10 +49,10 @@
                                     </ul>
                                 </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             </div>
 
@@ -60,39 +62,24 @@
             </div>
 
 
-    </div>
-@endsection
+        </div>
+        @endsection
 
 
 
-@push('styles-head')
-    <style>
-        .checked {
-            color: orange;
-        }
+        @push('styles-head')
+            <style>
+                .checked {
+                    color: orange;
+                }
 
-    </style>
+                .list_sound {
+                    cursor: pointer;
+                }
 
-@endpush
+            </style>
+
+        @endpush
 
 
-@push('scripts-after')
-    <script>
-        $("body").on('click', function(){
-            activeSoundList()
-        });
-
-        $(document).ready(function () {
-            activeSoundList()
-        });
-
-        function activeSoundList() {
-            let id= $(".cover-sound.active").attr('id');
-            console.log(id);
-            $(".list_sound").removeClass('list-group-item-info');
-            $("#list" + id).addClass('list-group-item-info');
-            console.log($("#list" + id));
-        }
-
-    </script>
-@endpush
+    

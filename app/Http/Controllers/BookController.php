@@ -16,7 +16,6 @@ use App\Http\Controllers\UploadSoundController;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Providers\SweetAlertServiceProvider;
-
 class BookController extends Controller
 {
 
@@ -224,10 +223,15 @@ class BookController extends Controller
         return redirect()->route('home.view-book-list');
     }
 
-    public function recordAudio()
+    public function recordAudio(Request $request)
     {
+        $id = $request->input('book_id');
+        //dd($id);
+
         $data = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->where('publish_status', 'publisher')->first();
+            ->where('publish_status', 'publisher')
+            ->where('id',$id)->first();
+
         return view('home.view-new-record')->with(['data'=>$data]);
     }
 

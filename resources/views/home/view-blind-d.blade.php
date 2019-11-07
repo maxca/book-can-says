@@ -43,11 +43,11 @@
                                         @endforeach
                                     </p>
 
-                                    <p class="chapter" id="myContentDark">
-                                        <span class="font-weight-bold" aria-label="ชื่อตอน.{{$book->total_chapter}}">
-                                            ชื่อตอน</span>
-                                        <span class="total-chapter"> {{$book->total_chapter}}</span>
-                                    </p>
+{{--                                    <p class="chapter" id="myContentDark">--}}
+{{--                                        <span class="font-weight-bold" aria-label="ชื่อตอน.{{$book->total_chapter}}">--}}
+{{--                                            ชื่อตอน</span>--}}
+{{--                                        <span class="total-chapter"> {{$book->total_chapter}}</span>--}}
+{{--                                    </p>--}}
 
                                     <p class="chapter">
                                     <div class="card-text" aria-label="เรื่องย่อ.{{$book->description}}"

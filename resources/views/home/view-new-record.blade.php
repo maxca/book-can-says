@@ -10,8 +10,23 @@
         <form action="{{url('/view-new-record/upload')}}" method="post" enctype="multipart/form-data">
 
             <div class="row mt-4">
-                <div class="col-md-6">
+                <div class="col">
                     <div class="card">
+
+                            <div class="card-header">คุณมีเวลาในการอัดเสียง 30 นาที</div>
+                            <div class="card-body">
+                                <div class="clockdiv">
+                                    <div>
+                                        <span class="minutes" id="minute"></span>
+                                        <div class="smalltext">นาที</div>
+                                    </div>
+                                    <div>
+                                        <span class="seconds" id="second"></span>
+                                        <div class="smalltext">วินาที</div>
+                                    </div>
+                                </div>
+                                <div class="timeup"></div>
+                            </div>
                         <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                         <div class="card-body">
                             <button id="recordButton" class="btn btn-danger" onclick="CountDown.Timer.toggle();">
@@ -30,36 +45,18 @@
                     </div>
 
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">คุณมีเวลาในการอัดเสียง 30 นาที</div>
-                        <div class="card-body">
-                            <div class="clockdiv">
-                                <div>
-                                    <span class="minutes" id="minute"></span>
-                                    <div class="smalltext">นาที</div>
-                                </div>
-                                <div>
-                                    <span class="seconds" id="second"></span>
-                                    <div class="smalltext">วินาที</div>
-                                </div>
-                            </div>
-                            <div class="timeup"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </form>
-        <input name="book_id" value="{{request('book_id')}}">
+        <input type="hidden" name="book_id" value="{{request('book_id')}}">
 
+{{--        {{dd($data->pdf)}}--}}
 
-        <div class="row">
             <div class="card">
-                <iframe src="{{route('render.pdf',['file_name' => 'render/pdfs/'. $data->pdf])}}"
-                        width="1000px" height="600px">
+                <iframe src="{{route('render.pdf',['file_name' => $data->pdf])}}"
+                        width="700px" height="1000px">
                 </iframe>
             </div>
-        </div>
+    </div>
 
         {{--        <div class="row justify-content-center">--}}
         {{--            <div class="col-md-4 block">--}}

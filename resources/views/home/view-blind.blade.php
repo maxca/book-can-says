@@ -29,7 +29,7 @@
                             <div class="card ">
                                 <img class="card-img img-thumbnail book-cover btn-light"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-                                     alt="รูปปกหนังสือ">
+                                     aria-label="รูปปกหนังสือ">
                                 <div class="card-body ">
                                     <p class="card-title ">
                                     <div class="book-name font-weight-bold" aria-label="ชื่อหนังสือ.{{$book->name}}">

@@ -47,6 +47,7 @@
                 </div>
 
         </form>
+
         <input type="hidden" name="book_id" value="{{request('book_id')}}">
 
 {{--        {{dd($data->pdf)}}--}}

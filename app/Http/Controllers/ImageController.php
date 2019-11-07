@@ -29,7 +29,13 @@ class ImageController extends Controller
         }
     }
 
+    public function showPDF(ImageRenderRequest $request)
+    {
+        if (Storage::exists($request->get('file_name'))) {
 
+            return Storage::response($request->get('file_name'));
+        }
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

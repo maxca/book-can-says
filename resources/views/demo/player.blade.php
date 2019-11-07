@@ -60,11 +60,44 @@
                 trackNames = @json($sound['trackNames']),
                 albumArtworks = @json($sound['albumArtworks']),
                 trackUrl = @json($sound['trackUrl']),
-                playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = -1;
+                playPreviousTrackButton = $('#play-previous'), playNextTrackButton = $('#play-next'), currIndex = -1, old = 0;
+
 
             $(".list_sound").on('click', function () {
+                $(".list_sound").removeClass("active");
+                $(this).addClass('active');
+                var loop = $(this).data('id');
+                if(old == 0) {
 
-                selectTrack($(this).data('id'));
+                    if(old == 0 && loop == 1) {
+                        playPause()
+                    } else {
+                        for (var i =0; i < loop-1; i++) {
+                            selectTrack(1);
+                        }
+                    }
+                }
+
+                else if(old < loop) {
+                    for (var i =0; i < (loop - old); i++) {
+                        console.log('i', i)
+                        selectTrack(1);
+                        console.log('more',old - loop)
+                    }
+                }else if(old == loop) {
+                    playPause()
+                }
+                else {
+                    for (var i =0; i < (old - loop); i++) {
+                        console.log('i', i)
+                        console.log('lesse',old - loop)
+                        selectTrack(-1);
+                    }
+                }
+                console.log('old',old);
+                console.log('loop',loop);
+                old = loop;
+
 
             });
 
@@ -201,7 +234,7 @@
             }
 
             function selectTrack(flag) {
-                console.log(flag)
+                console.log('flag',flag)
                 if (flag == 0 || flag == 1)
                     ++currIndex;
                 else

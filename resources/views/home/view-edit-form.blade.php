@@ -57,11 +57,11 @@
                 {{--{{dd($data->total_chapter)}}--}}
             {{--</div>--}}
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">เรื่องย่อหนังสือ</label>
-                <textarea name="description" class="form-control" id="exampleFormControlTextarea1"
-                          rows="3">{{$data->description}}</textarea>
-            </div>
+{{--            <div class="form-group">--}}
+{{--                <label for="exampleInputPassword1">เรื่องย่อหนังสือ</label>--}}
+{{--                <textarea name="description" class="form-control" id="exampleFormControlTextarea1"--}}
+{{--                          rows="3">{{$data->description}}</textarea>--}}
+{{--            </div>--}}
             {{--{{dd($data->description)}}--}}
 
 
@@ -85,3 +85,8 @@
     </div>
 @endsection
 
+<style>
+    .container{
+        margin-top: 30px;
+    }
+</style>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ImageRenderRequest;
 use Illuminate\Support\Facades\Storage;
+use League\Flysystem\FileNotFoundException;
 
 class ImageController extends Controller
 {
@@ -31,10 +32,14 @@ class ImageController extends Controller
 
     public function showPDF(ImageRenderRequest $request)
     {
-        if (Storage::exists($request->get('file_name'))) {
-
-            return Storage::response($request->get('file_name'));
+        $fileName = '/public/pdfs/' . $request->get('file_name');
+        if (Storage::exists($fileName)) {
+            $contents = Storage::get($fileName);
+            return response($contents)->withHeaders([
+                'Content-Type' => 'application/pdf',
+            ]);
         }
+        throw FileNotFoundException();
     }
 
     /**

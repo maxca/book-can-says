@@ -25,6 +25,7 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
+                    <th scope="col">วันที่</th>
                     <th scope="col">ชื่อหนังสือ</th>
                     <th scope="col">ผู้แต่ง</th>
                     <th scope="col">สำนักพิมพ์</th>
@@ -39,6 +40,7 @@
                 @foreach($books->chunk(4) as  $cards)
                     @foreach($cards as $key => $book)
                         <tr>
+                            <td style="width: 110px">{{$book->created_at}}</td>
 
                             <td>{{$book->name}}</td>
 

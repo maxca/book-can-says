@@ -14,6 +14,7 @@
                     <thead>
                     <tr>
                         <th style="width: 7%">No.</th>
+                        <th style="width: 12%">วันที่สร้าง</th>
                         <th style="width: 15%">ชื่อหนังสือ</th>
                         <th style="width: 10%">ผู้แต่ง</th>
                         <th style="width: 10%">ชื่อผู้อ่าน</th>
@@ -32,6 +33,7 @@
                             {{--{{dd($audio)}}--}}
                             <tr>
                                 <td>{{( $count++)}}.</td>
+                                <td>{{$audio->created_at}}</td>
                                 <td>{{$book->name}}</td>
                                 <td>{{$book->authors->first()->name}}</td>
                                 <td>{{$book->user->name ?? ''}}</td>

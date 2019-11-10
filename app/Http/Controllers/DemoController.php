@@ -59,6 +59,7 @@ class DemoController extends Controller
             ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+//        dd($data);
 //        return $data;
 //        dd($data);
         return view('admin.view-verify-audio', $data);

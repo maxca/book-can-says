@@ -26,10 +26,10 @@
                     </thead>
                     <tbody>
                     @php $count = $books->firstItem(); @endphp
+
                     @foreach($books as $key => $book)
-
                         @foreach($book->audio as $audio)
-
+                            {{--{{dd($audio)}}--}}
                             <tr>
                                 <td>{{( $count++)}}.</td>
                                 <td>{{$book->name}}</td>
@@ -44,6 +44,8 @@
                                 {{--</td>--}}
 
                                 <td class="text-right">
+                                    {{--{{dd($audio->path)}}--}}
+
                                     <audio controls>
 
                                         <source src="{{route('get.sound', ['file_name' =>  $audio->path])}}"

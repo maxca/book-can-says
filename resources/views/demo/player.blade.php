@@ -2,40 +2,43 @@
     {{--<div id="bg-artwork"></div>--}}
     {{--<div id="bg-layer"></div>--}}
     <div id="player">
-        <div id="player-track">
-            <div id="album-name"></div>
-            <div id="track-name"></div>
-            <div id="track-time">
-                <div id="current-time"></div>
-                <div id="track-length"></div>
-            </div>
-            <div id="s-area">
-                <div id="ins-time"></div>
-                <div id="s-hover"></div>
-                <div id="seek-bar"></div>
-            </div>
-        </div>
-        <div id="player-content">
-            <div id="album-art">
-                @foreach($sound['albumArtworksLink'] as $key => $covers)
-                    <img src="{{$covers}}" alt="ปกหนังสือ"
-                         class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">
-                @endforeach
+        {{--<div id="player-track">--}}
+            {{--<div id="album-name"></div>--}}
+            {{--<div id="track-name"></div>--}}
+            {{--<div id="track-time">--}}
+                {{--<div id="current-time"></div>--}}
+                {{--<div id="track-length"></div>--}}
+            {{--</div>--}}
+            {{--<div id="s-area">--}}
+                {{--<div id="ins-time"></div>--}}
+                {{--<div id="s-hover"></div>--}}
+                {{--<div id="seek-bar"></div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
-                <div id="buffer-box">กำลังโหลด</div>
-            </div>
-            <div id="player-controls">
-                <div class="control">
+        <div id="player-content">
+            {{--<div id="album-art">--}}
+                {{--@foreach($sound['albumArtworksLink'] as $key => $covers)--}}
+                    {{--<img src="{{$covers}}" alt="ปกหนังสือ"--}}
+                         {{--class="active cover-sound" id="{{$sound['albumArtworks'][$key]}}">--}}
+                {{--@endforeach--}}
+
+                {{--<div id="buffer-box">กำลังโหลด</div>--}}
+            {{--</div>--}}
+            <div id="row  player-controls">
+                <div class="control col">
                     <div class="button" id="play-previous">
                         <i class="fa fa-backward" aria-label="กดสองครั้งเพื่อตอนก่อนหน้า"></i>
                     </div>
                 </div>
-                <div class="control">
+                <div class="col"></div>
+                <div class="control col">
                     <div class="button" id="play-pause-button">
                         <i class="fa fa-play" aria-label="กดเล่นเสียงหรือหยุดเล่น"></i>
                     </div>
                 </div>
-                <div class="control">
+                <div class="col"></div>
+                <div class="control col">
                     <div class="button" id="play-next">
                         <i class="fa fa-forward" aria-label="กดสองครั้งเพื่อไปตอนถัดไป"></i>
                     </div>

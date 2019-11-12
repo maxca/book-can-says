@@ -10,12 +10,13 @@
         <div class="container" id="myContent">
             <div class="row justify-content-center">
 
-                <div class="dropdown " id="dropdownFont" aria-label="กดเพื่อเลือกประเภทหนังสือ">
+                <div class="dropdown " id="dropdownFont" aria-label="กดเพื่อเลือกประเภทหนังสือ" alt="กดเพื่อเลือกประเภทหนังสือ">
                     <form class="form-inline my-2 my-lg-0" action="/view-blind" method="get" id="category">
                         <select name="category" class="form-control btn-light" onchange="getSelectValue()">
                             <option value="0" href="/view-blind/">เลือกหมวดหมู่หนังสือ</option>
                             @foreach ($bookcat_array as $data)
-                                <option value="{{ $data->id }}" href="/view-book/">   {{ $data->name }} </option>
+                                <option value="{{ $data->id }}" href="/view-book/" alt="ชื่อหนังสือ.{{ $data->name }}" aria-label="ชื่อหนังสือ.{{ $data->name }}">
+                                    {{ $data->name }} </option>
                             @endforeach
                         </select>
                     </form>
@@ -29,7 +30,7 @@
                             <div class="card ">
                                 <img class="card-img img-thumbnail book-cover btn-light"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-                                     aria-label="รูปปกหนังสือ">
+                                     aria-label="รูปปกหนังสือ" alt="รูปปกหนังสือ">
                                 <div class="card-body ">
                                     <p class="card-title ">
                                     <div class="book-name font-weight-bold" aria-label="ชื่อหนังสือ.{{$book->name}}">
@@ -38,7 +39,7 @@
                                     </p>
                                     <p class="author-name">
                                         @foreach($book->authors as $author)
-                                            <span class="font-weight-bold" aria-label="ชื่อผู้แต่ง.{{$author->name}}">
+                                            <span class="font-weight-bold" alt="ชื่อผู้แต่ง.{{$author->name}}" aria-label="ชื่อผู้แต่ง.{{$author->name}}">
                                                 ชื่อผู้แต่ง</span>
                                             <span class="name"> {{$author->name}}</span>
                                         @endforeach
@@ -51,14 +52,14 @@
 {{--                                    </p>--}}
 
                                     <p class="myContent">
-                                    <div class="card-text" aria-label="เรื่องย่อ.{{$book->description}}">
+                                    <div class="card-text" alt="เรื่องย่อ.{{$book->description}}" aria-label="เรื่องย่อ.{{$book->description}}">
                                         {{$book->description}}</div>
                                     </p>
 
                                     <a href="{{route('show.book.detail',['id' => $book->id])}}"
                                        class="btn btn-dark myContent"
                                     >
-                                        <div class="font-weight-normal" aria-label="กดเพื่อฟังหนังสือเสียง">
+                                        <div class="font-weight-normal" alt="กดเพื่อฟังหนังสือเสียง" aria-label="กดเพื่อฟังหนังสือเสียง">
                                             ฟังหนังสือเสียง
                                         </div>
                                     </a>

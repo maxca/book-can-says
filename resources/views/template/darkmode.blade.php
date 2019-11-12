@@ -35,11 +35,11 @@
         <div class="col-1"></div>
         <div class="col-9">
             <a class="navbar-brand" href="/">
-                <img src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="45" height="45" alt="Book can says">
+                <img src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="45" height="45" aria-label="Book can says" alt="Book can says">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="กดเพื่อขยาย" alt="กดเพื่อขยาย">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -47,13 +47,13 @@
 
 
             <div class="col-1 col-md-1">
-                <button class="fa fa-font A " alt="เพิ่มขนาดตัวหนังสือ" type="button" data-toggle="tooltip"
+                <button class="fa fa-font A " alt="เพิ่มขนาดตัวหนังสือ" aria-label="เพิ่มขนาดตัวหนังสือ" type="button" data-toggle="tooltip"
                         title="เพิ่มขนาดตัวหนังสือ!"
                         onclick="tsw_demo_change_font_size();"></button>
             </div>
             <div class="col-1 col-md-1">
                 <a class="btn" href="/view-blind">
-                    <button class="fa fa-adjust A" alt="โหลดกลางคืน"
+                    <button class="fa fa-adjust A" alt="โหลดกลางคืน" aria-label="โหลดกลางคืน"
                             type="button" data-toggle="tooltip" title="โหลดกลางคืน!"></button>
                 </a>
             </div>
@@ -68,7 +68,7 @@
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
-                <a href="#">กลับขึ้นไปด้านบน</a>
+                <a href="#" aria-label="กลับขึ้นไปด้านบน" alt="กลับขึ้นไปด้านบน">กลับขึ้นไปด้านบน</a>
             </p>
             <p>© Book Can Says ,2019</p>
             <p>SIT,KMUTT</p>

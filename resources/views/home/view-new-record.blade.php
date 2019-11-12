@@ -45,12 +45,13 @@
                     <ul id="recordingsList" class="list-group"></ul>
                 </div>
 
-            </div>
 
         </form>
 
         <input type="hidden" name="book_id" value="{{request('book_id')}}">
         {{--        {{dd($data->pdf)}}--}}
+        <div class="col">
+
         <div class="card">
             <iframe src="{{route('render.pdf',['file_name' => $data->pdf])}}"
                     width="700px" height="1000px">
@@ -58,8 +59,7 @@
         </div>
     </div>
     </div>
-    </div>
-    </div>
+
 
     {{--        <div class="row justify-content-center">--}}
     {{--            <div class="col-md-4 block">--}}

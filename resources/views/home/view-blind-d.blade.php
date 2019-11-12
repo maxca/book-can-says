@@ -27,17 +27,18 @@
                             <div class="card">
                                 <img class="card-img img-thumbnail book-cover"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
-                                     aria-label="รูปปกหนังสือ">
+                                     aria-label="รูปปกหนังสือ" alt="รูปปกหนังสือ">
                                 <div class="card-body">
                                     <p class="card-title">
-                                    <div class="book-name font-weight-bold" aria-label="ชื่อหนังสือ.{{$book->name}}"
+                                    <div class="book-name font-weight-bold" alt="ชื่อหนังสือ.{{$book->name}}"
+                                         aria-label="ชื่อหนังสือ.{{$book->name}}"
                                          id="myContentDark">
                                         {{$book->name}}
                                     </div>
                                     </p>
                                     <p class="author" id="myContentDark">
                                         @foreach($book->authors as $author)
-                                            <span class="font-weight-bold" aria-label="ชื่อผู้แต่ง.{{$author->name}}">
+                                            <span class="font-weight-bold" alt="ชื่อผู้แต่ง.{{$author->name}}" aria-label="ชื่อผู้แต่ง.{{$author->name}}">
                                                 ชื่อผู้แต่ง</span>
                                             <span class="author-name"> {{$author->name}}</span>
                                         @endforeach
@@ -50,14 +51,14 @@
 {{--                                    </p>--}}
 
                                     <p class="chapter">
-                                    <div class="card-text" aria-label="เรื่องย่อ.{{$book->description}}"
+                                    <div class="card-text" alt="เรื่องย่อ.{{$book->description}}" aria-label="เรื่องย่อ.{{$book->description}}"
                                          id="myContentDark">
                                         {{$book->description}}</div>
                                     </p>
 
                                     <a href="{{route('show.book.detail',['id' => $book->id])}}" class="btn btn-light"
                                     >
-                                        <div class="font-weight-normal" aria-label="กดเพื่อฟังหนังสือเสียง"
+                                        <div class="font-weight-normal" aria-label="กดเพื่อฟังหนังสือเสียง" alt="กดเพื่อฟังหนังสือเสียง"
                                              id="buttonFont">
                                             ฟังหนังสือเสียง
                                         </div>

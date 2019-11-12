@@ -144,7 +144,7 @@ function createDownloadLink(blob) {
     inputTextTotalPage.name = "total_page"
     inputTextTotalPage.type = "text"
     inputTextTotalPage.className = "form-control"
-    inputTextTotalPage.placeholder = "จำนวนหน้า"
+    inputTextTotalPage.placeholder = "หน้าที่อ่านล่าสุด"
     inputTextTotalPage.setAttribute('id', 'total_page_' + time)
 
     //name of .wav file to use during upload and download (without extendion)
@@ -202,7 +202,7 @@ function createDownloadLink(blob) {
             return false
         }
         if (totalPage == '') {
-            alert('กรุณากรอกจำนวนหน้า')
+            alert('หน้าที่อ่านล่าสุด')
             document.getElementById('total_page_' + key).focus()
             return false
         }

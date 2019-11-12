@@ -10,6 +10,8 @@ use App\Http\Requests\ViewBookCategoryRequest;
 use App\Http\Requests\ViewBookDetailRequest;
 use App\Http\Requests\ViewBooksRequest;
 use App\Services\Sound\PlaySoundService;
+use Illuminate\Http\Request;
+use App\Http\Requests\DeleteBookRequest;
 
 
 class DemoController extends Controller
@@ -64,6 +66,31 @@ class DemoController extends Controller
 //        dd($data);
         return view('admin.view-verify-audio', $data);
     }
+
+    public function viewManageAudio(Request $request)
+    {
+        $id = $request->input('id');
+//dd($id);
+        $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter', 'review', 'audio'])
+            ->where('user_id', auth()->user()->id)
+            ->where('id',$id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+//        dd($data);
+//        return $data;
+//        dd($data);
+        return view('home.manage-audio', $data);
+    }
+
+    public function deleteAudio(DeleteBookRequest $request)
+    {
+
+        $data = BookAudio::find($request->id)->delete();
+//        BookAudio::where('id', $request->id)->delete();
+        return redirect()->route('home.view-book-list')->with('alert', 'ลบหนังสือเสียงสำเร็จ');
+
+    }
+
 
     public function playSoundBook(PlaySoundBookRequest $request)
     {

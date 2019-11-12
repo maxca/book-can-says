@@ -35,11 +35,44 @@ class BookController extends Controller
             //  ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
-        return view("home.view-book", $data);
+
+        $chap['chap'] =BookAudio::all()
+            //->groupBy('book_id')
+            ->where('status','active')
+            ->sortByDesc('created_at');
+
+            //dd($chap);
+        return view("home.view-book", $data,$chap);
 
 
     }
 
+//    public function lastPage()
+//    {
+//
+////        $fliter = $request->get('category');
+////        $data = Books::with('authors', 'category', 'publisher', 'chapter')
+////            ->where('publish_status', 'publisher')
+////            ->where('book_category_id','=',$fliter)
+////            //  ->where('user_id',auth()->user()->id)
+////            ->orderBy('created_at', 'DESC')
+////            ->paginate(12);
+////        return view("home.view-book", $data);
+//
+//       // $id = $request->input('book_id');
+//        //dd($id);
+//
+//        $data = BookAudio::with('authors', 'category', 'publisher', 'chapter','Books')
+//            ->where('status', 'active')
+//            ->where('created_at','desc')
+//            ->first();
+//
+//
+//
+//        return view('home.view-new-record',$data);
+//
+//
+//    }
 
     public function viewBookCategory(Request $request)
     {

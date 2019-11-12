@@ -24,6 +24,14 @@
 
                     @foreach($cards as $key => $book)
                         <div class="col-md-3 mb-4">
+
+                            @foreach($chap->chunk(3) as  $c)
+                                @foreach($c as $key => $chaps)
+                                    <div class="c">ตอนที่อ่านล่าสุด : {{$chaps->total_page}}</div>
+                                @endforeach
+                            @endforeach
+
+
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img img-thumbnail book-cover"
                                      src="{{route('render.img',['file_name' => 'public/images/'. $book->cover_page])}}"
@@ -67,8 +75,9 @@
 
                                     <div class="c">
 
-{{--                                        <a href="{{route('render.download',['file_name' => 'public/pdfs/'. $book->pdf])}}" class="btn btn-dark pdf">รับหนังสือ</a>--}}
-                                        <a href="{{route('view.book.record.sound', ['book_id' => $book->id])}}"  class="btn btn-dark record">อัดเสียง</a>
+                                        {{--                                        <a href="{{route('render.download',['file_name' => 'public/pdfs/'. $book->pdf])}}" class="btn btn-dark pdf">รับหนังสือ</a>--}}
+                                        <a href="{{route('view.book.record.sound', ['book_id' => $book->id])}}"
+                                           class="btn btn-dark record">อัดเสียง</a>
 
 
                                     </div>

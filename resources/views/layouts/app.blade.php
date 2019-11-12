@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
-
     @stack('styles-head')
 
     <title>@yield('title','Book Can Say')</title>

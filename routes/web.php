@@ -53,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
     /*จัดการข้อมูลหนังสือ*/
     Route::get('/view-book-list', 'BookController@viewBookList')->name('home.view-book-list');
 
+    /*จัดการหนังสือของตังเอง*/
+    Route::get('/view-my-book', 'BookController@viewMyBook')->name('home.view-my-book');
+
     /*จัดการเสียง*/
     Route::get('/view-audio-list', 'DemoController@viewAudioList')->name('home.view-audio-list');
     Route::get('/view-verify-audio', 'DemoController@viewVerifyAudio')->name('verify-audio');
@@ -67,6 +70,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'BookController@recordAudio')->name('view.book.record.sound');
 //        Route::get('/', 'BookController@uploadAudioOffline')->name('view.book.record.sound');
         Route::post('/upload', 'UploadSoundController@uploadAudioPath')->name('submit.upload.sound');
+//        Route::post('/uploadOffline', 'UploadSoundController@uploadAudioOffline')->name('submit.upload.sound');
+    });
+
+    //upload sounds own book
+    Route::group(['prefix' => 'view-own-record'], function () {
+        Route::get('/', 'BookController@recordOwnBook')->name('view.own.book.record.sound');
+//        Route::get('/', 'BookController@uploadAudioOffline')->name('view.book.record.sound');
+        Route::post('/upload', 'UploadSoundController@uploadOwnAudioPath')->name('submit.upload.own.sound');
 //        Route::post('/uploadOffline', 'UploadSoundController@uploadAudioOffline')->name('submit.upload.sound');
     });
 

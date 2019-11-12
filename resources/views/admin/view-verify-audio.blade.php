@@ -22,7 +22,6 @@
                         <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
                         <th class="text-center" style="width: 15%">การเผยแพร่</th>
-
                     </tr>
                     </thead>
                     <tbody>
@@ -102,34 +101,34 @@
 
 
 @push('styles-head')
-<style></style>
+    <style></style>
 
 @endpush
 
 
 @push('scripts-after')
-<script>
+    <script>
 
-    var route = "{{url('admin/audio')}}/"
-    $('.inactive').on('click', function () {
-        console.log($(this).data('book_id'))
-        $.LoadingOverlay('show')
-        updateAudio($(this).data('book_id'), 'inactive')
-    })
-    $(".active").on('click', function () {
-        $.LoadingOverlay('show')
-        console.log($(this).data('book_id'))
-        updateAudio($(this).data('book_id'), 'active')
-    })
+        var route = "{{url('admin/audio')}}/"
+        $('.inactive').on('click', function () {
+            console.log($(this).data('book_id'))
+            $.LoadingOverlay('show')
+            updateAudio($(this).data('book_id'), 'inactive')
+        })
+        $(".active").on('click', function () {
+            $.LoadingOverlay('show')
+            console.log($(this).data('book_id'))
+            updateAudio($(this).data('book_id'), 'active')
+        })
 
-    function updateAudio(audioId, status) {
-        $.LoadingOverlay('hide')
-        $.post(route + audioId, {status: status}, function (response) {
-            console.log(response)
-            window.location.reload()
-        }, 'json')
-    }
-</script>
+        function updateAudio(audioId, status) {
+            $.LoadingOverlay('hide')
+            $.post(route + audioId, {status: status}, function (response) {
+                console.log(response)
+                window.location.reload()
+            }, 'json')
+        }
+    </script>
 @endpush
 
 <style>

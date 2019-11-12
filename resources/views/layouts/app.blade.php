@@ -42,8 +42,6 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        {{--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
-                        {{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
 
                         <form class="form-inline my-2 my-lg-0" action="/view-book-category" method="get" id="category">
                             <select name="category" class="form-control" onchange="getSelectValue()">
@@ -53,7 +51,6 @@
                                 @endforeach
                             </select>
                         </form>
-                        {{--                        </a>--}}
                     </li>
 
                     <li class="nav-item">
@@ -100,6 +97,9 @@
 
                                 <a class="dropdown-item" href="{{ url('/view-book-list') }}">
                                     จัดการหนังสือ
+                                </a>
+                                <a class="dropdown-item" href="{{ url('/view-my-book') }}">
+                                    หนังสือของฉัน
                                 </a>
 
 

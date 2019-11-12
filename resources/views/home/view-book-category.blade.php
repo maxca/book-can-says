@@ -67,7 +67,7 @@
 
                                     <div class="c">
 
-                                        <a href="{{route('render.download',['file_name' => 'public/pdf/'. $book->pdf])}}" class="btn btn-dark pdf">รับหนังสือ</a>
+{{--                                        <a href="{{route('render.download',['file_name' => 'public/pdf/'. $book->pdf])}}" class="btn btn-dark pdf">รับหนังสือ</a>--}}
                                         <a href="{{route('view.book.record.sound', ['book_id' => $book->id])}}"  class="btn btn-dark record">อัดเสียง</a>
 
 

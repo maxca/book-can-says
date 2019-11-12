@@ -37,7 +37,7 @@ class BookController extends Controller
                // $query->limit(1); // get only one item
             }])->where('publish_status', 'publisher')
 //            ->where('book_category_id','=',$fliter)
-            //  ->where('user_id',auth()->user()->id)
+//              ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 
@@ -269,8 +269,19 @@ class BookController extends Controller
         $data = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
             ->where('id', $id)->first();
-
         return view('home.view-new-record')->with(['data' => $data]);
+    }
+
+    public function recordOwnBook(Request $request)
+    {
+        $id = $request->input('book_id');
+        //dd($id);
+
+        $data = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('publish_status', 'publisher')
+            ->where('id', $id)->first();
+
+        return view('home.view-own-new-record')->with(['data' => $data]);
     }
 
     public function viewListening()
@@ -285,6 +296,15 @@ class BookController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
         return view('admin.view-book-list', $data);
+    }
+
+    public function viewMyBook()
+    {
+        $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
+            ->where('user_id', auth()->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(12);
+        return view('home.view-my-book', $data);
     }
 
 

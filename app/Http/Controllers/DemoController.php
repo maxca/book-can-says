@@ -31,7 +31,7 @@ class DemoController extends Controller
     public function viewBookDetail(ViewBookDetailRequest $request, $bookId)
     {
         $sound = $this->playSound->getJsonDataForPlugin($bookId);
-        $book  = Books::where('id', $bookId)->with(['audio' => function ($query) {
+        $book = Books::where('id', $bookId)->with(['audio' => function ($query) {
             $query->where('status', 'active');
         }])->first();
 
@@ -57,13 +57,19 @@ class DemoController extends Controller
 
     public function viewVerifyAudio()
     {
+//        $audio = BookAudio::all();
+
+//        $audio['audio'] = BookAudio::orderBy('created_at', 'DESC')->get();
+
         $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter', 'review', 'audio'])
-            ->where('user_id', auth()->user()->id)
+//            ->join('book_audio','book_audio.book_id','=','books.id')
+//            ->orderBy('book_audio.created_at','DESC')
+//            ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 //        dd($data);
-//        return $data;
-//        dd($data);
+//        dd($audio);
+
         return view('admin.view-verify-audio', $data);
     }
 

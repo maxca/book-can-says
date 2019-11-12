@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*โชว์หน้าหนังสือแนะนำ*/
     Route::get('/view-book', 'BookController@viewBook')->name('home.view-book');
 
+
     Route::get('/view-create-book', 'BookController@viewCreateBook')->name('view-created-book');
     /*หน้าformสร้างหนังสือ*/
     Route::get('/view-form-create-book', 'BookController@viewFormCreateBook');
@@ -53,8 +54,13 @@ Route::group(['middleware' => 'auth'], function () {
     /*จัดการข้อมูลหนังสือ*/
     Route::get('/view-book-list', 'BookController@viewBookList')->name('home.view-book-list');
 
+
     /*จัดการหนังสือของตังเอง*/
     Route::get('/view-my-book', 'BookController@viewMyBook')->name('home.view-my-book');
+
+    /*จัดการเสียงสำหรับคนทั่วไป*/
+    Route::get('/manage-audio', 'DemoController@viewManageAudio')->name('home.manage-audio');
+    Route::get('/delete-audio', 'DemoController@deleteAudio')->name('delete.audio');
 
     /*จัดการเสียง*/
     Route::get('/view-audio-list', 'DemoController@viewAudioList')->name('home.view-audio-list');

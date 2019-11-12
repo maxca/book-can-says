@@ -31,20 +31,57 @@ class BookController extends Controller
 
 //        $fliter = $request->get('category');
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
-            ->where('publish_status', 'publisher')
+            ->with(['audio' => function ($query) {
+                $query->where('status', 'active');
+                $query->orderBy('id','desc'); // sorting by newly
+                $query->limit(1); // get only one item
+            }])->where('publish_status', 'publisher')
 //            ->where('book_category_id','=',$fliter)
 //              ->where('user_id',auth()->user()->id)
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
+
+//        $chap['chap'] = BookAudio::all()
+//            //->groupBy('book_id')
+//            ->where('status', 'active')
+//            ->sortByDesc('created_at');
+
+        //dd($chap);
         return view("home.view-book", $data);
 
 
     }
 
+//    public function lastPage()
+//    {
+//
+////        $fliter = $request->get('category');
+////        $data = Books::with('authors', 'category', 'publisher', 'chapter')
+////            ->where('publish_status', 'publisher')
+////            ->where('book_category_id','=',$fliter)
+////            //  ->where('user_id',auth()->user()->id)
+////            ->orderBy('created_at', 'DESC')
+////            ->paginate(12);
+////        return view("home.view-book", $data);
+//
+//       // $id = $request->input('book_id');
+//        //dd($id);
+//
+//        $data = BookAudio::with('authors', 'category', 'publisher', 'chapter','Books')
+//            ->where('status', 'active')
+//            ->where('created_at','desc')
+//            ->first();
+//
+//
+//
+//        return view('home.view-new-record',$data);
+//
+//
+//    }
 
     public function viewBookCategory(Request $request)
     {
-        $fliter = $request->get('category');
+        $fliter        = $request->get('category');
         $data['books'] = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
             ->where('book_category_id', '=', $fliter)
@@ -105,22 +142,22 @@ class BookController extends Controller
     {
 
 
-        $path = str_replace("public/", "", $this->uploadImage($request));
+        $path    = str_replace("public/", "", $this->uploadImage($request));
         $pathPdf = str_replace("public/", "", $this->uploadPdf($request));
 //        $category = BookCategory::create(['name' => $request->get('category')]);
         $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
-        $author = BookAuthor::create(['name' => $request->get('author_name')]);
-        $data = array(
-            'name' => $request->get('name'),
-            'user_id' => auth()->user()->id,
-            'book_category_id' => $request->get('category'),
+        $author    = BookAuthor::create(['name' => $request->get('author_name')]);
+        $data      = array(
+            'name'              => $request->get('name'),
+            'user_id'           => auth()->user()->id,
+            'book_category_id'  => $request->get('category'),
             'book_publisher_id' => $publisher->id,
-            'book_author_id' => $author->id,
-            'total_chapter' => $request->get('total_chapter'),
-            'total_page' => $request->get('total_page'),
-            'cover_page' => $path,
-            'description' => $request->get('description'),
-            'pdf' => $pathPdf,
+            'book_author_id'    => $author->id,
+            'total_chapter'     => $request->get('total_chapter'),
+            'total_page'        => $request->get('total_page'),
+            'cover_page'        => $path,
+            'description'       => $request->get('description'),
+            'pdf'               => $pathPdf,
 //            'status'             => $request->get('status')
         );
 
@@ -171,13 +208,13 @@ class BookController extends Controller
 
         $books = array(
             'book_categories_id' => $request->get('category'),
-            'book_author_id' => $publisher->id,
-            'book_publisher_id' => $authors->id,
-            'name' => $request->get('name'),
+            'book_author_id'     => $publisher->id,
+            'book_publisher_id'  => $authors->id,
+            'name'               => $request->get('name'),
 //            'total_chapter' => $request->get('total_chapter'),
 //            'total_page' => $request->get('total_page'),
 //            'description' => $request->get('description'),
-            'status' => $request->get('status')
+            'status'             => $request->get('status')
         );
         //dd($books);
 
@@ -204,18 +241,18 @@ class BookController extends Controller
         $path = str_replace("public/", "", $this->uploadImage($request));
 //        $category = BookCategory::create(['name' => $request->get('category')]);
         $publisher = BookPublisher::create(['name' => $request->get('publisher_name')]);
-        $author = BookAuthor::create(['name' => $request->get('author_name')]);
+        $author    = BookAuthor::create(['name' => $request->get('author_name')]);
 
         $data = array(
             'book_categories_id' => $request->get('category'),
-            'book_author_id' => $publisher->id,
-            'book_publisher_id' => $author->id,
-            'name' => $request->get('name'),
-            'total_chapter' => $request->get('total_chapter'),
-            'total_page' => $request->get('total_page'),
-            'cover_path' => $path,
-            'description' => $request->get('description'),
-            'status' => $request->get('status')
+            'book_author_id'     => $publisher->id,
+            'book_publisher_id'  => $author->id,
+            'name'               => $request->get('name'),
+            'total_chapter'      => $request->get('total_chapter'),
+            'total_page'         => $request->get('total_page'),
+            'cover_path'         => $path,
+            'description'        => $request->get('description'),
+            'status'             => $request->get('status')
         );
 
 //        Alert::success('Success Title', 'Success Message');
@@ -232,7 +269,6 @@ class BookController extends Controller
         $data = Books::with('authors', 'category', 'publisher', 'chapter')
             ->where('publish_status', 'publisher')
             ->where('id', $id)->first();
-
         return view('home.view-new-record')->with(['data' => $data]);
     }
 

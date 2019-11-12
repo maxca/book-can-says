@@ -30,6 +30,7 @@
                     <th scope="col">ผู้แต่ง</th>
                     <th scope="col">สำนักพิมพ์</th>
                     <th scope="col">สถานะ</th>
+                    <th scope="col" style="text-align: right">จัดการ</th>
                     <th scope="col" style="text-align: right">แก้ไข</th>
                     <th scope="col" style="text-align: right">ลบหนังสือ</th>
 
@@ -40,6 +41,7 @@
                 @foreach($books->chunk(4) as  $cards)
                     @foreach($cards as $key => $book)
                         <tr>
+
                             <td style="width: 110px">{{$book->created_at}}</td>
 
                             <td>{{$book->name}}</td>
@@ -60,6 +62,11 @@
                                 @endif
                             </td>
 
+                            <td style="text-align: right">
+                                <a href="{{route('home.manage-audio',['id' => $book->id])}}"
+                                   class="btn btn-dark">จัดการเสียง</a>
+
+                            </td>
 
                             <td style="text-align: right">
                                 <a href="{{route('edit',['id' => $book->id])}}"
@@ -88,7 +95,6 @@
                             @endforeach
                             @endforeach
                         </tr>
-
 
                 </tbody>
             </table>

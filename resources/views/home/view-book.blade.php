@@ -23,13 +23,12 @@
                 <div class="row">
 
                     @foreach($cards as $key => $book)
+
                         <div class="col-md-3 mb-4">
 
-                            @foreach($chap->chunk(3) as  $c)
-                                @foreach($c as $key => $chaps)
-                                    <div class="c">ตอนที่อ่านล่าสุด : {{$chaps->total_page}}</div>
-                                @endforeach
-                            @endforeach
+                            @if($book->audio->count() > 0)
+                                <div class="c">ตอนที่อ่านล่าสุด : {{$book->audio->first()->total_page}}</div>
+                            @endif
 
 
                             <div class="card" style="width: 18rem;">
@@ -96,46 +95,46 @@
 @endsection
 
 @push('styles-head')
-<style>
-    .book-cover {
-        width: 100%;
-        height: 230px;
-    }
+    <style>
+        .book-cover {
+            width: 100%;
+            height: 230px;
+        }
 
-    .card-text {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+        .card-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
 
-    .row {
-        margin-top: 60px;
-    }
+        .row {
+            margin-top: 60px;
+        }
 
-    .f {
-        margin-left: 20px;
-        margin-bottom: 10px;
-    }
+        .f {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
 
-    .mb-4 {
-        margin-left: 70px;
-    }
+        .mb-4 {
+            margin-left: 70px;
+        }
 
-    .pdf {
-        background: transparent;
-        color: black;
-    }
+        .pdf {
+            background: transparent;
+            color: black;
+        }
 
-    .jumbotron {
-        background-color: #343a40;
-        color: white;
-    }
+        .jumbotron {
+            background-color: #343a40;
+            color: white;
+        }
 
-    .ex {
-        background: white;
-        color: black;
-    }
+        .ex {
+            background: white;
+            color: black;
+        }
 
 
-</style>
+    </style>
 @endpush

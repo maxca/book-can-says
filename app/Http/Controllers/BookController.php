@@ -34,7 +34,7 @@ class BookController extends Controller
             ->with(['audio' => function ($query) {
                 $query->where('status', 'active');
                 $query->orderBy('id','desc'); // sorting by newly
-                $query->limit(1); // get only one item
+               // $query->limit(1); // get only one item
             }])->where('publish_status', 'publisher')
 //            ->where('book_category_id','=',$fliter)
             //  ->where('user_id',auth()->user()->id)

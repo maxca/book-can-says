@@ -26,10 +26,6 @@
 
                         <div class="col-md-3 mb-4">
 
-                            @if($book->audio->count() > 0)
-                                <div class="c">ตอนที่อ่านล่าสุด : {{$book->audio->first()->total_page}}</div>
-                            @endif
-
 
                             <div class="card" style="width: 18rem;">
                                 <img class="card-img img-thumbnail book-cover"
@@ -70,6 +66,19 @@
                                         <span class="f">{{$book->total_chapter}}</span>
                                     </div>
 
+                                    <div class="book-chapter">
+                                        <span class="font-weight-bold">
+                                            <i class="fa fa-bookmark-o"></i> หน้าที่อ่านล่าสุด
+                                        </span>
+                                        @if($book->audio->count() > 0)
+                                                 {{$book->audio->first()->total_page}}
+                                        @endif
+                                        @if($book->audio->count() == 0)
+                                            ยังไม่ถูกอ่าน
+                                        @endif
+                                    </div>
+
+
                                     <p class="card-text">{{$book->description}}</p>
 
                                     <div class="c">
@@ -95,46 +104,46 @@
 @endsection
 
 @push('styles-head')
-    <style>
-        .book-cover {
-            width: 100%;
-            height: 230px;
-        }
+<style>
+    .book-cover {
+        width: 100%;
+        height: 230px;
+    }
 
-        .card-text {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
+    .card-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 
-        .row {
-            margin-top: 60px;
-        }
+    .row {
+        margin-top: 60px;
+    }
 
-        .f {
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
+    .f {
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
 
-        .mb-4 {
-            margin-left: 70px;
-        }
+    .mb-4 {
+        margin-left: 70px;
+    }
 
-        .pdf {
-            background: transparent;
-            color: black;
-        }
+    .pdf {
+        background: transparent;
+        color: black;
+    }
 
-        .jumbotron {
-            background-color: #343a40;
-            color: white;
-        }
+    .jumbotron {
+        background-color: #343a40;
+        color: white;
+    }
 
-        .ex {
-            background: white;
-            color: black;
-        }
+    .ex {
+        background: white;
+        color: black;
+    }
 
 
-    </style>
+</style>
 @endpush

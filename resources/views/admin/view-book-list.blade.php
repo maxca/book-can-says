@@ -15,6 +15,11 @@
                 </div>
             @endif
 
+        <!-- Button trigger modal -->
+
+
+
+
             @if ($message = Session::get('warning'))
                 <div class="alert alert-warning alert-block">
                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -75,20 +80,49 @@
                             </td>
                             <td style="text-align: right">
 
-                                <div id="id_confrmdiv"> ต้องการลบข้อมูลหนังสือ?
-                                    <div class="confirm">
-                                        <a id="delete-btn" href="{{route('delete.book',['id' => $book->id])}}"
-                                           class="btn btn-light">
-                                            <button id="id_truebtn">ยืนยัน</button>
-                                        </a>
-                                    </div>
-                                    <div class="unconfirm">
-                                        <button id="id_falsebtn">ยกเลิก</button>
+                                <button type="button" class="btn btn-ligth" data-toggle="modal" data-target="#exampleModal">
+                                    ลบข้อมูลหนังสือ
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">ต้องการลบข้อมูลหนังสือ?</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                หากทำการลบข้อมูลหนังสือจะส่งผลให้หนังสือเสียงของคุณถูกลบเช่นกัน
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-ligth" data-dismiss="modal">ปฏิเสธ</button>
+                                                <a id="delete-btn" href="{{route('delete.book',['id' => $book->id])}}">
+                                                <button type="button" class="btn btn-dark">ตกลง</button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <button type="button" onclick="doSomething()" class="btn btn-light">ลบข้อมูลหนังสือ
-                                </button>
+
+
+
+                                {{--<div id="id_confrmdiv"> ต้องการลบข้อมูลหนังสือ?--}}
+                                    {{--<div class="confirm">--}}
+                                        {{--<a id="delete-btn" href="{{route('delete.book',['id' => $book->id])}}"--}}
+                                           {{--class="btn btn-light">--}}
+                                            {{--<button id="id_truebtn">ยืนยัน</button>--}}
+                                        {{--</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="unconfirm">--}}
+                                        {{--<button id="id_falsebtn">ยกเลิก</button>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                                {{--<button type="button" onclick="doSomething()" class="btn btn-light">ลบข้อมูลหนังสือ--}}
+                                {{--</button>--}}
 
                             </td>
 
@@ -107,25 +141,33 @@
 
 <script>
 
-    function doSomething() {
-        var id_confrmdiv = $("#id_confrmdiv");
-        document.getElementById('id_confrmdiv').style.display = "block"; //this is the replace of this line
+//    function doSomething() {
+//        var id_confrmdiv = $("#id_confrmdiv");
+//        document.getElementById('id_confrmdiv').style.display = "block"; //this is the replace of this line
+//
+//        document.getElementById('id_truebtn').onclick = function () {
+//            //do your delete operation
+//            //alert('true');
+//        };
+//
+//        document.getElementById('id_falsebtn').onclick = function () {
+//            id_confrmdiv.hide();
+//            //alert('false');
+//            return false;
+//        };
+//    }
 
-        document.getElementById('id_truebtn').onclick = function () {
-            //do your delete operation
-            //alert('true');
-        };
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
 
-        document.getElementById('id_falsebtn').onclick = function () {
-            id_confrmdiv.hide();
-            //alert('false');
-            return false;
-        };
-    }
 
 </script>
 
 <style>
+
+
+
 
     .table {
         margin-top: 30px;

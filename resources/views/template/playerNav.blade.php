@@ -29,9 +29,9 @@
 <div id="app">
 
     <nav class="navbar navbar-light bg-dark custom-switch">
-        <div class="col-md-7" >
-            <a class="navbar-brand " href="/view-blind" alt="กลับหน้าเลือกหนังสือ">
-                <p class="fa fa-chevron-left "></p><span class="back font-weight-bold">กลับ</span>
+        <div class="col-md-7">
+            <a class="navbar-brand " href="/view-blind" alt="กลับหน้าเลือกหนังสือ"  aria-label="กลับหน้าเลือกหนังสือ">
+                <p class="fa fa-chevron-left "></p><span class="back font-weight-bold" alt="กลับหน้าเลือกหนังสือ" aria-label="กลับหน้าเลือกหนังสือ">กลับ</span>
             </a>
         </div>
 
@@ -43,7 +43,7 @@
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
-                <a href="#">Back to top</a>
+                <a href="#" aria-label="กลับขึ้นไปด้านบน" alt="กลับขึ้นไปด้านบน">Back to top</a>
             </p>
             <p>© Book Can Says ,2019</p>
             <p>SIT,KMUTT</p>

@@ -86,32 +86,32 @@
 
                                 <td style="text-align: right">
 
-                                    <div id="frmTest" tabindex="-1">
-                                        <!-- CUTTED -->
-                                        <div id="step1" class="modal-footer">
-                                            <button type="button" class=" btn btn-ligth" id="btnDelete"> ลบ</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal confirm -->
-                                    <div class="modal" id="confirmModal" style="display: none; z-index: 1050;">
-                                        <div class="modal-dialog">
+                                    <button type="button" class="btn btn-ligth" data-toggle="modal" data-target="#exampleModal">
+                                        ลบเสียง
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-body" id="confirmMessage">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">ต้องการลบข้อมูลหนังสือเสียง?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
+
                                                 <div class="modal-footer">
+                                                    <button type="button" class="btn btn-ligth" data-dismiss="modal">ปฏิเสธ</button>
                                                     <a id="delete-btn" href="{{route('delete.audio',['id' => $audio->id])}}">
-                                                    <button type="button" class="btn btn-default" id="confirmOk">ตกลง</button>
+                                                        <button type="button" class="btn btn-dark">ตกลง</button>
                                                     </a>
-                                                    <button type="button" class="btn btn-default" id="confirmCancel">ปฏิเสธ</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
 
-                                       {{--<button type="button"  onclick="doSomething()" class="btn btn-light">ลบเสียง--}}
-                                        {{--</button>--}}
+
 
                                 </td>
 
@@ -164,21 +164,10 @@
         $("#confirmCancel").unbind().one("click", fClose);
     }
 
-//    function doSomething() {
-//        var id_confrmdiv = $("#id_confrmdiv");
-//        document.getElementById('id_confrmdiv').style.display = "block"; //this is the replace of this line
-//
-//        document.getElementById('id_truebtn').onclick = function () {
-//            //do your delete operation
-//            //alert('true');
-//        };
-//
-//        document.getElementById('id_falsebtn').onclick = function () {
-//            id_confrmdiv.hide();
-//            //alert('false');
-//            return false;
-//        };
-//    }
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
 </script>
 @endpush
 

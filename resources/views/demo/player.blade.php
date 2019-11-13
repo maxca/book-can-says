@@ -28,19 +28,19 @@
             <div id="row  player-controls">
                 <div class="control col">
                     <div class="button" id="play-previous">
-                        <i class="fa fa-backward" aria-label="กดสองครั้งเพื่อตอนก่อนหน้า"></i>
+                        <i class="btn fa fa-backward" aria-label="กดสองครั้งเพื่อตอนก่อนหน้า" alt="กดสองครั้งเพื่อตอนก่อนหน้า"></i>
                     </div>
                 </div>
                 <div class="col"></div>
                 <div class="control col">
                     <div class="button" id="play-pause-button">
-                        <i class="fa fa-play" aria-label="กดเล่นเสียงหรือหยุดเล่น"></i>
+                        <i class="btn fa-play" aria-label="กดเล่นเสียงหรือหยุดเล่น" alt="กดเล่นเสียงหรือหยุดเล่น"></i>
                     </div>
                 </div>
                 <div class="col"></div>
                 <div class="control col">
                     <div class="button" id="play-next">
-                        <i class="fa fa-forward" aria-label="กดสองครั้งเพื่อไปตอนถัดไป"></i>
+                        <i class="btn fa fa-forward" aria-label="กดสองครั้งเพื่อไปตอนถัดไป" alt="กดสองครั้งเพื่อไปตอนถัดไป"></i>
                     </div>
                 </div>
             </div>

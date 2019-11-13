@@ -19,21 +19,21 @@
 <div class="home">
     <main role="main" class="inner cover">
         <div class="cover-heading">
-            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="300"
-                 height="300" alt="Book can says">
+            <img alt="ยินดีต้อนรับเข้าสู่เBook can say" aria-label="ยินดีต้อนรับเข้าสู่เBook can say" src="<?php echo asset('img/logo-w-darkmode.svg'); ?>" width="300"
+                 height="300">
 
             <p class="role">
             <div class="row c">
                 <div class="col">
                     <a href="/view-blind">
-                        <button alt="สำหรับผู้ที่ต้องการฟังหนังสือเสียง" type="button" class="btn btn-dark circle">ผู้ฟัง</button>
+                        <button alt="สำหรับผู้ที่ต้องการฟังหนังสือเสียง" aria-label="สำหรับผู้ที่ต้องการฟังหนังสือเสียง" type="button" class="btn btn-dark circle">ผู้ฟัง</button>
                         </button>
                     </a>
 
                 </div>
                 <div class="col">
                     <a href="/view-book">
-                        <button alt="สำหรับจิตอาสา" type="button" class="btn btn-dark circle">จิตอาสา</button>
+                        <button alt="สำหรับจิตอาสา" aria-label="สำหรับจิตอาสา" type="button" class="btn btn-dark circle">จิตอาสา</button>
                         </button>
 
                     </a>

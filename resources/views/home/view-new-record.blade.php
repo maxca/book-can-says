@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <div class="timeup"></div>
-                        </div>
+                        
                     </div>
                     <div class="card-header">บันทึกเสียงของคุณแบบออนไลน์</div>
                     <div class="card-body">

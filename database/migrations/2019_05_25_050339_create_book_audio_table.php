@@ -15,12 +15,13 @@ class CreateBookAudioTable extends Migration
     {
         Schema::create('book_audio', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('book_chap_id');
             $table->string('path');
             $table->integer('total_page');
             $table->string('sub_book_chap');
             $table->integer('amoung_listening');
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->enum('status',['active','inactive'])->default('inactive');
             $table->timestamps();
         });
     }

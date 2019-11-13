@@ -9,6 +9,21 @@
                 <h3 class="card-title">จัดการหนังสือเสียง</h3>
             </div>
             <!-- /.card-header -->
+
+
+            @if (session('alert'))
+                <div class="alert alert-success">
+                    {{ session('alert') }}
+                </div>
+            @endif
+
+            @if ($message = Session::get('warning'))
+                <div class="alert alert-warning alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ $message }}</strong>
+                </div>
+            @endif
+
             <div class="card-body p-0">
                 <table class="table table-condensed">
                     <thead>
@@ -18,10 +33,12 @@
                         <th style="width: 15%">ชื่อหนังสือ</th>
                         <th style="width: 10%">ชื่อตอน</th>
                         <th style="width: 10%">ผู้แต่ง</th>
-                        <th style="width: 10%">ชื่อผู้อ่าน</th>
+                        {{--<th style="width: 10%">ชื่อผู้อ่าน</th>--}}
                         <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
-                        <th class="text-center" style="width: 15%">การเผยแพร่</th>
+                        <th style="width: 10%">ลบเสียง</th>
+
+
                     </tr>
                     </thead>
                     <tbody>
@@ -29,7 +46,10 @@
 
                     @foreach($books as $key => $book)
                         @foreach($book->audio as $audio)
+                            {{--{{dd($book)}}--}}
+
                             {{--{{dd($audio)}}--}}
+
                             <tr>
                                 <td>{{( $count++)}}.</td>
                                 <td>{{$audio->created_at}}</td>
@@ -39,7 +59,7 @@
 
                                 </td>
                                 <td>{{$book->authors->first()->name}}</td>
-                                <td>{{$book->user->name ?? ''}}</td>
+                                {{--<td>{{$book->user->name ?? ''}}</td>--}}
 
                                 {{--<td>--}}
                                 {{--<span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>--}}
@@ -68,19 +88,38 @@
 
                                 </td>
 
-                                <td class="text-right">
-                                    <button class="btn btn-success btn-sm active" data-book_id="{{$audio->id}}"
-                                            style="width: 77%">
-                                        <i class="fa fa-book"></i>
-                                        เผยแพร่
+                                <td style="text-align: right">
+
+                                    <button type="button" class="btn btn-ligth" data-toggle="modal" data-target="#exampleModal">
+                                        ลบเสียง
                                     </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">ต้องการลบข้อมูลหนังสือเสียง?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-ligth" data-dismiss="modal">ปฏิเสธ</button>
+                                                    <a id="delete-btn" href="{{route('delete.audio',['id' => $audio->id])}}">
+                                                        <button type="button" class="btn btn-dark">ตกลง</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                                    <button class="btn btn-danger btn-sm inactive" data-book_id="{{$audio->id}}">
-                                        <i class="fa fa-trash"></i>
-                                        ไม่เผยแพร่
-                                    </button>
+
+
                                 </td>
+
+
                                 @endforeach
 
                             </tr>
@@ -102,34 +141,38 @@
 
 
 @push('styles-head')
-    <style></style>
+<style></style>
 
 @endpush
 
 
 @push('scripts-after')
-    <script>
 
-        var route = "{{url('admin/audio')}}/"
-        $('.inactive').on('click', function () {
-            console.log($(this).data('book_id'))
-            $.LoadingOverlay('show')
-            updateAudio($(this).data('book_id'), 'inactive')
-        })
-        $(".active").on('click', function () {
-            $.LoadingOverlay('show')
-            console.log($(this).data('book_id'))
-            updateAudio($(this).data('book_id'), 'active')
-        })
+<script>
+    var YOUR_MESSAGE_STRING_CONST = "ต้องการลบหนังสือเสียงหรือไม่?";
+    $('#btnDelete').on('click', function(e){
+        confirmDialog(YOUR_MESSAGE_STRING_CONST, function(){
+            //My code to delete
+            console.log("deleted!");
+        });
+    });
 
-        function updateAudio(audioId, status) {
-            $.LoadingOverlay('hide')
-            $.post(route + audioId, {status: status}, function (response) {
-                console.log(response)
-                window.location.reload()
-            }, 'json')
-        }
-    </script>
+    function confirmDialog(message, onConfirm){
+        var fClose = function(){
+            modal.modal("hide");
+        };
+        var modal = $("#confirmModal");
+        modal.modal("show");
+        $("#confirmMessage").empty().append(message);
+        $("#confirmOk").unbind().one('click', onConfirm).one('click', fClose);
+        $("#confirmCancel").unbind().one("click", fClose);
+    }
+
+
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+</script>
 @endpush
 
 <style>

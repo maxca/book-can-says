@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*จัดการเสียงสำหรับคนทั่วไป*/
     Route::get('/manage-audio', 'DemoController@viewManageAudio')->name('home.manage-audio');
     Route::get('/delete-audio', 'DemoController@deleteAudio')->name('delete.audio');
+    Route::get('/manage-my-audio', 'DemoController@viewManageMyAudio')->name('home.manage-my-audio');
 
     /*จัดการเสียง*/
     Route::get('/view-audio-list', 'DemoController@viewAudioList')->name('home.view-audio-list');

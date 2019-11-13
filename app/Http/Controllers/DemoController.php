@@ -88,6 +88,25 @@ class DemoController extends Controller
         return view('home.manage-audio', $data);
     }
 
+    public function viewManageMyAudio(Request $request)
+    {
+
+
+        $data['books'] = Books::with(['category', 'publisher', 'authors', 'chapter'])
+            ->with(['audio' => function ($query) {
+                $query->where('user_id', auth()->user()->id);
+                $query->orderBy('id','desc'); // sorting by newly
+               // $query->orderBy('created_at','desc'); // sorting by newly
+//                $query->paginate(12);
+            }])
+            ->orderBy('created_at','desc')// sorting by newly
+            //->orderBy('created_at', 'DESC')
+            ->paginate(12);
+     // dd($data);
+       // return $data;
+       return view('home.manage-my-audio', $data);
+    }
+
     public function deleteAudio(DeleteBookRequest $request)
     {
 

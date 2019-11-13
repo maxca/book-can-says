@@ -36,7 +36,7 @@
                         <th style="width: 12%">วันที่สร้าง</th>
                         <th style="width: 15%">ชื่อหนังสือ</th>
                         <th style="width: 10%">ผู้แต่ง</th>
-                        <th style="width: 10%">ชื่อผู้อ่าน</th>
+                        <th style="width: 10%">สร้างโดย</th>
                         <th style="width: 30%">คำอธิบาย</th>
                         <th style="width: 13%">สถานะ</th>
                         <th class="text-center" style="width: 20%">การเผยแพร่</th>

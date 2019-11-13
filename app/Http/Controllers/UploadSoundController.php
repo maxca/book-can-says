@@ -44,6 +44,7 @@ class UploadSoundController extends Controller
         $soundPath = $this->uploadFile->upload();
         $data = array(
             'book_id' => $request->get('book_id'),
+            'user_id' => auth()->user()->id,
             'book_category_id' => 1,
             'book_chap_id' => 1,
             'chapter_name' => $request->get('chapter_name'),
@@ -52,9 +53,11 @@ class UploadSoundController extends Controller
             'sub_book_chap' => 'lan wang ji',
             'amoung_listening' => 1,
         );
+       // dd($data);
 
         return BookAudio::updateOrCreate([
             'book_id' => $request->book_id,
+           // 'user_id' => $request->auth()->user()->id,
             'chapter_name' => $request->chapter_name,
         ], $data);
 
@@ -66,6 +69,7 @@ class UploadSoundController extends Controller
         $soundPath = $this->uploadFile->upload();
         $data = array(
             'book_id' => $request->get('book_id'),
+            //'user_id' => auth()->user()->id,
             'book_category_id' => 1,
             'book_chap_id' => 1,
             'chapter_name' => $request->get('chapter_name'),
@@ -74,7 +78,6 @@ class UploadSoundController extends Controller
             'sub_book_chap' => 'lan wang ji',
             'amoung_listening' => 1,
         );
-
         return BookAudio::updateOrCreate([
             'book_id' => $request->book_id,
             'chapter_name' => $request->chapter_name,

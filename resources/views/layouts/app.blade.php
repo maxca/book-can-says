@@ -94,13 +94,16 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item" href="{{ url('/view-book-list') }}">
-                                    จัดการหนังสือ
-                                </a>
                                 <a class="dropdown-item" href="{{ url('/view-my-book') }}">
                                     หนังสือของฉัน
                                 </a>
+                                <a class="dropdown-item" href="{{ url('/view-book-list') }}">
+                                    จัดการหนังสือ
+                                </a>
+                                <a class="dropdown-item" href="{{ url('/manage-my-audio') }}">
+                                    จัดการหนังสือเสียง
+                                </a>
+
 
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"

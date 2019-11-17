@@ -18,7 +18,7 @@
                         <th style="width: 15%">ชื่อหนังสือ</th>
                         <th style="width: 10%">ชื่อตอน</th>
                         <th style="width: 10%">ผู้แต่ง</th>
-                        <th style="width: 10%">ชื่อผู้อ่าน</th>
+                        <th style="width: 10%">รหัสผู้อ่าน</th>
                         <th class="text-center" style="width: 35%">เสียง</th>
                         <th style="width: 10%">สถานะ</th>
                         <th class="text-center" style="width: 15%">การเผยแพร่</th>
@@ -39,7 +39,8 @@
 
                                 </td>
                                 <td>{{$book->authors->first()->name}}</td>
-                                <td>{{$book->user->name ?? ''}}</td>
+                                {{--<td>{{$book->user->name ?? ''}}</td>--}}
+                                <td>{{$audio->user_id}}</td>
 
                                 {{--<td>--}}
                                 {{--<span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>--}}

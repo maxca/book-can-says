@@ -44,7 +44,7 @@
                     </div>
                     <ul id="recordingsList" class="list-group"></ul>
                 </div>
-
+                </div>
 
         </form>
 
@@ -57,6 +57,7 @@
                     width="700px" height="1000px">
             </iframe>
         </div>
+    </div>
     </div>
     </div>
 

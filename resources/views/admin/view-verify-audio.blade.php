@@ -40,7 +40,7 @@
                                 </td>
                                 <td>{{$book->authors->first()->name}}</td>
                                 {{--<td>{{$book->user->name ?? ''}}</td>--}}
-                                <td>{{$book->user_id}}</td>
+                                <td>{{$audio->user_id}}</td>
 
                                 {{--<td>--}}
                                 {{--<span class="sub-chapter-name">{{$audio->sub_book_chap}}</span>--}}

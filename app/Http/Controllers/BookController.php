@@ -97,6 +97,11 @@ class BookController extends Controller
 
     }
 
+    public function viewTutorial()
+    {
+        return view("home.view-tutorial");
+    }
+
 
     public function viewBlind(Request $request)
     {

@@ -10,7 +10,7 @@
                 และเป็นครูที่อดทนที่สุด </p>
             <hr class="my-4">
             <p>มาร่วมแบ่งปันน้ำใจโดยการอ่าน</p>
-            <a class="btn btn-ligth btn-lg ex" href="#" role="button">ดูตัวอย่างหนังสือเสียง</a>
+            <a class="btn btn-ligth btn-lg ex" href="/view-tutorial" role="button">ดูตัวอย่างการบันทึกหนังสือเสียง</a>
         </div>
 
     </div>

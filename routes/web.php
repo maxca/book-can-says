@@ -17,12 +17,13 @@
 
 
 /*หน้าแรก*/
-
 Route::get('/', 'BookController@viewWelcome');
 
 /*โชว์หน้าฟังเสียง*/
 Route::get('/view-blind', 'BookController@viewBlind')->name('home.view-blind');
 
+/*โชว์หน้าตัวอย่างการอัดเสียง*/
+Route::get('/view-tutorial', 'BookController@viewTutorial');
 
 Route::group(['middleware' => 'auth'], function () {
     /*โชว์หน้าหนังสือแนะนำ*/

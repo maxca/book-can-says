@@ -32,7 +32,7 @@
         "jquery-validation": "^1.19.1",
         "pusher-js": "^5.0.0",
         "redis": "^0.12.1",
-        "socket.io": "^1.7.4",
+        "socket.io": "^2.4.0",
         "spin.js": "^4.0.0"
     }
 }
